@@ -2,9 +2,9 @@
 const mongoose = require('mongoose');
 mongoose.connect("mongodb://127.0.0.1:27017/motogear")
 
-const accountSid = "ACde7da89081f9ba029c3437b855edda55";
-const authToken = "6bcc716eebbb637a70464853c245c4e8";
-const client = require('twilio')(accountSid, authToken);
+// const accountSid = "ACde7da89081f9ba029c3437b855edda55";
+// const authToken = "6bcc716eebbb637a70464853c245c4e8";
+// const client = require('twilio')(accountSid, authToken);
 const express = require('express')
 const session=require('express-session')
 
