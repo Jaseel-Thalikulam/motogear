@@ -1,0 +1,367 @@
+
+<%-include('../layouts/userheader.ejs') %>
+
+
+<div id="wrapper">
+
+    <!-- ****** Header Area Start ****** -->
+    <header class="header_area bg-img background-overlay-white" style="background-image: url(/assets/img/pexels-pragyan-bezbaruah-1715193.jpg);">
+        <!-- Top Header Area Start -->
+        <div class="top_header_area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-end">
+
+                    <div class="col-12 col-lg-7">
+                        <div class="top_logo">
+                            <a href="#"><img src="/userassets/img/core-img/logo.png" style="width: 70px;" alt=""></a>
+                        </div>
+                        <div class="top_single_area d-flex align-items-center">
+                            <!-- Logo Area -->
+                           
+                            <!-- Cart & Menu Area -->
+
+                          
+
+                            <div class="header-cart-menu d-flex align-items-center ml-auto">
+                                <!-- Cart Area -->
+                                <%if(user){%>
+                                    <div class="cart">
+                                        <a href="/cart" id="header-cart-btn" target="_blank"><span class="cart_quantity"><%=countcart%></span><i class="ti-bag"></i> Your Cart</a>
+                                        <!-- Cart List Area Start -->
+                                        
+                                    </div>
+                                  <%}%>
+                                <!-- <div class="header-right-side-menu ml-15">
+                                    <a href="#" id="sideMenuBtn"><i class="ti-menu" aria-hidden="true"></i></a>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Header Area End -->
+        <div class="main_header_area">
+            <div class="container h-100">
+                <div class="row h-100">
+
+                   
+
+                    <div class="col-12 d-md-flex justify-content-center"  >
+                        <!-- Header Social Area -->
+                       
+                        <!-- Menu Area -->
+                      
+                                                   
+                            <div class="main-menu-area">
+                            <nav class="navbar navbar-expand-lg align-items-start">
+
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="ti-menu"></i></span></button>
+
+                                <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
+                                    <ul class="navbar-nav animated" id="nav">
+                                        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+                                      
+                                        <li class="nav-item"><a class="nav-link" href="/allproducts">EXPLORE OUR PRODUCTS</a></li>
+                                        <!-- <li class="nav-item"><a class="nav-link" href="#"> RIDING GLOVES</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#"><span class="karl-level">hot</span> RIDING JACKETS</a></li> -->
+
+                                        <% if (user){%>
+
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" style="text-transform: capitalize;" aria-expanded="false">Hello,<%=user.name%></a>
+                                                <div class="dropdown-menu"  aria-labelledby="karlDropdown">
+                                                    
+                                                    
+                                                     
+                                                    <a class="dropdown-item" href="/profile/<%=user._id%>">My Profile</a>
+                                                     <a class="dropdown-item" href="/logout">Logout</a>
+                                           
+                                                   
+                                                </div>
+                                            </li>
+                                           
+
+                                        <%}else{%>
+
+                                            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                                            
+                                        <%}%>
+                                       
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <!-- Help Line -->
+                 
+
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        </header>
+<!-- ****** Header Area End ****** -->
+    <!-- ****** Header Area End ****** -->
+
+    <!-- ****** Top Discount Area Start ****** -->
+   
+    <!-- ****** Top Discount Area End ****** -->
+
+    <!-- ****** Cart Area Start ****** -->
+    <div class="cart_area section_padding_100 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="section_heading text-center">
+                        <h2>cart</h2>
+                    </div>
+
+                    <div class="cart-table clearfix">
+                        <table class="table table-responsive" id="reloadTable">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <% cartData.cart.forEach ((x,index)=>{ %> 
+
+                                <tr>
+                                    <td class="cart_product_img d-flex align-items-center">
+                                        <a href="#"><img src="/assets/img/<%= x.product.image[0]%>" alt="Product"></a>
+                                        <h6><%=x.product.product%></h6>
+                                    </td>
+                                    <td class="price"><span><%=x.product.price%></span></td>
+                                    <td class="qty">
+                                        <div class="quantity">
+                                            
+                                            <span class="qty-minus" onclick="adjustQuantity('<%= x.product._id %>',-1,'<%= x.product.price%>'); "><i class="fa fa-minus" aria-hidden="true"></i></span>
+
+                                            <input type="number" class="qty-text " id="<%=x.product._id%>" min="1" step="1"  max="99" name="quantity" value="<%=x.quantity%>" readonly>
+                                            
+                                            <span class="qty-plus" onclick="adjustQuantity('<%= x.product._id %>',1,'<%= x.product.price%>'); "><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                        </div>
+                                        
+
+                                    </td>
+                                    <td><span class="<%= x.product._id %>" ><%=x.prototalprice%></span></td>
+                                  
+
+                                    <td><a href="#"   onclick="deletecart('<%=x.product._id%>')"> <img src="/assets/img/delete.png" style="height: 22px; width: 22px;">  </a></td>
+
+                                </tr>
+
+                                <% }) %>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="cart-footer d-flex mt-30">
+                        <div class="back-to-shop w-50">
+                            <a href="/">Continue shoping</a>
+                        </div>
+                        <!-- <div class="update-checkout w-50 text-right">
+                            <a href="#">clear cart</a>
+                            <a href="#">Update cart</a>
+                        </div> -->
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                
+                <div class="col-12 col-md-6 col-lg-8">
+                
+                </div>
+                
+                <div class="col-12 col-lg-4">
+                    <div class="cart-total-area mt-70">
+                        <div class="cart-page-heading">
+                            <h5>Cart total</h5>
+                            <p>Final info</p>
+                        </div>
+
+                        <ul class="cart-total-chart"  >
+                            <li><span >Subtotal</span> <span id="CartTotal1"><%=user.cartTotalPrice%></span></li>
+                            <li><span>Shipping</span> <span>Free</span></li>
+                            <li ><span><strong>Total</strong></span> <span id="CartTotal"><strong ><%=user.cartTotalPrice%></strong></span></li>
+                            
+                        </ul>
+                        <a href="/checkout/" class="btn karl-checkout-btn">Proceed to checkout</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <!-- ****** Cart Area End ****** -->
+
+    <!-- ****** Footer Area Start ****** -->
+    <footer class="footer_area">
+        <div class="container">
+            <div class="row">
+                <!-- Single Footer Area Start -->
+           
+                <!-- Single Footer Area Start -->
+                <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                    <div class="single_footer_area">
+                        <ul class="footer_widget_menu">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Faq</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Single Footer Area Start -->
+                <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                    <div class="single_footer_area">
+                        <ul class="footer_widget_menu">
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="#">Our Policies</a></li>
+                            <li><a href="#">Afiliates</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Single Footer Area Start -->
+                <div class="col-12 col-lg-5">
+                    <div class="single_footer_area">
+                      
+                    </div>
+                </div>
+            </div>
+            <div class="line"></div>
+
+            <!-- Footer Bottom Area Start -->
+            <div class="footer_bottom_area">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="footer_social_area text-center">
+                            <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ****** Footer Area End ****** -->
+</div>
+
+
+<script>
+
+
+    function deletecart(proid) {
+
+        
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You wan't to delete!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'yes, delete!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log(proid);
+                $.ajax({
+                    url: "/deletecart",
+                    data: {
+                        productId: proid
+                    },
+                    method: 'post',
+                    success: (response) => {
+                        console.log("waoring")
+
+                        $('#CartTotal').load('/cart #CartTotal')
+                        $('#CartTotal1').load('/cart #CartTotal1')
+                        $('#reloadTable').load('/cart #reloadTable')
+                        console.log(response);
+                        Swal.fire({
+                            title: 'deleted!',
+                            text: 'Your deleted',
+                            icon: 'success',
+                            showConfirmButton: false
+                        })
+                               
+
+                            }
+
+                        })
+                    }
+                })
+            }
+
+
+            function adjustQuantity (proId,count,price){
+
+              
+
+                // console.log(proId)
+                // console.log(count)
+                // console.log(price)
+                let Quantity = document.getElementById(proId).value
+                
+                const procount =parseInt(count)
+              
+if (Quantity <=1 && procount === -1){
+
+}else{
+                
+
+                    $.ajax({
+                        url:"/changeQuantity",
+                        data:{
+                            
+                        
+                            productid:proId,
+                            count:count,
+                            price:price,
+
+                        },
+                        method:'post',
+                        success:(response)=>{
+
+                            console.log(response)
+                            document.getElementById(proId).value = parseInt (Quantity)+count;
+                            document.getElementsByClassName(proId)[0].innerHTML = response . TotalPrice;
+                           
+                            document.getElementsByClassName("CartTotal").innerHTML = response.sum
+
+                            $('#CartTotal').load('/cart #CartTotal')
+                            $('#CartTotal1').load('/cart #CartTotal1')
+
+                        }
+                    })
+
+                }
+            }
+
+            
+            
+
+
+        </script>
+
+
+
+<%-include('../layouts/userfooter.ejs') %>

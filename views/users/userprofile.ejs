@@ -1,0 +1,250 @@
+<%-include('../layouts/userheader.ejs') %>
+
+
+
+<div id="wrapper">
+
+    <!-- ****** Header Area Start ****** -->
+    <header class="header_area bg-img background-overlay-white" style="background-image: url(/assets/img/pexels-pragyan-bezbaruah-1715193.jpg);">
+        <!-- Top Header Area Start -->
+        <div class="top_header_area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-end">
+
+                    <div class="col-12 col-lg-7">
+                        <div class="top_logo">
+                            <a href="#"><img src="/userassets/img/core-img/logo.png" style="width: 70px;" alt=""></a>
+                        </div>
+                        <div class="top_single_area d-flex align-items-center">
+                            <!-- Logo Area -->
+                           
+                            <!-- Cart & Menu Area -->
+
+                         
+
+                            <div class="header-cart-menu d-flex align-items-center ml-auto">
+                                <!-- Cart Area -->
+                                <%if(user){%>
+                                    <div class="cart">
+                                        <a href="/cart" id="header-cart-btn" target="_blank"><span class="cart_quantity"><%=countcart%></span><i class="ti-bag"></i> Your Cart</a>
+                                        <!-- Cart List Area Start -->
+                                        
+                                    </div>
+                                  <%}%>
+                                <!-- <div class="header-right-side-menu ml-15">
+                                    <a href="#" id="sideMenuBtn"><i class="ti-menu" aria-hidden="true"></i></a>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Header Area End -->
+        <div class="main_header_area">
+            <div class="container h-100">
+                <div class="row h-100">
+
+                   
+
+                    <div class="col-12 d-md-flex justify-content-center"  >
+                        <!-- Header Social Area -->
+                       
+                        <!-- Menu Area -->
+                      
+                                                   
+                            <div class="main-menu-area">
+                            <nav class="navbar navbar-expand-lg align-items-start">
+
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="ti-menu"></i></span></button>
+
+                                <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
+                                    <ul class="navbar-nav animated" id="nav">
+                                        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+                                      
+                                        <li class="nav-item"><a class="nav-link" href="/allproducts">EXPLORE OUR PRODUCTS</a></li>
+                                        <!-- <li class="nav-item"><a class="nav-link" href="#"> RIDING GLOVES</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#"><span class="karl-level">hot</span> RIDING JACKETS</a></li> -->
+
+                                        <% if (user){%>
+
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" style="text-transform: capitalize;" aria-expanded="false">Hello,<%=user.name%></a>
+                                                <div class="dropdown-menu"  aria-labelledby="karlDropdown">
+                                                    
+                                                    
+                                                     
+                                                    <a class="dropdown-item" href="/profile/<%=user._id%>">My Profile</a>
+                                                     <a class="dropdown-item" href="/logout">Logout</a>
+                                           
+                                                   
+                                                </div>
+                                            </li>
+                                           
+
+                                        <%}else{%>
+
+                                            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                                            
+                                        <%}%>
+                                       
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <!-- Help Line -->
+                 
+
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        </header>
+    <!-- ****** Header Area End ****** -->
+
+
+        <!-- ****** Checkout Area Start ****** -->
+        <div class="checkout_area section_padding_100">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="checkout_details_area mt-50 clearfix">
+
+                    <div class="cart-page-heading">
+                        <h5>My profile</h5>
+                    </div>
+
+                    <form action="#" method="post">
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="first_name">Your Name </label>
+                                <input type="text" class="form-control" id="first_name" value="<%=userData.name%>" readonly>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="phone_number">Phone No </label>
+                                <input type="number" class="form-control" id="phone_number" min="0" value="<%=userData.mobile%>" readonly>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="email_address">Email Address</label>
+                                <input type="email" class="form-control" id="email_address" value="<%=userData.email%>" readonly>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="referal_id">Referal ID</label>
+                                <input type="text" class="form-control" id="referal_id" onclick="copyReferalID()" value="<%=userData.referralCode%>" readonly> 
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="profile_actions mt-50">
+                    <a href="/editprofile/<%=user._id%>">
+                        <img src="/assets/img/edit.png" alt="Edit Profile">
+                    </a>
+                    <div class="row" style="margin-top: 3em; ">
+                        <div class="col-6 col-md-6 mb-3">
+                            <a href="/address">
+                                <button class="btn btn-primary btn-block" style=" height: 40px; border-radius: 2em; border: none; ;color: white; background-color: #FF084E; text-transform: uppercase; font-weight: bold; cursor: pointer; ">My Address</button>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-6 mb-3">
+                            <a href="/cart">
+                                <button class="btn btn-primary btn-block" style=" height: 40px; border-radius: 2em; border: none; ;color: white; background-color: #FF084E; text-transform: uppercase; font-weight: bold; cursor: pointer; ">My Cart</button>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-6 mb-3" >
+                            <a href="/wishlist">
+                                <button class="btn btn-primary btn-block" style="  border-radius: 2em; border: none; ;color: white; background-color: #FF084E; text-transform: uppercase; font-weight: bold; cursor: pointer; ">My Wishlist</button>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-6 mb-3">
+                            <a href="/loadorders">
+                                <button class="btn btn-primary btn-block" style=" height: 40px; border-radius: 2em; border: none; ;color: white; background-color: #FF084E; text-transform: uppercase; font-weight: bold; cursor: pointer; ">My Orders</button>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-6 mb-3">
+                            <a href="/changepasssword">
+                                <button class="btn btn-primary btn-block"  style="font-size: small; height: 40px; border-radius: 2em; border: none; ;color: white; background-color: #FF084E; text-transform: uppercase; font-weight: bold; cursor: pointer; ">Change Password</button>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-6 mb-3">
+                            <a href="/referals_coupons">
+                                <button class="btn btn-primary btn-block"  style="font-size: small; height: 40px; border-radius: 2em; border: none; ;color: white; background-color: #FF084E; text-transform: uppercase; font-weight: bold; cursor: pointer; ">referals & coupons</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+   
+        
+        <!-- ****** Checkout Area End ****** -->
+
+        <!-- ****** Footer Area Start ****** -->
+        <footer class="footer_area">
+            <div class="container">
+                <div class="row">
+                    <!-- Single Footer Area Start -->
+                  
+                    <!-- Single Footer Area Start -->
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                        <div class="single_footer_area">
+                            <ul class="footer_widget_menu">
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Faq</a></li>
+                                <li><a href="#">Returns</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Single Footer Area Start -->
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                        <div class="single_footer_area">
+                            <ul class="footer_widget_menu">
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="#">Shipping</a></li>
+                                <li><a href="#">Our Policies</a></li>
+                                <li><a href="#">Afiliates</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Single Footer Area Start -->
+                    <div class="col-12 col-lg-5">
+                        <div class="single_footer_area">
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="line"></div>
+
+                <!-- Footer Bottom Area Start -->
+             
+        </footer>
+        <!-- ****** Footer Area End ****** -->
+    </div>
+
+    <script>
+
+        function copyReferalID() {
+  const text = ' <%=userData.referralCode%> ';
+  const el = document.createElement('textarea');
+  el.value = text;
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+  alert('Text copied to clipboard!');
+}
+
+    </script>
+    
+    <%-include('../layouts/userfooter.ejs') %>

@@ -1,0 +1,396 @@
+<%-include('../layouts/userheader.ejs') %>
+
+<div id="wrapper">
+
+    <!-- ****** Header Area Start ****** -->
+    <header class="header_area bg-img background-overlay-white" style="background-image: url(/assets/img/pexels-pragyan-bezbaruah-1715193.jpg);">
+        <!-- Top Header Area Start -->
+        <div class="top_header_area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-end">
+
+                    <div class="col-12 col-lg-7">
+                        <div class="top_logo">
+                            <a href="#"><img src="/userassets/img/core-img/logo.png" style="width: 70px;" alt=""></a>
+                        </div>
+                        <div class="top_single_area d-flex align-items-center">
+                            <!-- Logo Area -->
+                           
+                            <!-- Cart & Menu Area -->
+
+                          
+
+                            <div class="header-cart-menu d-flex align-items-center ml-auto">
+                                <!-- Cart Area -->
+                                <%if(user){%>
+                                    <div class="cart">
+                                        <a href="/cart" id="header-cart-btn" target="_blank"><span class="cart_quantity"><%=countcart%></span><i class="ti-bag"></i> Your Cart</a>
+                                        <!-- Cart List Area Start -->
+                                        
+                                    </div>
+                                  <%}%>
+                                <!-- <div class="header-right-side-menu ml-15">
+                                    <a href="#" id="sideMenuBtn"><i class="ti-menu" aria-hidden="true"></i></a>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Header Area End -->
+        <div class="main_header_area">
+            <div class="container h-100">
+                <div class="row h-100">
+
+                   
+
+                    <div class="col-12 d-md-flex justify-content-center"  >
+                        <!-- Header Social Area -->
+                       
+                        <!-- Menu Area -->
+                      
+                                                   
+                            <div class="main-menu-area">
+                            <nav class="navbar navbar-expand-lg align-items-start">
+
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="ti-menu"></i></span></button>
+
+                                <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
+                                    <ul class="navbar-nav animated" id="nav">
+                                        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+                                      
+                                        <li class="nav-item"><a class="nav-link" href="/allproducts">EXPLORE OUR PRODUCTS</a></li>
+                                        <!-- <li class="nav-item"><a class="nav-link" href="#"> RIDING GLOVES</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#"><span class="karl-level">hot</span> RIDING JACKETS</a></li> -->
+
+                                        <% if (user){%>
+
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" style="text-transform: capitalize;" aria-expanded="false">Hello,<%=user.name%></a>
+                                                <div class="dropdown-menu"  aria-labelledby="karlDropdown">
+                                                    
+                                                    
+                                                     
+                                                    <a class="dropdown-item" href="/profile/<%=user._id%>">My Profile</a>
+                                                     <a class="dropdown-item" href="/logout">Logout</a>
+                                           
+                                                   
+                                                </div>
+                                            </li>
+                                           
+
+                                        <%}else{%>
+
+                                            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                                            
+                                        <%}%>
+                                       
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <!-- Help Line -->
+                 
+
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        </header>
+<!-- ****** Header Area End ****** -->
+<!-- 
+    <section class="welcome_area">
+        <div class="welcome_slides owl-carousel">
+
+
+
+        
+            <div class="single_slide height-800 bg-img background-overlay" style="background-image: url('/assets/img/Retro-Banner_08.jpg');">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="welcome_slide_text">
+                                <h6 data-animation="bounceInDown" data-delay="0" data-duration="500ms">* Only today we offer free shipping</h6>
+                                <h2 data-animation="fadeInUp" data-delay="500ms" data-duration="500ms">Fashion Trends</h2>
+                                <a href="#" class="btn karl-btn" data-animation="fadeInUp" data-delay="1s" data-duration="500ms">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="single_slide height-800 bg-img background-overlay" style="background-image: url('/public/assets/');">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="welcome_slide_text">
+                                <h6 data-animation="bounceInDown" data-delay="0" data-duration="500ms">* Only today we offer free shipping</h6>
+                                <h2 data-animation="fadeInUp" data-delay="500ms" data-duration="500ms">Fashion Trends</h2>
+                                <a href="#" class="btn karl-btn" data-animation="fadeInUp" data-delay="1s" data-duration="500ms">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+    </section> -->
+
+    <!-- ****** New Arrivals Area Start ****** -->
+    <section class="new_arrivals_area section_padding_100_0 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section_heading text-center">
+                        <h2>All Products at a Glance</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="karl-projects-menu mb-100">
+            <div class="text-center portfolio-menu">
+
+                 <button class="btn active" data-filter="*">ALL</button>
+                <%
+                if(categories.length > 0){
+                for(let i=0;i<categories.length;i++){
+                    %>
+               
+                <button class="btn" data-filter=".<%= categories[i].category %>"><%= categories[i].category %></button>
+                <!-- <button class="btn" data-filter=".jackets">JACKETS</button>
+                <button class="btn" data-filter=".access">GLOVES</button> -->
+             
+
+                <%
+            }
+            }else{
+            %>
+            <tr>
+                <td colspan="3">Categories Not Found</td>
+            </tr>
+            
+            <%
+            }
+            
+            %>
+  
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row karl-new-arrivals">
+
+              
+                
+                <!-- Single gallery Item Start -->
+                <% for(i=product.length-1;i>=0;i--){ %>
+
+                    <%if(product[i].show==true){%>
+                    <div class="col-12 col-sm-6 col-md-4 single_gallery_item <%=product[i].Category%> wow fadeInUpBig" data-wow-delay="0.2s">
+                        <!-- Product Image -->
+                        <div class="product-img">
+                            <img style="border-radius: 5px;" src="/assets/img/<%= product[i].image[0]%>" alt="">
+                            <div class="product-quicview">
+                                <a href="/productdetails/<%= product[i]._id%>"></a>
+                            
+                            </div>
+                        </div>
+                        <!-- Product Description -->
+                        <div class="product-description">
+                            <h4 class="product-price">₹<%= product[i].price %></h4>
+                            <p><%=product[i].product %></p>
+                           
+                            <!-- Add to Cart -->
+                            <a href="#"  onclick="addToWishlist('<%= product[i]._id %>')"  class="add-to-cart-btn">ADD TO WISHLIST</a>
+
+                        </div>
+                    </div>
+                    
+    
+                    <%}%>
+
+                    <% }; %> 
+               
+
+
+
+               
+
+            </div>
+
+            <div class="store-filter clearfix">
+                <% if(typeof countproducts!=='undefined'){%>
+                <ul class="store-pagination">
+                  
+                  <% for(let i=1;i<=countproducts;i++){ %>
+                  <li><a class="<%= i===currentPage ? 'active' : '' %>" href="?page=<%=i %>"><%=i %></a></li>
+                  <% } %>
+                 
+                <%}%>
+              </div>
+              
+
+           
+
+        </div>
+        
+                <!-- Single gallery Item Start -->
+                
+    </section>
+    <!-- ****** New Arrivals Area End ****** -->
+  
+     <!--****** Quick View ****** -->
+
+
+    <!-- 
+  ****** Footer Area Start ****** -->
+    <footer class="footer_area">
+        <div class="container">
+            <div class="row">
+                <!-- Single Footer Area Start -->
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="single_footer_area">
+                        <div class="footer-logo">
+                            <img src="/public/userassets/img/core-img/logo.png" alt="">
+                        </div>
+                        <div class="copywrite_text d-flex align-items-center">
+                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Single Footer Area Start -->
+                <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                    <div class="single_footer_area">
+                        <ul class="footer_widget_menu">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Faq</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Single Footer Area Start -->
+                <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                    <div class="single_footer_area">
+                        <ul class="footer_widget_menu">
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="#">Our Policies</a></li>
+                            <li><a href="#">Afiliates</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Single Footer Area Start -->
+                <div class="col-12 col-lg-5">
+                    <div class="single_footer_area">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="line"></div>
+
+            <!-- Footer Bottom Area Start -->
+            <div class="footer_bottom_area">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="footer_social_area text-center">
+                            <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ****** Footer Area End ****** -->
+</div>
+<!-- /.wrapper end -->
+
+<style>
+
+.store-pagination li a.active {
+  background-color: #FF084E;
+  color: #fff;
+}
+
+
+    .store-filter {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 20px; */
+  margin-bottom: 20px;
+}
+
+.store-pagination {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.store-pagination li {
+  margin: 0 5px;
+}
+
+.store-pagination li a {
+  display: block;
+  padding: 5px 10px;
+  border-radius: 3px;
+  background-color: #f5f5f5;
+  color: #333;
+  text-decoration: none;
+}
+
+.store-pagination li a:hover {
+  background-color: #FF084E;
+  color: #fff;
+}
+
+</style>
+
+<script>
+function addToWishlist(proId) {
+   
+    console.log(proId)
+ $.ajax({
+    url: '/addToWishlist',
+    data: {
+      productId: proId
+    },
+    method: "post",
+    success: (response) => {
+      if (response.success) {
+        $('.table-shopping-cart').load('/wishlist .table-shopping-cart')
+        console.log(response);
+        Swal.fire({
+          title: 'Added',
+          text: 'Item added to wishlist',
+          icon: 'success',
+          timer: 1000,
+          showConfirmButton: false
+        })
+      } else {
+        Swal.fire({
+          text: 'Item already in wishlist',
+          icon: 'info',
+          timer: 1000,
+          showConfirmButton: false
+        })
+      }
+      console.log(response);
+    }
+  })
+ }
+   </script>
+
+<%-include('../layouts/userfooter.ejs') %>

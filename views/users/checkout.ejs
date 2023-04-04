@@ -1,0 +1,525 @@
+<%-include('../layouts/userheader.ejs') %>
+
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modal.min.js"></script>
+
+
+
+<div id="wrapper">
+
+    <!-- ****** Header Area Start ****** -->
+    <header class="header_area bg-img background-overlay-white" style="background-image: url(/assets/img/pexels-pragyan-bezbaruah-1715193.jpg);">
+        <!-- Top Header Area Start -->
+        <div class="top_header_area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-end">
+
+                    <div class="col-12 col-lg-7">
+                        <div class="top_logo">
+                            <a href="#"><img src="/userassets/img/core-img/logo.png" style="width: 70px;" alt=""></a>
+                        </div>
+                        <div class="top_single_area d-flex align-items-center">
+                            <!-- Logo Area -->
+                           
+                            <!-- Cart & Menu Area -->
+
+                            <div class="header-cart-menu d-flex align-items-center ml-auto">
+                                <!-- Cart Area -->
+                                <%if(user){%>
+                                    <div class="cart">
+                                        <a href="/cart" id="header-cart-btn" target="_blank"><span class="cart_quantity"><%=countcart%></span><i class="ti-bag"></i> Your Cart</a>
+                                        <!-- Cart List Area Start -->
+                                        
+                                    </div>
+                                  <%}%>
+                                <!-- <div class="header-right-side-menu ml-15">
+                                    <a href="#" id="sideMenuBtn"><i class="ti-menu" aria-hidden="true"></i></a>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Header Area End -->
+        <div class="main_header_area">
+            <div class="container h-100">
+                <div class="row h-100">
+
+                   
+
+                    <div class="col-12 d-md-flex justify-content-center"  >
+                        <!-- Header Social Area -->
+                       
+                        <!-- Menu Area -->
+                      
+                                                   
+                            <div class="main-menu-area">
+                            <nav class="navbar navbar-expand-lg align-items-start">
+
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="ti-menu"></i></span></button>
+
+                                <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
+                                    <ul class="navbar-nav animated" id="nav">
+                                        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+                                      
+                                        <li class="nav-item"><a class="nav-link" href="/allproducts">EXPLORE OUR PRODUCTS</a></li>
+                                        <!-- <li class="nav-item"><a class="nav-link" href="#"> RIDING GLOVES</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#"><span class="karl-level">hot</span> RIDING JACKETS</a></li> -->
+
+                                        <% if (user){%>
+
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" style="text-transform: capitalize;" aria-expanded="false">Hello,<%=user.name%></a>
+                                                <div class="dropdown-menu"  aria-labelledby="karlDropdown">
+                                                    
+                                                    
+                                                     
+                                                    <a class="dropdown-item" href="/profile/<%=user._id%>">My Profile</a>
+                                                     <a class="dropdown-item" href="/logout">Logout</a>
+                                           
+                                                   
+                                                </div>
+                                            </li>
+                                           
+
+                                        <%}else{%>
+
+                                            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                                            
+                                        <%}%>
+                                       
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <!-- Help Line -->
+                 
+
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        </header>
+    <!-- ****** Header Area End ****** -->
+      
+        <!-- ****** Checkout Area Start ****** -->
+
+        <form id="checkoutform">
+            
+        <div class="checkout_area section_padding_100">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-12 col-md-6">
+                        <div class="checkout_details_area mt-50 clearfix">
+
+                            <div class="cart-page-heading">
+                            <div   style="display: flex; justify-content: end;">
+                                  <a href="/checkout/addaddress">  <h6 style="color: #FF084E ; text-transform: uppercase;" >Add Address</h6></a>
+
+                            </div>
+                                <h5>Select Billing Address</h5>
+                            </div>
+
+                            
+                            <fieldset class="disable-select">
+                              <% userData.Address.forEach ((x,index)=>{ %> %>
+                               <div class ="classdiv">
+                                <input type="radio" id="<%=x._id%>" class="Pink" value="<%=x._id%>" name="address""/>
+                                <label for="<%=x._id%>"  class="addresspanel" ><strong style="text-transform: capitalize;"><%=x.name%></strong><br>
+                                    <%=x.address%><br>
+                                    <%=x.postcode%><br>
+                                    <%=x.state%><br>
+                                    <%=x.town%><br>
+                                    <%=x.contactnumber%><br>
+                                    <%=x.landmark%></label><br>
+                               
+                               <%})%>
+                               <!-- <input type="submit" value="submit" onclick="submitData()"> -->
+                            </div>
+                            </fieldset>
+                        </div>
+
+                        
+                        
+                    </div>
+
+                    
+
+                    <div class="col-12 col-md-6 col-lg-5 ml-lg-auto">
+
+                        
+
+                        
+
+                        <div class="order-details-confirmation" style="margin-bottom:5px ;">
+                        
+                            <div class="cart-page-heading">
+                            <h5>Cupon code</h5>
+                            <p>Enter Your Cupon Code</p>
+                        </div>
+                        
+                      
+                           
+                            <input style="background-color: #F4F2F8; height: 52px;width: 255px; border-style:none ; " id="couponCode" type="search" name="search" placeholder="569ab15" >
+                          
+                            <button  onclick="applyCoupon('<%=userData.cartTotalPrice%>',$('#couponCode').val())"type="submit" style="background-color: #FF084E; color: #fff; font-weight: bold;width: 100px;height: 52px ; border-style:none" >Apply</button>
+                          
+                        </div>
+
+                        <div class="order-details-confirmation">
+
+                            <div class="cart-page-heading">
+                                <h5>Your Order</h5>
+                                <p>The Details</p>
+                            </div>
+
+                            <ul class="order-details-form mb-4">
+
+                                <li><span>Product</span> <span>Total</span></li>
+                                <% cartData.cart.forEach ((x,index)=>{ %> 
+                                <li><span><%=x.product.product%><span style="text-transform: lowercase;"> x <%=x.quantity%></span></span> <span><%=x.prototalprice%></span></li>
+
+                                
+
+                                <input id="singleTotal" name="singleTotal" type="hidden" value="<%=x.prototalprice%>">
+                                <input id="quantity" name="quantity" type="hidden" value="<%=x.quantity%>">
+                                <input id="productId" name="ProductId" type="hidden" value="<%=x.product._id%>">
+                                <% }) %>
+
+                                <li><span>Subtotal</span> <span><%=userData.cartTotalPrice%></span></li>
+
+                                <li><span>Shipping</span> <span>Free</span></li>
+                                <li><span>Discount</span> <span id="discount1">0</span></li>
+                                <li><span>Total</span> <span
+                                    id="total1"><%=userData.cartTotalPrice%></span></li>
+                                <input id="total" name="total" type="hidden" value="<%=userData.cartTotalPrice%>">
+                                <input id="discount" name="discount" type="hidden" value="0">
+                                <input id="code" name="code" type="hidden" value="0">
+                                
+                            </ul>
+
+
+                            <div id="accordion" role="tablist" class="mb-4">
+                                <div class="card">
+                                    <div class="card-header" role="tab" id="headingOne">
+                                        <h6 class="mb-0">
+                                            <div class ="class1div disable-select">
+                                            
+                                                <input type="radio" id="UPI" class="Pink1" value="UPI" name="payment" />
+                                                <label for="UPI"  class="paymentpanel" ><strong style="text-transform: capitalize;"><strong>UPI</label><br><br>
+
+                                                <input type="radio" id="COD" class="Pink1" value="COD" name="payment"/>
+                                                <label for="COD" id="labelcod" class="paymentpanel mr-15" ><strong style="text-transform: uppercase;"><strong>Cash on delivery</label><br>
+                                               
+                                               
+                                            </div>
+
+
+
+                                        </h6>
+                                    </div>
+
+                               
+                                </div>
+                               
+                            </div>
+
+                          
+
+                            
+
+                            <button style="width: 361px; height: 60px; background-color: #FF084E; color: #fff; text-transform: uppercase ; font-weight: bold; border: none;" type="submit">place order</button>
+                            <!-- <button type="button" onclick="submitData()">submit</button> -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+    </form>
+        <!-- ****** Checkout Area End ****** -->
+
+        <!-- ****** Footer Area Start ****** -->
+        <footer class="footer_area">
+            <div class="container">
+                <div class="row">
+                    <!-- Single Footer Area Start -->
+                 
+                    <!-- Single Footer Area Start -->
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                        <div class="single_footer_area">
+                            <ul class="footer_widget_menu">
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Faq</a></li>
+                                <li><a href="#">Returns</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Single Footer Area Start -->
+                    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                        <div class="single_footer_area">
+                            <ul class="footer_widget_menu">
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="#">Shipping</a></li>
+                                <li><a href="#">Our Policies</a></li>
+                                <li><a href="#">Afiliates</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Single Footer Area Start -->
+                    <div class="col-12 col-lg-5">
+                        <div class="single_footer_area">
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="line"></div>
+
+                <!-- Footer Bottom Area Start -->
+           
+            </div>
+        </footer>
+        <!-- ****** Footer Area End ****** -->
+    </div>
+
+
+    <style>
+        input[type=radio].Pink {
+            accent-color:  #FF084E;
+            float: left;
+      clear: none;
+      margin: 6px 0 0 2px;
+        }
+
+        .addresspanel:hover{
+            cursor: pointer;
+        }
+
+        .disable-select {
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+}
+
+fieldset {
+      overflow: hidden
+    }
+    
+    .classdiv {
+      float: left;
+      clear: none;
+    }
+    
+    label {
+      float: left;
+      clear: none;
+      display: block;
+      padding: 0px 0em 0px 8px;
+    }
+    
+    .paymentspanel:hover{
+            cursor: pointer;
+        }
+
+        input[type=radio].Pink1 {
+            accent-color:  #FF084E;
+            float: left;
+      clear: none;
+      margin: 2
+      px 0 0 2px;
+        }
+
+      input[input=radio]#COD{
+
+        margin-left: 10px;
+      }
+
+      input[type="search"]::-webkit-search-decoration {
+  /* Remove default padding */
+  -webkit-appearance: none;
+}
+
+input[type="search"] {
+  /* Add custom padding */
+  padding: 0.5em;
+  /* Add custom border */
+  border: 2px solid #ccc;
+}
+input[type="search"]:focus {
+  outline: none;
+}
+button:focus {
+  outline: none;
+}
+
+   
+    </style>
+    <!-- /.wrapper end -->
+
+    <script>
+
+
+function applyCoupon(total,code){
+    console.log(total)
+	console.log(code)
+ $.ajax({
+	url:'/applyCoupon',
+	data:{
+		total:total,
+		code:code
+	},
+	method:"post",
+	success:(response)=>{
+		console.log(response)
+		if (response.datefailed) {
+                          
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Coupon Expired.',
+                            })
+         }else if (response.amountnokay) {
+                            
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'To access this coupen buy something more than 1500rs.',
+
+                            })
+		}else if (response.amountokay) {
+                        
+                            document.getElementById('code').value = response.code
+                            document.getElementById('discount1').innerHTML = response.discountValue
+                            document.getElementById('discount').value = response.discountValue
+                            document.getElementById('total1').innerHTML = response.value
+                            document.getElementById('total').value = response.value
+                       
+                            Swal.fire(
+                                'Good job!',
+                                'Coupon granted!',
+                                'success'
+                            )
+                            
+
+        } else if (response.used) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Already Radeemed.',
+                            })
+                        } else if (response.invalid) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Coupon didnt Exist.',
+                            })
+                        }
+
+
+	}
+ })
+}
+
+
+
+
+/////////////////////////////////////
+
+$('#checkoutform').submit((x)=>{
+    x.preventDefault()
+    $.ajax({
+        url:"/place-order",
+        method:"post",
+        data:$('#checkoutform').serialize(),
+
+
+        success:(response)=>{
+            if(response.success){
+
+                location.href="/orderplaced"
+
+            }else if(response.viewRazorpay){
+                console.log(response.order) 
+
+                // if(response.order == null){
+                //     console.log("Dirty Girl")
+                // }
+                            razorpayPayment(response.order)
+                
+            }
+        }
+    })
+})
+
+
+//razor....................
+function razorpayPayment(order) {
+                var options = {
+                    "key": "rzp_test_D942aLuHV8JR0P", // Enter the Key ID generated from the Dashboard
+                    "amount":order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                    "currency": "INR",
+                    "name": "MOTOGEAR", //your business name
+                    "description": "Test Transaction",
+                    "image": "https://example.com/your_logo",
+                    "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                    "handler": function (response) {
+                        // alert(response.razorpay_payment_id);
+                        // alert(response.razorpay_order_id);
+                        // alert(response.razorpay_signature)
+
+                        verifyPayment(response,order)
+                    },
+                    "prefill": {
+                        "name": "RAHUL", //your customer's name
+                        "email": "rahulrajeevpr@gmail.com",
+                        "contact": "9000090000"
+                    },
+                    "notes": {
+                        "address": "Razorpay Corporate Office"
+                    },
+                    "theme": {
+                        "color": "#3399cc"
+                    }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+
+            }
+
+
+
+            function verifyPayment(payment,order){
+	$.ajax({
+		url:'/verify-payment',
+		data:{
+payment,
+order
+		},
+		method:"post",
+		success:(response)=>{
+			console.log("yes")
+                        console.log(response);	
+						if (response.status) {
+                            location.href = '/orderplaced'
+                        } 
+		
+	}
+	})
+}
+
+
+
+    </script>
+
+    <%-include('../layouts/userfooter.ejs') %>
