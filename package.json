@@ -23,5 +23,25 @@
   },
   "devDependencies": {
     "ejs-lint": "^2.0.0"
-  }
+  },
+  "name": "1st-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"nodemon"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jaseel56789/motogear.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jaseel56789/motogear/issues"
+  },
+  "homepage": "https://github.com/Jaseel56789/motogear#readme",
+  "description": ""
 }
