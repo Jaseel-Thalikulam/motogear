@@ -1,6 +1,7 @@
 
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://127.0.0.1:27017/motogear")
+require('dotenv').config()
+mongoose.connect(process.env.MONGO)
 
 // const accountSid = "ACde7da89081f9ba029c3437b855edda55";
 // const authToken = "6bcc716eebbb637a70464853c245c4e8";
