@@ -1863,6 +1863,41 @@ res.render('forgetpassword')
 
 
 
+const statusCancel = async (req, res) => { 
+    try {
+    
+        const proId = req.body.productId
+        console.log("helooo")
+        const Confirm = await Order.findOne({ 'product._id':proId },
+            { 'product.status': 1, _id: 0 });
+        
+        console.log(Confirm);
+        
+           
+
+        const updated = await Order.updateOne({ 'product._id':proId }, { $set: { 'product.$.status': 'Order Cancelled' } })
+      
+
+        if (updated) {
+            console.log("order Cancelled")
+            res.json({success: true})
+        }
+
+        console.log(updated)
+        
+
+       
+    } catch (err) { 
+
+
+        console.log(err)
+
+
+    }
+}
+
+
+
 const searchSortFilter = async (req, res) => { 
     console.log('called')
     try {
@@ -1899,41 +1934,6 @@ const searchSortFilter = async (req, res) => {
     }
   };
   
-
-const statusCancel = async (req, res) => { 
-    try {
-    
-        const proId = req.body.productId
-        console.log("helooo")
-        const Confirm = await Order.findOne({ 'product._id':proId },
-            { 'product.status': 1, _id: 0 });
-        
-        console.log(Confirm);
-        
-           
-
-        const updated = await Order.updateOne({ 'product._id':proId }, { $set: { 'product.$.status': 'Order Cancelled' } })
-      
-
-        if (updated) {
-            console.log("order Cancelled")
-            res.json({success: true})
-        }
-
-        console.log(updated)
-        
-
-       
-    } catch (err) { 
-
-
-        console.log(err)
-
-
-    }
-}
-
-
 
 
 
