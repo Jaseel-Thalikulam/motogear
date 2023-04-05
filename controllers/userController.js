@@ -1878,49 +1878,7 @@ res.render('forgetpassword')
 }
 
 
-// const searchSortFilter = async (req, res) => {
-//     console.log('called')
-//     try {
-//       const query = req.query.q;
-//       const sortField = req.query.sortField;
-//         const filterField = req.query.filterField;
-        
 
-//         console.log(query)
-//         console.log(sortField)
-//         console.log(filterField)
-    
-//       let results = await Product.find({ product: { $regex: new RegExp(query, 'i') } });
-  
-//       // apply filter
-//       if (filterField) {
-//         results = results.filter(product => product[filterField] === true);
-//       }
-  
-//       // apply sort
-//         if (sortField) {
-          
-//             if (sortField === 'asc') {
-            
-//           results = results.sort((a, b) => a.price - b.price);
-            
-//             } else if (sortField === 'desc') {
-                
-//           results = results.sort((a, b) => b.price - a.price);
-//         }
-//       }
-  
-//       console.log(results);
-     
-//       if (results) {
-//         res.json(results);
-//       }
-//     } catch (err) {
-//       console.log(err);
-//       res.render('404');
-//     }
-//   };
-  
 const searchSortFilter = async (req, res) => { 
     console.log('called')
     try {
