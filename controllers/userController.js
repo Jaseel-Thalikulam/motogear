@@ -1876,69 +1876,78 @@ res.render('forgetpassword')
 }
 
 }
-// cart.$.quantity
 
 
-//searchSortFilter
 // const searchSortFilter = async (req, res) => {
-
 //     console.log('called')
 //     try {
-//         const query = req.query.q;
-//         const sortField = req.query.sortField;
+//       const query = req.query.q;
+//       const sortField = req.query.sortField;
 //         const filterField = req.query.filterField;
-      
-//         // const results = await Product.find({product:{$regex:query,}})
+        
 
-//         const results = await Product.find({
-//             product: { $regex: new RegExp(query, 'i') }
-//           })
-
-//         console.log(results)
-       
-//         if (results) {
-//             res.json(results);
+//         console.log(query)
+//         console.log(sortField)
+//         console.log(filterField)
+    
+//       let results = await Product.find({ product: { $regex: new RegExp(query, 'i') } });
+  
+//       // apply filter
+//       if (filterField) {
+//         results = results.filter(product => product[filterField] === true);
+//       }
+  
+//       // apply sort
+//         if (sortField) {
+          
+//             if (sortField === 'asc') {
+            
+//           results = results.sort((a, b) => a.price - b.price);
+            
+//             } else if (sortField === 'desc') {
+                
+//           results = results.sort((a, b) => b.price - a.price);
 //         }
-
+//       }
+  
+//       console.log(results);
+     
+//       if (results) {
+//         res.json(results);
+//       }
 //     } catch (err) {
-
-//         console.log(err);
-//         res.render('404')
-
+//       console.log(err);
+//       res.render('404');
 //     }
-
-// }
-
+//   };
+  
 const searchSortFilter = async (req, res) => { 
     console.log('called')
     try {
       const query = req.query.q;
       const sortField = req.query.sortField;
-        const filterField = req.query.filterField;
-        
-
-        console.log(query)
-        console.log(sortField)
-        console.log(filterField)
-    
-      let results = await Product.find({ product: { $regex: new RegExp(query, 'i') } });
+      const filterField = req.query.filterField;
   
-      // apply filter
-      if (filterField) {
-        results = results.filter(product => product[filterField] === true);
-      }
+      console.log(query)
+      console.log(sortField)
+      console.log(filterField)
+  
+      let results = await Product.find({ 
+        product: { $regex: new RegExp(query, 'i') },
+        Category: { $regex: new RegExp(filterField, 'i') } 
+      });
   
       // apply sort
       if (sortField) {
-        results = results.sort((a, b) => {
-          if (a[sortField] < b[sortField]) return -1;
-          if (a[sortField] > b[sortField]) return 1;
-          return 0;
-        });
+        if (sortField === 'asc') {
+          results = results.sort((a, b) => a.price - b.price);
+        } else if (sortField === 'desc') {
+          results = results.sort((a, b) => b.price - a.price);
+        }
       }
   
       console.log(results);
-     
+  
       if (results) {
         res.json(results);
       } 

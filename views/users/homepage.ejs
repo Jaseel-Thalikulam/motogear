@@ -30,25 +30,42 @@
                                 
                                     </i></button>
                                 </div>
+
+                            
+    
+
                               </div>
+                              
+
+
                             </div>
 
-                            <select id="sort-select" class="form-select" aria-label="sort by">
-                              <option value="" selected>Sort by</option>
-                              <option value="price">Price: Low to High</option>
-                              <option value="-price">Price: High to Low</option>
-                              <option value="product">Product Name: A to Z</option>
-                              <option value="-product">Product Name: Z to A</option>
-                            </select>
-                            <select id="filter-select" class="form-select" aria-label="filter by">
-                              <option value="" selected>Filter by</option>
-                              <option value="category:electronics">Electronics</option>
-                              <option value="category:clothing">Clothing</option>
-                              <option value="category:home">Home</option>
-                              <option value="category:beauty">Beauty</option>
-                            </select>
+                          
+                            <ul style="padding-left: 200px; padding-top: 25px;">
+                             <li> <select id="sort-select" class="form-select" aria-label="sort by" style="border: none; ">
+                                <option value="" selected>Sort by</option>
+                                <option value="asc">Price: Low to High</option>
+                                <option value="desc">Price: High to Low</option>
+                                <!-- <option value="asc al">Product Name: A to Z</option>
+                                <option value="desc al">Product Name: Z to A</option> -->
+                              </select></li>
+                             
+                            <li> <select id="filter-select" class="form-select" aria-label="filter by">
+                                <option value="" selected>Filter by</option>
                             
-
+                   
+                                <% if (categories.length > 0) { %>
+                                  <% for (let i = 0; i < categories.length; i++) { %>
+                                    <% if (categories[i].categoryStatus == true) { %>
+                                      <option value="<%= categories[i].category %>"><%= categories[i].category %></option>
+                                    <% } %>
+                                  <% } %>
+                                <% } %>
+                              </li>
+                              </select>
+                              
+                            </ul>
+                          
                             
                             <div class="header-cart-menu d-flex align-items-center ml-auto">
                                 <!-- Cart Area -->
@@ -543,6 +560,16 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.65);
 .product-img:not(:hover)::before {
   opacity: 1;
 }
+
+
+
+/* Hide the sort and filter elements by default */
+
+
+/* Hide the sort and filter elements when the search box is cleared */
+
+
+
 
 </style>
 
