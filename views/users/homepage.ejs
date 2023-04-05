@@ -41,16 +41,16 @@
                             </div>
 
                           
-                            <ul style="padding-left: 200px; padding-top: 25px;">
-                             <li> <select id="sort-select" class="form-select" aria-label="sort by" style="border: none; ">
+                            <div style="padding-left: 200px; padding-top: 25px;">
+                              <select id="sort-select" class="form-select" aria-label="sort by" style="border: none; " >
                                 <option value="" selected>Sort by</option>
                                 <option value="asc">Price: Low to High</option>
                                 <option value="desc">Price: High to Low</option>
                                 <!-- <option value="asc al">Product Name: A to Z</option>
                                 <option value="desc al">Product Name: Z to A</option> -->
-                              </select></li>
+                              </select>
                              
-                            <li> <select id="filter-select" class="form-select" aria-label="filter by">
+                            <select id="filter-select" class="form-select" aria-label="filter by">
                                 <option value="" selected>Filter by</option>
                             
                    
@@ -61,10 +61,10 @@
                                     <% } %>
                                   <% } %>
                                 <% } %>
-                              </li>
+                              
                               </select>
                               
-                            </ul>
+                            </div>
                           
                             
                             <div class="header-cart-menu d-flex align-items-center ml-auto">
@@ -647,76 +647,14 @@ $.ajax({
 
 
 
-//search
-// $('#search-input, #sort-select, #filter-select').on('change input', function() {
-//   var query = $('#search-input').val();
-//   var sortField = $('#sort-select').val();
-//   var filterField = $('#filter-select').val();
 
-//   console.log(query, sortField, filterField)
-
-//   if (query.trim() !== '') {
-
-
-//   // Send AJAX request to server to search, sort, and filter items
-//   $.ajax({
-//     timeout: 5000,
- 
-//     url: '/search-sort-filter',
-//     type: 'GET',
-//     data: { q: query, sortField: sortField, filterField: filterField },
-//     dataType: 'json',
-//     success: function(results) {
-//       // Update the search results on the page
-     
-     
-     
-//       $('#search-results').html('');
-//       $('#search-title').html('');
-//       $('#search-title').append('<h2 style="font-size:48px">SEARCH RESULTS</h2>');
-//       results.forEach(function(result) {
-
-//         var imageUrl = '/assets/img/' + result.image[0];
-
-//         var imageTag = '<img style="height: 350px; width: 350px;" src="' + imageUrl + '">';
-
-//         var productUrl = '/productdetails/'+result._id
-       
-//       var  productTag =  '<a href="' + productUrl + '"></a>'
-
-//       var productName  = '<p>'+result.product+'</p>'  
-//       var productPrice = '<h4 style="color:#9f9f9f ;font-weight: 450" class="product-price">'+'₹'+result.price+'</h4>'
-
-//         $('#search-results').append( '<div  class="col-12 col-sm-6 col-md-4" >'+'<a href="' + productUrl+ '">' +'<div>' + imageTag +  productPrice + productName +'</div>'+ '</a>'+'</div>');
-
-//         // <a href="/productdetails/<%= product[i]._id%>"></a>
-//       });
-//     },
-//     error: function(xhr, status, error) {
-//       console.log(error);
-//     }
-//   });
-
-//   }else{
-
-//     //clear page
-    
-//     $('#search-results').html('');
-
-//     if($('#search-results').html('')){
-
-//         $('#search-title').html('');
-//     }
-//   }
-
-// });
 
 $('#search-input, #sort-select, #filter-select').on('change input', function() {
   var query = $('#search-input').val();
   var sortField = $('#sort-select').val();
   var filterField = $('#filter-select').val();
 
-  console.log(query, sortField, filterField);
+  
 
   if (query.trim() !== '') {
     // Send AJAX request to server to search, sort, and filter items
