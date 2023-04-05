@@ -665,7 +665,7 @@ $('#search-input, #sort-select, #filter-select').on('change input', function() {
       data: { q: query, sortField: sortField, filterField: filterField },
       dataType: 'json',
       success: function(results) {
-        // Update the search results on the page
+        // Update the search results on the pages
         $('#search-results').html('');
         $('#search-title').html('');
         $('#search-title').append('<h2 style="font-size:48px">SEARCH RESULTS</h2>');

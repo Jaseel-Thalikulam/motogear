@@ -1887,7 +1887,7 @@ const searchSortFilter = async (req, res) => {
           results = results.sort((a, b) => b.price - a.price);
         }
       }
-  
+   
       console.log(results);
   
       if (results) {
