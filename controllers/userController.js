@@ -1632,23 +1632,7 @@ const adminLogout = async(req, res,next) =>{
     }
 }
 
-//send otp
-// const sendtextmessage = async (req, res) => {
-    
-   
-//     try {
-//         const message = await client.messages.create({
-//           body: 'Hello from Node',
-//           to: '+919447597412',
-//             from: '+15674065570',
-          
-//         });
-//         console.log(message);
-//       } catch (error) {
-//         // You can implement your fallback code here
-//         console.error(error);
-//       }
-// }
+
 
 const loadallproductspage = async (req, res) => {
     try {
@@ -1950,33 +1934,6 @@ const statusCancel = async (req, res) => {
 }
 
 
-// const loadorders = async  (req, res) => {
-//     try {
-
-//         let page = 1;
-//         if (req.query.page) {
-//           page = parseInt(req.query.page);
-//         }
-//         const limit = 6;
-//         const skip = (page - 1) * limit;
-        
-//         const user = req.session.user
-//         const userdata = await User.findOne({ _id: user._id })
-        
-//         const order = await Order.find({ userId: user._id, }).populate('product.productId').skip(skip)
-//         .limit(limit)
-//         .exec();;
-      
-//         const countproducts = await Order.countDocuments({});
-//       const countdata = Math.ceil(countproducts / limit);
-
-
-//         res.render('orders',{ user:userdata,orderData:order})
-
-//     } catch (err) {
-//         console.log(err);
-//     }
-// }
 
 
 
