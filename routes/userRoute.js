@@ -98,7 +98,7 @@ user_route.post('/changepassword', userController.changepassword);
 
 user_route.post('/verify-payment',auth.isLogin,userController.verifyPayment)
 
-user_route.get('/search-sort-filter', userController.searchSortFilter);
+user_route.get('/searchSortFilter', userController.searchSortFilter);
 user_route.post('/status-cancel',userController.statusCancel)
 user_route.post('/status-return',userController.statusreturn)
 user_route.get('/changepasssword',auth.isLogin,userController.changePassword)

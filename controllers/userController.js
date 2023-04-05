@@ -992,6 +992,8 @@ const loadregister = (req, res) => {
 const verifysignup = async (req, res, next) => {
     req.session.userdata = req.body
 
+console.log(req.session.userdata,"userdata from register")
+
     password = req.body.password;
   
    
@@ -1031,7 +1033,7 @@ const verifysignup = async (req, res, next) => {
             console.log(2)
             console.log(3)
             const otpResponse = await client.verify.v2
-                .services('VA0f41388349e4f18e1f4b252e0f1f9ff1')
+                .services('VAa0811298615bd4a84486fd5ac43cd5f0')
                 .verifications.create({
                     to:`+91${mobile}`,
                     channel:'sms'
@@ -1046,6 +1048,226 @@ const verifysignup = async (req, res, next) => {
       }
 
 }
+
+
+const verifyOtp = async (req, res) => {
+    const otp = req.body.otp;
+    console.log(otp);
+    try {
+
+      
+        const details=req.session.userdata
+     
+        console.log(details,"details of user from verify otp")
+      
+        const verifiedResponse = await client.verify.v2
+            .services('VAa0811298615bd4a84486fd5ac43cd5f0')
+            .verificationChecks.create({
+                to: `+91${details.mobile}`,
+                code:otp
+            })
+        
+       
+        
+        if (verifiedResponse.status === 'approved') {
+            const referrsid = details.referalid
+
+            
+            console.log(referrsid, "referrsid")
+            
+            const spassword = await securePassword(details.password);
+            
+            console.log(`password is ${spassword}`)
+            const referralCode = generateReferralCode();
+            const userdata = new User({
+                
+                name: details.name,
+                email: details.email,
+                mobile: details.mobile,
+                password: spassword,
+                referralCode: referralCode,
+                is_admin: 0,
+            
+            })
+
+            const userData = await userdata.save();
+            req.session.user = userData
+
+            console.log(userData, "user data saved")
+
+            
+            if(referrsid){
+
+
+            const referrer = await User.findOne({ referralCode: referrsid })
+            
+
+           
+            
+            if (referrer) {
+                // Associate the referred user with the referrer in the database
+                await User.findOneAndUpdate(
+                    { _id: referrer._id },
+                    { $push: { referredUsers: userData._id }, $inc: { referralCount: 1 } }
+                );
+
+
+                const referrerafterinc = await User.findOne({ referralCode: referrsid })
+               
+             
+                const count = referrerafterinc.referralCount
+               
+                console.log(count)
+
+                if (count == 1) {
+                    const newcode = generateCouponCode()
+                    const expDate = new Date()
+                    expDate.setMonth(expDate.getMonth() + 1);
+                    const maxDiscount = 1000
+                    const MinPurchaseAmount = 3000
+                    const percentage = 10
+
+
+
+
+
+                
+                    const coupon = new Coupon({
+                        code: newcode,
+                        expirationDate: expDate,
+                        maxDiscount: maxDiscount,
+                        MinPurchaseAmount: MinPurchaseAmount,
+                        percentageOff: percentage,
+                        referrer: referrer._id
+                    });
+                    const saving = await coupon.save();
+
+
+
+                   
+                } else if (count == 5) {
+                    
+                    const newcode = generateCouponCode()
+                    const expDate = new Date()
+                    expDate.setMonth(expDate.getMonth() + 1);
+                    const maxDiscount = 3000
+                    const MinPurchaseAmount = 3000
+                    const percentage = 30
+
+
+
+
+
+                
+                    const coupon = new Coupon({
+                        code: newcode,
+                        expirationDate: expDate,
+                        maxDiscount: maxDiscount,
+                        MinPurchaseAmount: MinPurchaseAmount,
+                        percentageOff: percentage,
+                        referrer: referrer._id
+                    });
+                    const saving = await coupon.save();
+
+                } else if (count == 10) {
+                    
+
+                    const newcode = generateCouponCode()
+                    const expDate = new Date()
+                    expDate.setMonth(expDate.getMonth() + 1);
+                    const maxDiscount = 5000
+                    const MinPurchaseAmount = 4000
+                    const percentage = 50
+
+
+
+
+
+                
+                    const coupon = new Coupon({
+                        code: newcode,
+                        expirationDate: expDate,
+                        maxDiscount: maxDiscount,
+                        MinPurchaseAmount: MinPurchaseAmount,
+                        percentageOff: percentage,
+                        referrer: referrer._id
+                    });
+
+
+                } else if (count == 20) {
+                    
+                    const newcode = generateCouponCode()
+                    const expDate = new Date()
+                    expDate.setMonth(expDate.getMonth() + 1);
+                    const maxDiscount = 10000
+                    const MinPurchaseAmount = 5000
+                    const percentage = 70
+
+
+
+
+
+                
+                    const coupon = new Coupon({
+                        code: newcode,
+                        expirationDate: expDate,
+                        maxDiscount: maxDiscount,
+                        MinPurchaseAmount: MinPurchaseAmount,
+                        percentageOff: percentage,
+                        referrer: referrer._id
+                    });
+
+
+                    await User.findOneAndUpdate(
+                        { _id: referrer._id },
+                        { $push: { referredUsers: userData._id }, $set: { referralCount: 0 } }
+                    );
+
+                }
+
+                if (req.session.user) {
+
+                    res.redirect('/')
+
+                } else {
+                    res.render('verifyotp', { messagered: "Please enter a valid OTP" })
+                }
+
+            }
+
+
+
+            } else {
+
+
+                if (req.session.user) {
+
+                    res.redirect('/')
+
+                } else {
+                    res.render('verifyotp', { messagered: "Please enter a valid OTP" })
+                }
+
+                
+        }
+
+
+        } else {
+
+            res.render('verifyotp', { messagered: "Please enter a valid OTP" })
+
+        }
+        
+
+    } catch (err) {
+        console.log(err)
+        res.render('404')
+    }
+}
+
+
+
+
 
 //forget password
 const requestotp = async (req, res) => { 
@@ -1065,7 +1287,7 @@ const requestotp = async (req, res) => {
 
 
             const otpResponse = await client.verify.v2
-            .services('VA0f41388349e4f18e1f4b252e0f1f9ff1')
+            .services('VAa0811298615bd4a84486fd5ac43cd5f0')
             .verifications.create({
                 to:`+91${mobile}`,
                 channel:'sms'
@@ -1096,7 +1318,7 @@ const verifyforgetpasswordotp = async (req, res) => {
         const userdata = req.session.userdata
         
         const verifiedResponse = await client.verify.v2
-        .services('VA0f41388349e4f18e1f4b252e0f1f9ff1')
+        .services('VAa0811298615bd4a84486fd5ac43cd5f0')
         .verificationChecks.create({
             to: `+91${userdata.mobile}`,
             code:otp
@@ -1179,115 +1401,6 @@ const changepassword = async (req, res) => {
     }
 
 }
-
-const verifyOtp = async (req, res) => {
-    const otp = req.body.otp;
-    try {
-
-      
-        const details=req.session.userdata
-     
-      
-        const verifiedResponse = await client.verify.v2
-            .services('VA0f41388349e4f18e1f4b252e0f1f9ff1')
-            .verificationChecks.create({
-                to: `+91${details.mobile}`,
-                code:otp
-            })
-        
-       
-        
-        if (verifiedResponse.status === 'approved') {
-            const referrsid = details.referalid
-
-            
-            console.log(referrsid, "referrsid")
-            
-            const spassword = await securePassword(details.password);
-            
-            console.log(`password is ${spassword}`)
-            const referralCode = generateReferralCode();
-            const userdata = new User({
-                
-                name: details.name,
-                email: details.email,
-                mobile: details.mobile,
-                password: spassword,
-                referralCode:referralCode,
-                is_admin: 0,
-            
-            })
-
-            const userData = await userdata.save();
-            req.session.user = userData
-
-            console.log(userData,"user data saved")
-
-            const referrer = await User.findOne({ referralCode: referrsid })
-            
-            console.log(referrer, "referrer details")
-            
-            if (referrer) {
-                // Associate the referred user with the referrer in the database
-                await User.findOneAndUpdate(
-                    { _id: referrer._id },
-                    { $push: { referredUsers: userData._id }, $inc: { referralCount: 1 } }
-                );
-
-
-                const referrerafterinc = await User.findOne({ referralCode: referrsid })
-               
-             
-                const count = referrerafterinc.referralCount
-               
-                console.log(count)
-
-                if (count == 1) {
-                    const newcode = generateCouponCode()
-                    const expDate = new Date()
-                    expDate.setMonth(expDate.getMonth() + 1);
-                    const maxDiscount = 1000
-                    const MinPurchaseAmount = 3000
-                    const percentage = 10
-
-
-
-
-
-                
-                    const coupon = new Coupon({
-                        code: newcode,
-                        expirationDate: expDate,
-                        maxDiscount: maxDiscount,
-                        MinPurchaseAmount: MinPurchaseAmount,
-                        percentageOff: percentage,
-                        referrer: referrer._id
-                    });
-                    const saving = await coupon.save();
-
-                  
-
-                   
-                }
-                if (userData) {
-
-                    res.redirect('/')
-
-                } else {
-                    res.render('verifyotp', { messagered: "Please enter a valid OTP" })
-                }
-
-            }
-        }
-        
-
-    } catch (err) {
-        console.log(err)
-        res.render('404')
-    }
-}
-
-
 
 
 
@@ -1767,35 +1880,74 @@ res.render('forgetpassword')
 
 
 //searchSortFilter
-const searchSortFilter = async (req, res) => { 
+// const searchSortFilter = async (req, res) => {
 
+//     console.log('called')
+//     try {
+//         const query = req.query.q;
+//         const sortField = req.query.sortField;
+//         const filterField = req.query.filterField;
+      
+//         // const results = await Product.find({product:{$regex:query,}})
+
+//         const results = await Product.find({
+//             product: { $regex: new RegExp(query, 'i') }
+//           })
+
+//         console.log(results)
+       
+//         if (results) {
+//             res.json(results);
+//         }
+
+//     } catch (err) {
+
+//         console.log(err);
+//         res.render('404')
+
+//     }
+
+// }
+
+const searchSortFilter = async (req, res) => { 
     console.log('called')
     try {
-        const query = req.query.q;
-        const sortField = req.query.sortField;
+      const query = req.query.q;
+      const sortField = req.query.sortField;
         const filterField = req.query.filterField;
-      
-        // const results = await Product.find({product:{$regex:query,}})
+        
 
-        const results = await Product.find({
-            product: { $regex: new RegExp(query, 'i') }
-          })
-
-        console.log(results)
-       
-        if (results) {
-            res.json(results);
-        } 
-
+        console.log(query)
+        console.log(sortField)
+        console.log(filterField)
+    
+      let results = await Product.find({ product: { $regex: new RegExp(query, 'i') } });
+  
+      // apply filter
+      if (filterField) {
+        results = results.filter(product => product[filterField] === true);
+      }
+  
+      // apply sort
+      if (sortField) {
+        results = results.sort((a, b) => {
+          if (a[sortField] < b[sortField]) return -1;
+          if (a[sortField] > b[sortField]) return 1;
+          return 0;
+        });
+      }
+  
+      console.log(results);
+     
+      if (results) {
+        res.json(results);
+      } 
     } catch (err) { 
-
-        console.log(err);
-        res.render('404')
-
+      console.log(err);
+      res.render('404');
     }
-
-}
-
+  };
+  
 
 const statusCancel = async (req, res) => { 
     try {
