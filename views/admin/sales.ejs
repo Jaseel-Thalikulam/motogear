@@ -166,7 +166,7 @@
     
 
                  
-                  <% Deliveredorder.forEach(function(order) { %>
+                  <% deliveredorder.forEach(function(order) { %>
                     <tr>
                       <th scope="row"><%= order._id %></th>
                       <td><%= order.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></td>

@@ -713,7 +713,7 @@ const loadSales = async (req, res) => {
     
 
    
-    res.render('sales',{user:user,Deliveredorder:Deliveredorder})
+    res.render('sales',{user:user,deliveredorder:Deliveredorder})
 
 
   } catch (err) { 
