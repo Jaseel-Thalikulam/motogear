@@ -118,6 +118,8 @@
             <div class="card-body">
               <h5 class="card-title">Sales</h5>
 
+            
+
               <!-- Horizontal Form -->
               <form method="post">
                 <div class="row mb-3">
@@ -146,30 +148,47 @@
 
               </form><!-- End Horizontal Form -->
 
+              <table class="table table-borderless datatable">
+                <thead>
+                  <tr>
+                    
+                  <th scope="col">Order ID</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Products</th>
+                  <th scope="col">Payment Method</th>
+                  
+                  <th scope="col">Total</th>
+              
+                
+                  </tr>
+                </thead>
+                <tbody>
+    
+
+                 
+                  <% Deliveredorder.forEach(function(order) { %>
+                    <tr>
+                      <th scope="row"><%= order._id %></th>
+                      <td><%= order.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></td>
+                     
+                       <td>
+                                     <% order.product.forEach((element)=>{%>
+                                         <%=element.productId.product%><br>
+                                   <%})   %>
+                                </td>
+                     
+                     
+                      <td><%= order.paymentType %></td>
+                      <td><%=order.total%></td>
+                    </tr>
+                  <% }) %>
+                  
+                </tbody>
+              </table>
             </div>
           </div> 
 
-        <!-- <div class="container mt-4">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2 class="text-center">Sale Report</h2>
-                    <form action="/admin/sales" method="post" onsubmit="return validateForm()">
-                        <label for="category">From- Date</label>
-                        <input type="date" name="from" id="from"  class="form-control form-control-line" >
-
-                        <label for="description">To Date</label>
-                        <input type="date" name="to" id="to"  class="form-control form-control-line">
-
-                        <button type="submit" class="btn btn-success mt-4">Submit</button> 
-
-                        <% if(typeof message !=="undefined") { %>
-                            <h1 style="font-size: 14px;color: brown;"><%=message  %></h1>
-                        <% } %>
-                    </form>
-                </div>
-            </div>
-        </div> -->
-    </section>
+    
 </main>
 
 

@@ -41,14 +41,6 @@ user_route.get('/',userController.loadhomepage)
 user_route.get('/logout', userController.userLogout )
 user_route.get('/admin/logout', userController.adminLogout)
 
-// //hiscart
-// user_route.get('/addtocart',userController.addToCart)
-
-// user_route.get('/removeCart',auth.isLogin,userController.removeCart)
-
-// user_route.get('/cart/:productId',auth.isLogin,userController.increment);
-
-// user_route.post('/cart/:productId',auth.isLogin,userController.decrement);
 
 //product
 user_route.get('/allproducts',auth.isLogin, userController.loadallproductspage)

@@ -1,7 +1,6 @@
 <%-include('../layouts/userheader.ejs') %>
 
 
-
 <div id="wrapper">
 
     <!-- ****** Header Area Start ****** -->
@@ -26,7 +25,7 @@
                                 <!-- Cart Area -->
                                 <%if(user){%>
                                     <div class="cart">
-                                        <a href="/cart" id="header-cart-btn" target="_blank"><span class="cart_quantity"><%=countcart%></span><i class="ti-bag"></i> Your Cart</a>
+                                        <a href="/cart" id="header-cart-btn" target="_blank"><span class="cart_quantity"><%=countcart%></span><i class="ti-bag"></i></a>
                                         <!-- Cart List Area Start -->
                                         
                                     </div>
@@ -141,21 +140,17 @@
                        
                     </div>
                 </div>
-    
+
+                
                 <div class="col-md-6">
                     <div class="profile_actions mt-50">
 
-                     
+                       
+
 
                         <% for (let i = 0; i < UserCoupon.length; i++) { %>
                             
                             <% if(UserCoupon[i].userUsed==user._id){%>
-
-
-                               
-    
-    
-                             
 
                           <% }else{ %>
                             
@@ -263,11 +258,16 @@
     </div>
 
     <style>
-      
-
+   
+   
     </style>
 
     <script>
+
+
+
+
+
         function copyCouponCode(code) {
           var tempInput = document.createElement("input");
           tempInput.value = code;
@@ -278,5 +278,6 @@
           alert("Coupon code copied to clipboard!");
         }
         </script>
+    
     
     <%-include('../layouts/userfooter.ejs') %>

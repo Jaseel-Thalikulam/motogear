@@ -705,9 +705,15 @@ const loadSales = async (req, res) => {
 
   try {
     let user = req.session.users
-  
 
-    res.render('sales',{user:user})
+    const Deliveredorder = await Order.find({
+      'product.status': 'Delivered'
+    }).populate('product.productId');
+
+    
+
+   
+    res.render('sales',{user:user,Deliveredorder:Deliveredorder})
 
 
   } catch (err) { 
@@ -734,9 +740,6 @@ newDate.setDate(existingDate.getDate() + 1);
 if(req.body.from==""||req.body.to==""){
   res.render('sales',{message:'all fields are required'})
  }else{
-
-  console.log(req.body.from)
-  console.log(req.body.to)
   
 const ss = await Order.find({
   'product.status': 'Delivered',
