@@ -710,10 +710,7 @@ const loadSales = async (req, res) => {
       'product.status': 'Delivered'
     }).populate('product.productId');
 
-    
-
-   
-    res.render('sales',{user:user,deliveredorder:Deliveredorder})
+    res.render('sales',{user:user,Deliveredorder})
 
 
   } catch (err) { 
