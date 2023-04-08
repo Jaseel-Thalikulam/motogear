@@ -4,7 +4,8 @@ const Category = require("../models/categoryModel")
 const  Product = require('../models/productModel')
 const Order = require('../models/orderModel');
 const Coupon = require('../models/couponModel');
-
+const Banner = require('../models/bannerModel');
+const fs = require('fs');
 
 const generateReferralCode = () => {
   const length = 6;
@@ -19,6 +20,75 @@ const generateReferralCode = () => {
 };
 
 
+const loadbanner = async (req, res) => {
+  try {
+    
+
+    let user = req.session.users
+
+    bannerData = await Banner.find()
+
+console.log(bannerData)
+
+    res.render('banner',{user: user,banner: bannerData})
+    
+  } catch (err) {
+    console.log(err)
+    res.render('404')
+}
+}
+
+
+const loadaddbanner = async (req, res) => { 
+  try {
+
+    let user = req.session.users
+
+      res.render('addbanner',{user: user})
+      
+  } catch (err) {
+      console.log(err)
+      res.render('404')
+
+  }
+}
+
+const insertBanner = async (req, res) => {
+  try {
+
+
+  
+    
+    
+    const banner = new Banner({
+
+      heading: req.body.heading,
+      description: req.body.description,
+      image: req.body.image,
+      
+
+
+    })
+    
+    const bannerData = banner.save()
+    
+
+    if(bannerData){
+  
+      res.redirect('/admin/banner')
+
+    }   
+
+    
+
+
+  } catch (err) {
+ 
+    console.log(err)
+    res.render('404')
+ 
+  }
+}
 
 const loadCoupon = async (req, res) => {
     try {
@@ -54,7 +124,7 @@ const loadCoupon = async (req, res) => {
       const couponData = await Coupon.findOne({ code: newcode });
   
       if (couponData) {
-        res.render("addcoupon", { message: "coupon alredy exists", user: user });
+        res.render("addcoupon", { message: "Coupon Already Exists", user: user });
       } else {
         const coupon = new Coupon({
           code: newcode,
@@ -787,6 +857,9 @@ module.exports = {
   updateCouponexp,
   updateCoupon,
   loadSales,
-  salesReport
+  salesReport,
+  loadbanner,
+  loadaddbanner,
+  insertBanner
 
 }

@@ -1,6 +1,5 @@
 
 const  Product = require('../models/productModel')
-const multer = require("multer");
 const  Category = require('../models/categoryModel')
 const fs = require('fs');
 
@@ -14,6 +13,9 @@ const uploadcrp = async (req, res) => {
     const image_base64 = Buffer.from(image_parts[1], 'base64');
     const file = folderPath + Date.now() + '.png';
   
+
+    
+
     fs.writeFile(file, image_base64, 'binary', (err) => {
       if (err) {
         console.error(err);
@@ -61,6 +63,9 @@ const loadaddproduct = async (req, res) => {
         console.log(err)
     }
 }
+
+
+
 const insertProduct = async(req,res)=>{
     try{
         const imageArray = [];
@@ -84,7 +89,7 @@ const insertProduct = async(req,res)=>{
     const productData = await product.save();
     
     if(productData){
-        const category = await Category.find()
+       
         res.redirect('/admin/products')
     } else {
         const category = await Category.find()

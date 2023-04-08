@@ -44,10 +44,17 @@ const auth = require("../middleware/auth")
 admin_route.get("/dashboard",adminauth.isLogin ,adminController.loadDashboard)
 admin_route.get("/profile", adminauth.isLogin, adminController.loadadminprofile)
 
+
+admin_route.get("/banner", adminauth.isLogin, adminController.loadbanner)
 // categories route
 admin_route.get("/category", adminauth.isLogin, adminController.loadcategory)
 
 admin_route.get("/category/addcategory", adminauth.isLogin, categoryController.loadaddcategory)
+admin_route.get("/banner/add-banner", adminauth.isLogin, adminController.loadaddbanner)
+
+admin_route.post("/banner/add-banner", upload.array('image'),adminController.insertBanner)
+
+
 
 admin_route.post("/category/addcategory",adminauth.isLogin,categoryController.verifyCategory, categoryController.insertCategory)
 

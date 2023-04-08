@@ -109,7 +109,7 @@
         <div class="container">
             <div class="row">
     
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="checkout_details_area mt-50 clearfix">
                         <div class="cart-page-heading">
                             <h5>Referals & Coupons</h5>
@@ -141,73 +141,59 @@
                     </div>
                 </div>
 
-                
-                <div class="col-md-6">
-                    <div class="profile_actions mt-50">
+                <% for (let i = Coupons.length-1; i >=0; i--) { %>
+                            
+                    <% if(Coupons[i].userUsed==user._id){%>
+
 
                        
 
 
-                        <% for (let i = 0; i < UserCoupon.length; i++) { %>
-                            
-                            <% if(UserCoupon[i].userUsed==user._id){%>
+                     
 
-                          <% }else{ %>
-                            
+                  <% }else{ %>
 
-                            <div class="coupon">
-                                <h2><%= UserCoupon[i].code %></h2>
-                                <p>(From Referal)</p>
-                                <p>OFF:<%= UserCoupon[i].percentageOff %>%</p>
-                                <p>Minimum purchase Amount:<%= UserCoupon[i].MinPurchaseAmount %></p>
-                                <p>Expires: <%= UserCoupon[i].expirationDate %></p>
-                                
-                                <button style="color: #fff; background-color: #FF084E; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; font-weight: bold; " onclick="copyCouponCode('<%= UserCoupon[i].code %>')">COPY</button>
-
-                              </div>
-
-                            <%}%>
-
-                          <%}%>
-
-
-                        <% for (let i = Coupons.length-1; i >=0; i--) { %>
-                            
-                            <% if(Coupons[i].userUsed==user._id){%>
-
-
-                               
-    
-    
-                             
-
-                          <% }else{ %>
-                            
-
-                            <div class="coupon" style="padding-top: 10px;">
-                                <h2><%= Coupons[i].code %></h2>
-                                <p>OFF:<%= Coupons[i].percentageOff %>%</p>
-                                <p>Minimum purchase Amount:<%= Coupons[i].MinPurchaseAmount %></p>
-                                <p>Expires: <%= Coupons[i].expirationDate %></p>
-                                
-                                <button style="color: #fff; background-color: #FF084E; border: none; padding: 10px 20px; border-radius: 5px; font-size: 16px; font-weight: bold; " onclick="copyCouponCode('<%= Coupons[i].code %>')">COPY</button>
-
-                              </div>
-
-                            <%}%>
-
-                          <%}%>
-
-
-
-
-
-
-
-
-                        </div>
+                    <a onclick="copyCouponCode('<%= Coupons[i].code %>')">             
+                                   <div class=" card text-center m-3 " style="user-select: none;"  >
+                                    
+                        <div class="image"><img src="https://i.imgur.com/DC94rZe.png" width="150"></div>
+                        <div class="image2"><img src="https://i.imgur.com/DC94rZe.png" width="150"></div>
+                        <h1><%= Coupons[i].percentageOff %>% OFF</h1><span class="d-block">Threshold Amount:</span><span class="d-block">₹<%= Coupons[i].MinPurchaseAmount %></span>
+                        <div class="mt-4"><small  ><%= Coupons[i].code %></small></div>
                     </div>
+                </a>
+
+
+                   
+
+                    <%}%>
+
+                  <%}%>
                 
+
+                  
+                  <% for (let i = 0; i < UserCoupon.length; i++) { %>
+                            
+                    <% if(UserCoupon[i].userUsed==user._id){%>
+
+                  <% }else{ %>
+                    
+                    <a onclick="copyCouponCode('<%= UserCoupon[i].code %>')">             
+                        <div class=" card text-center m-3 " style="user-select: none;"  >
+                         
+             <div class="image"><img src="https://i.imgur.com/DC94rZe.png" width="150"></div>
+             <div class="image2"><img src="https://i.imgur.com/DC94rZe.png" width="150"></div>
+             <h1><%= UserCoupon[i].percentageOff %>% OFF</h1><span class="d-block">Threshold Amount:</span><span class="d-block">₹<%= UserCoupon[i].MinPurchaseAmount %></span>
+             <div class="mt-4"><small  ><%= Coupons[i].code %></small></div>
+         </div>
+     </a>
+
+
+                    <%}%>
+
+                  <%}%>
+
+              
     
             </div>
         </div>
@@ -259,6 +245,42 @@
 
     <style>
    
+   .card {
+  width: 250px;
+  padding: 10px;
+  border-radius: 20px;
+  background: #FF084E;
+  border: none;
+  color: #fff;
+  height: 250px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.card h1 {
+  font-size: 48px;
+  margin-bottom: 0px;
+}
+
+.card span {
+  font-size: 28px;
+}
+
+.image {
+  position: absolute;
+  opacity: .3;
+  left: 0;
+  top: 0;
+}
+
+.image2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: .3;
+}
    
     </style>
 

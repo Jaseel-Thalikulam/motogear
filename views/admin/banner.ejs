@@ -70,7 +70,7 @@
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
-        <a class="nav-link "  href="/admin/category">
+        <a class="nav-link collapsed "  href="/admin/category">
             <i class="bi bi-menu-button-wide"></i>
           <span>Category</span>
         </a>
@@ -105,6 +105,12 @@
           </a>
           
         </li><!-- End Icons Nav -->
+        <li class="nav-item">
+          <a class="nav-link "  href="/admin/banner">
+            <i class="bi bi-journal-text"></i><span>Banner</span>
+          </a>
+          
+        </li><!-- End Icons Nav -->
      
         <li class="nav-item">
           <a class="nav-link collapsed"  href="/admin/sales">
@@ -120,11 +126,11 @@
 
     <div class="pagetitle">
     
-      <h1>Category</h1>
+      <h1>Banner</h1>
    
       
       
-<a class="d-block mr-0 ml-auto btn btn-light" style=" width: fit-content; border-color: #6776F4;border-radius: 25px ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" href="/admin/category/addcategory" role="button">Add Category</a>
+<a class="d-block mr-0 ml-auto btn btn-light" style=" width: fit-content; border-color: #6776F4;border-radius: 25px ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" href="/admin/banner/add-banner" role="button">Add Banner</a>
         
     </div><!-- End Page Title -->
 
@@ -135,72 +141,35 @@
  
 
     <div class="card-body">
-      <h5 class="card-title">Category </h5>
+      <h5 class="card-title">Banner</h5>
 
       <table class="table table-borderless datatable">
         <thead>
           <tr>
             <th scope="col">SI.No</th>
-            <th scope="col">Category</th>
+            <th scope="col">Heading</th>
             <th scope="col">Description</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
 
-
-          <%
-          if(categories.length > 0){
-          for(let i=0;i<categories.length;i++){
-              %>
+          <% for(let i=0;i<banner.length;i++){   %>
+            
 
 
           <tr>
-            <th scope="row"><%= i+1 %></th>
-            <td><%= categories[i].category %></td>
-          <td><%= categories[i].description %></td>
-
-
-            <td>
-
-                              <div class="dropdown">
-              <button class="btn" style="font-family: monospace;" type="button" data-toggle="dropdown" aria-expanded="false">
-                <span style="font-size: 20px; color: #4c4658; font-family: Arial, Helvetica, sans-serif;">︙</span>
-              </button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item"  href="/admin/edit-category?id=<%= categories[i]._id %>">Edit</a>
-
-                <a class="dropdown-item" onclick="" href="/admin/delete-category?id=<%= categories[i]._id %>">Delete</a>
-
-                <% if(categories[i].categoryStatus==true){%>
-                  <a class="dropdown-item"  href="/admin/unlist-category?id=<%= categories[i]._id %>">Unlist</a>
-               <% }else{%>
-                <a class="dropdown-item"  href="/admin/unlist-category?id=<%= categories[i]._id %>">List</a>
-              <% }%>
-              </div>
-            </div>
-
-            </td>
           
-          </tr>
+            <th scope="row"><%= i+1 %></th>
+            <td><%= banner[i].heading %></td>
+          <td><%= banner[i].description %></td>
+          <td><%= banner[i].image %></td>
 
-
-          <%
-        }
-        }else{
-        %>
-        <tr>
-            <td colspan="3">Categories Not Found</td>
+          <td> <img style="height: 64px ; width:64px ;" src="/assets/img/<%= banner[i].image[0]%>" alt=""> </td>
+       
         </tr>
-        
-        <%
-        }
 
-        
-        %>
-
-
-
+        <% }%>
 
         </tbody>
       </table>
