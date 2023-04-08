@@ -56,39 +56,33 @@ const loadaddbanner = async (req, res) => {
 const insertBanner = async (req, res) => {
   try {
 
+    if (!req.files || req.files.length === 0) {
+      throw new Error("No files found in the request");
+    }
 
-  
-    
+    const imageArray = [];
+    for (let i = 0; i < req.files.length; i++) {
+        imageArray.push(req.files[i].filename);
+    }
     
     const banner = new Banner({
-
       heading: req.body.heading,
       description: req.body.description,
-      image: req.body.image,
-      
-
-
+      image: imageArray,
     })
     
-    const bannerData = banner.save()
-    
+    const bannerData = await banner.save()
 
     if(bannerData){
-  
       res.redirect('/admin/banner')
-
     }   
-
     
-
-
   } catch (err) {
- 
     console.log(err)
     res.render('404')
- 
   }
 }
+
 
 const loadCoupon = async (req, res) => {
     try {

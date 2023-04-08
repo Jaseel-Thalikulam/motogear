@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
         cb(null,path.join(__dirname,'../public/assets/img'))
     },
     filename: function(req,file,cb) {
-        const name = Date.now().now+ '-' + file.originalname;
+        const name = Date.now()+ '-' + file.originalname;
    
         cb(null,name)
     }
@@ -52,7 +52,7 @@ admin_route.get("/category", adminauth.isLogin, adminController.loadcategory)
 admin_route.get("/category/addcategory", adminauth.isLogin, categoryController.loadaddcategory)
 admin_route.get("/banner/add-banner", adminauth.isLogin, adminController.loadaddbanner)
 
-admin_route.post("/banner/add-banner", upload.array('image'),adminController.insertBanner)
+admin_route.post("/banner/add-banner",upload.array('image',1),adminController.insertBanner)
 
 
 
