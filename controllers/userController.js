@@ -6,6 +6,7 @@ const Category = require('../models/categoryModel');
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
 const Coupon = require('../models/couponModel');
+const Banner = require('../models/bannerModel');
 // const userModel = require('../models/userModel');
 // const { findOne } = require('../models/userModel');
 
@@ -1418,16 +1419,17 @@ const loadhomepage = async (req, res) => {
             countcart = userData.cart.length
             
             countcart = userData.cart.length
-            
-            
+
+        
 
             if (productdata) {
                 let user = req.session.user
     
+                const banner = await Banner.find({})
             
                 
               
-                res.render('homepage', { product: productdata, categories: category, user: user, countcart: countcart })
+                res.render('homepage', { product: productdata, categories: category, user: user, countcart: countcart,banner:banner })
             
             }
 
@@ -1441,9 +1443,12 @@ const loadhomepage = async (req, res) => {
                 let user = req.session.user
 
         
+                const banner = await Banner.find({})
+            
+                console.log(banner)
             
           
-                res.render('homepage', { product: productdata, categories: category, user: user})
+                res.render('homepage', { product: productdata, categories: category, user: user,banner:banner})
         
             }
             

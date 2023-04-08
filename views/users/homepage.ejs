@@ -3,9 +3,9 @@
 
 
 <div id="wrapper">
-    <header class="header_area bg-img background-overlay-white" style="background-image: url(/assets/img/pexels-pragyan-bezbaruah-1715193.jpg);">
+    <header class="header_area bg-img background-overlay-dark" style="background-image: url(/assets/img/pexels-pragyan-bezbaruah-1715193.jpg);">
         <!-- Top Header Area Start -->
-        <div class="top_header_area">
+        <div class="top_header_area" style="background-color: rgba(0,0,0,0.5);">
             <div class="container h-100">
                 <div class="row h-100 align-items-center justify-content-end">
 
@@ -71,7 +71,7 @@
                                 <!-- Cart Area -->
                                 <%if(user){%>
                                     <div class="cart">
-                                        <a href="/cart" id="header-cart-btn" target="_blank"><span class="cart_quantity"><%=countcart%></span><i class="ti-bag"></i></a>
+                                        <a href="/cart" id="header-cart-btn" target="_blank"><span class="cart_quantity"><%=countcart%></span><i class="ti-bag" style="color:#fff"></i></a>
                                         <!-- Cart List Area Start -->
                                         
                                     </div>
@@ -88,8 +88,8 @@
         </div>
 
         <!-- Top Header Area End -->
-        <div class="main_header_area">
-            <div class="container h-100">
+        <div class="main_header_area"  style="background-color: rgba(0,0,0,0.5);">
+            <div class="container h-100" >
                 <div class="row h-100">
 
                    
@@ -106,23 +106,24 @@
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="ti-menu"></i></span></button>
 
                                 <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
-                                    <ul class="navbar-nav animated" id="nav">
-                                        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+                                    <ul class="navbar-nav animated" id="nav" >
+                                        <li class="nav-item active"><a class="nav-link" href="/"  style="color: #fff;">Home</a></li>
                                       
-                                        <li class="nav-item"><a class="nav-link" href="/allproducts">EXPLORE OUR PRODUCTS</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/allproducts"  style="color: #fff;">EXPLORE OUR PRODUCTS</a></li>
                                         <!-- <li class="nav-item"><a class="nav-link" href="#"> RIDING GLOVES</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#"><span class="karl-level">hot</span> RIDING JACKETS</a></li> -->
 
                                         <% if (user){%>
 
                                             <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" style="text-transform: capitalize;" aria-expanded="false">Hello,<%=user.name%></a>
+                                              <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" style="text-transform: capitalize; color: #fff;" aria-expanded="false">Hello, <%=user.name%></a>
+
                                                 <div class="dropdown-menu"  aria-labelledby="karlDropdown">
                                                     
                                                     
                                                      
-                                                    <a class="dropdown-item" href="/profile/<%=user._id%>">My Profile</a>
-                                                     <a class="dropdown-item" href="/logout">Logout</a>
+                                                    <a class="dropdown-item" href="/profile/<%=user._id%>"  ">My Profile</a>
+                                                     <a class="dropdown-item" href="/logout"  >Logout</a>
                                            
                                                    
                                                 </div>
@@ -131,7 +132,7 @@
 
                                         <%}else{%>
 
-                                            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="/login"  style="color: #fff;">Login</a></li>
                                             
                                         <%}%>
                                        
@@ -149,46 +150,10 @@
         </div>
         </header>
     
-    <!-- ****** Header Area Start ****** -->
-   <!-- ****** Header Area End ****** -->
+    
+        <!-- ****** Header Area Start ****** -->
 
-    <section class="welcome_area">
-        <div class="welcome_slides owl-carousel">
-            <div class="single_slide height-800 bg-img background-overlay" style="background-image: url('/assets/img/Retro-Banner_08.jpg');">
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-12">
-                            <div class="welcome_slide_text">
-                                <h6 data-animation="bounceInDown" data-delay="0" data-duration="500ms">* Only today we offer free shipping</h6>
-                                <h2 data-animation="fadeInUp" data-delay="500ms" data-duration="500ms">Fashion Trends</h2>
-                                <a href="/allproducts" class="btn karl-btn" data-animation="fadeInUp" data-delay="1s" data-duration="500ms">Shop Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="single_slide height-800 bg-img background-overlay" style="background-image: url('/public/assets/');">
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-12">
-                            <div class="welcome_slide_text">
-                                <h6 data-animation="bounceInDown" data-delay="0" data-duration="500ms">* Only today we offer free shipping</h6>
-                                <h2 data-animation="fadeInUp" data-delay="500ms" data-duration="500ms">Fashion Trends</h2>
-                                <a href="/allproducts" class="btn karl-btn" data-animation="fadeInUp" data-delay="1s" data-duration="500ms">Shop Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-         
-        </div>
-    </section>
-
-
- 
-  
-        <div id="search-title" style="text-align: center; padding-top: 98px; margin-bottom:70px ;"  ></div>
+        <div id="search-title" style="text-align: center ;"  ></div>
 
         <div class="container">
         <div id="search-results" class="row"  ></div>
@@ -196,10 +161,46 @@
     </div>
                  
 
+   <!-- ****** Header Area End ****** -->
+
+    <section class="welcome_area">
+
+     
+
+        <div class="welcome_slides owl-carousel">
+          <% banner.forEach((Banner) => { %>
+            <div class="single_slide height-800 bg-img background-overlay" style="background-image: url('/assets/img/<%= Banner.image[0] %>');">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="welcome_slide_text">
+                                <h6 data-animation="bounceInDown" data-delay="0" data-duration="500ms">* <%= Banner.description %> </h6>
+                                <h2 data-animation="fadeInUp" data-delay="500ms" data-duration="500ms"><%= Banner.heading %> </h2>
+                                <a href="/allproducts" class="btn karl-btn" data-animation="fadeInUp" data-delay="1s" data-duration="500ms">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        <% }) %>
+        
+         
+         
+        </div>
+
+
+    </section>
+
+
+ 
+  
+       
+    <div class="gradient-div"></div>
 
 
     <!-- ****** New Arrivals Area Start ****** -->
-    <section class="new_arrivals_area section_padding_50_0 clearfix">
+    <section class="new_arrivals_area section_padding__0 clearfix">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -246,7 +247,7 @@
         </div>
 
         <div class="container">
-            <div class="row karl-new-arrivals">
+            <div class="row karl-new-arrivals mt-3">
 
                 <!-- Single gallery Item Start -->
                 <% for(i=product.length-1;i>product.length-7;i--){ %>
@@ -558,12 +559,12 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.65);
 }
 
 
-
-/* Hide the sort and filter elements by default */
-
-
-/* Hide the sort and filter elements when the search box is cleared */
-
+.gradient-div {
+      width: 100%;
+      height: 200px;
+      background: rgba(0, 0, 0, 0.5);
+      background: linear-gradient(rgba(0, 0, 0, 0.5), #fff);
+    }
 
 
 
