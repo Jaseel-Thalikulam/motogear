@@ -154,6 +154,9 @@
                 <% for(i=product.length-1;i>=0;i--){ %>
 
                     <%if(product[i].show==true){%>
+
+
+                        <%if(product[i].offer>0){%>
                     <div class="col-12 col-sm-6 col-md-4 single_gallery_item <%=product[i].Category%> wow fadeInUpBig" data-wow-delay="0.2s">
                         <!-- Product Image -->
                         <div class="product-img">
@@ -165,7 +168,8 @@
                         </div>
                         <!-- Product Description -->
                         <div class="product-description">
-                            <h4 class="product-price">₹<%= product[i].price %></h4>
+                            <h4 class="product-price">₹<%= product[i].offerprice %>    <span style="text-decoration: line-through;">₹<%= product[i].price %></span> </h4>
+                          
                             <p><%=product[i].product %></p>
                            
                             <!-- Add to Cart -->
@@ -173,8 +177,31 @@
 
                         </div>
                     </div>
-                    
+                    <%}else{%>
     
+                        <div class="col-12 col-sm-6 col-md-4 single_gallery_item <%=product[i].Category%> wow fadeInUpBig" data-wow-delay="0.2s">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <img style="border-radius: 5px;" src="/assets/img/<%= product[i].image[0]%>" alt="">
+                                <div class="product-quicview">
+                                    <a href="/productdetails/<%= product[i]._id%>"></a>
+                                
+                                </div>
+                            </div>
+                            <!-- Product Description -->
+                            <div class="product-description">
+                                <h4 class="product-price">₹<%= product[i].price %> </h4>
+                              
+                                <p><%=product[i].product %></p>
+                               
+                                <!-- Add to Cart -->
+                                <a href="#"  onclick="addToWishlist('<%= product[i]._id %>')"  class="add-to-cart-btn">ADD TO WISHLIST</a>
+    
+                            </div>
+                        </div>
+
+                        <%}%>
+
                     <%}%>
 
                     <% }; %> 

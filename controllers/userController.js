@@ -961,9 +961,7 @@ const userData = await User.findOne({email:email})
 
 
     } catch (err) {
-        if (statusCode == 404) {
-            
-        }
+        
         console.log('404')
     }
 
@@ -1429,7 +1427,7 @@ const loadhomepage = async (req, res) => {
             
                 
               
-                res.render('homepage', { product: productdata, categories: category, user: user, countcart: countcart,banner:banner })
+                res.render('homepage', { product: productdata, categories: category, user: user, countcart: countcart, banner: banner })
             
             }
 
@@ -1448,14 +1446,15 @@ const loadhomepage = async (req, res) => {
                 console.log(banner)
             
           
-                res.render('homepage', { product: productdata, categories: category, user: user,banner:banner})
+                res.render('homepage', { product: productdata, categories: category, user: user, banner: banner })
         
             }
             
         }
-    } catch (error) {
-        console.log(error.message);
-    }
+    } catch (err) { 
+        console.log(err)
+        res.render('404')
+    }
 }
 
   

@@ -38,6 +38,97 @@ console.log(bannerData)
 }
 }
 
+const updatebanner = async (req, res) => { 
+  try {
+
+    console.log(req.body.id)
+
+    const bannerData = await Banner.findByIdAndUpdate({ _id: req.body.id }, {
+      $set: {
+
+      
+        heading: req.body.heading,
+        description: req.body.description,
+      
+      }
+    });
+
+    console.log(bannerData)
+
+    res.redirect('/admin/banner')
+
+  } catch (err) {
+    console.log(err)
+    res.render('404')
+  }
+}
+
+const editBannerLoad = async (req, res) => {
+  try {
+      let user = req.session.users
+      const id = req.query.id;
+      const bannerData = await Banner.findById({ _id: id });
+      if (bannerData) {
+          res.render('edit-banner', { banner: bannerData,user:user })
+
+      } else {
+          res.redirect('/admin/banner')
+
+      }
+
+  } catch (err) { 
+      res.render('404')
+  }
+}
+
+const updatebannerImage = async (req, res) => {
+  try {
+
+
+     
+    if (!req.files || req.files.length === 0) {
+      throw new Error("No files found in the request");
+    }
+
+    const imageArray = [];
+    for (let i = 0; i < req.files.length; i++) {
+        imageArray.push(req.files[i].filename);
+    }
+
+    updaeimg = await Banner.findOneAndUpdate({ _id: req.body.id }, {
+      $set: {
+        
+        image: imageArray
+
+      }
+    })
+
+       
+    res.redirect('/admin/banner')
+
+    
+   
+
+  } catch (err) {
+      console.log(err)
+      res.render('404')
+
+  }
+
+}
+
+const deleteBanner = async (req, res) => { 
+
+  try {
+      const id = req.query.id;
+      await Banner.deleteOne({ _id: id })
+      res.redirect('/admin/banner')
+
+  } catch (err) {
+      console.log(err);
+}
+
+}
 
 const loadaddbanner = async (req, res) => { 
   try {
@@ -52,6 +143,8 @@ const loadaddbanner = async (req, res) => {
 
   }
 }
+
+
 
 const insertBanner = async (req, res) => {
   try {
@@ -854,6 +947,10 @@ module.exports = {
   salesReport,
   loadbanner,
   loadaddbanner,
-  insertBanner
+  insertBanner,
+  deleteBanner,
+  editBannerLoad,
+  updatebannerImage,
+  updatebanner
 
 }

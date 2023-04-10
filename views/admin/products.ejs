@@ -145,6 +145,8 @@
               <th scope="col">Description</th>
               <th scope="col">Stock</th>
               <th scope="col">Price</th>
+              <th scope="col">OFF</th>
+              <th scope="col">OFF-Price</th>
               <th scope="col">Image</th>
               <th scope="col">Action</th>
               </tr>
@@ -152,7 +154,7 @@
             <tbody>
               <%
               if(product.length > 0){
-              for(let i=product.length-1;i>0;i--){
+              for(let i=product.length-1;i>=0;i--){
           
                   %>
                   <tr>
@@ -162,6 +164,9 @@
                   <td><%= product[i].Description %></td>
                   <td><%= product[i].Stock %></td>
                   <td><%= product[i].price %></td>
+                  <td><%= product[i].offer %></td>
+                  <td><%= product[i].offerprice %></td>
+                  
                   <td> <img style="height: 64px ; width:64px ;" src="/assets/img/<%= product[i].image[0]%>" alt=""> </td>
       
       

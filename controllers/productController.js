@@ -72,21 +72,40 @@ const insertProduct = async(req,res)=>{
         for (let i = 0; i < req.files.length; i++) {
             imageArray.push(req.files[i].filename);
         }
-        const product = new Product({
+
+        const offer = req.body.offer
+        const Price = req.body.price
+
+      
+
+
+
+
+            const offerPrice = Math.round(Price * offer / 100)
+            const newprice = Price - offerPrice
+            console.log(offerPrice)
+            
+            const product = new Product({
 
         
-            product: req.body.productname,
-            Category: req.body.category,
-            Description: req.body.description,
-            Stock: req.body.stock,
-            price: req.body.price,
-            image:imageArray
-           
+                product: req.body.productname,
+                Category: req.body.category,
+                Description: req.body.description,
+                Stock: req.body.stock,
+                price: req.body.price,
+                offer: req.body.offer,
+                offerprice:newprice,
+                image:imageArray
+               
+    
+               
+            })
+       
+           var productData = await product.save();
+            
+      
 
-           
-        })
-   
-    const productData = await product.save();
+     
     
     if(productData){
        
@@ -123,6 +142,28 @@ const loadeditproduct = async (req, res) => {
     }
 }
 
+
+const updatebannerImage = async (req, res) => {
+    try {
+    
+
+        const productData = await Product.findByIdAndUpdate({ _id: req.body.id }, {
+            $set: {
+
+                image: imageArray
+            
+            }
+
+        })
+
+    } catch (err) {
+        console.log(err)
+        res.render('404')
+
+    }
+
+}
+
 const updateimage = async (req, res) => { 
     try {
         
@@ -146,29 +187,58 @@ const updateimage = async (req, res) => {
 
 
     } catch (err) {
-        
-}
+        console.log(err)
+        res.render('404')
+
+    }
 }
 
 const productUpdate = async (req, res) => {
 
     try {
-        // const imageArray = [];
-        // for (let i = 0; i < req.files.length; i++) {
-        //     imageArray.push(req.files[i].filename);
-        // }
-        const productData = await Product.findByIdAndUpdate({ _id: req.body.id }, {
-            $set: {
-               
-            product: req.body.productname,
-            Category: req.body.category,
-            Description: req.body.description,
-            Stock: req.body.stock,
-            price: req.body.price,
-            // image:imageArray
-            }
 
-        })
+
+        const offer = req.body.offer
+        const Price = req.body.price
+
+      
+
+
+
+
+            const offerPrice = Math.round(Price * offer / 100)
+            const newprice = Price - offerPrice
+            console.log(offerPrice)
+          
+
+            
+      
+
+
+      
+
+            
+            const productData = await Product.findByIdAndUpdate({ _id: req.body.id }, {
+                $set: {
+                   
+                product: req.body.productname,
+                Category: req.body.category,
+                Description: req.body.description,
+                Stock: req.body.stock,
+                    price: req.body.price,
+                    offer: req.body.offer,
+                    offerprice:newprice,
+                     
+                }
+    
+            })
+
+      
+
+
+
+   
+      
 
         res.redirect('/admin/products')
     } catch (err) {

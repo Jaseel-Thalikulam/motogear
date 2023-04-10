@@ -125,6 +125,7 @@ module.exports = {
     updateCategory,
     editCategoryLoad,
     ListCategory,
-    verifyCategory
+    verifyCategory,
+  
 
 }

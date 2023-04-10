@@ -34,6 +34,12 @@ const productSchema = new mongoose.Schema({
     show: {
         type: Boolean,
         default: true,
+    },
+    offerprice: {
+        type: Number,
+    },
+    offer: {
+        type: Number,
     }
 
 

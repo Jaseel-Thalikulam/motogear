@@ -53,12 +53,14 @@ admin_route.get("/category/addcategory", adminauth.isLogin, categoryController.l
 admin_route.get("/banner/add-banner", adminauth.isLogin, adminController.loadaddbanner)
 
 admin_route.post("/banner/add-banner",upload.array('image',1),adminController.insertBanner)
+admin_route.post("/update-banner-image",upload.array('image',1),adminController.updatebannerImage)
 
 
 
 admin_route.post("/category/addcategory",adminauth.isLogin,categoryController.verifyCategory, categoryController.insertCategory)
 
 admin_route.get('/delete-category', categoryController.deleteCategory)
+admin_route.get('/delete-banner', adminController.deleteBanner)
 
 
 admin_route.get('/unlist-category', categoryController.ListCategory)
@@ -74,7 +76,9 @@ admin_route.post('/status-delivered', adminController.statusdelivered)
 admin_route.post('/status-return', adminController.statusreturn)
 
 admin_route.get('/edit-category', categoryController.editCategoryLoad)
+admin_route.get('/edit-banner', adminController.editBannerLoad)
 
+admin_route.post('/edit-banner', adminController.updatebanner)
 admin_route.post('/edit-category', categoryController.updateCategory)
 
 //orders route
@@ -98,15 +102,15 @@ admin_route.get('/unlist-product', productsController.ListProduct)
 //userlist route
 admin_route.get("/userslist", adminauth.isLogin, adminController.loaduserslist)
 
-admin_route.get('/userslist', adminController.loaduserslist)
+admin_route.get('/userslist',adminauth.isLogin, adminController.loaduserslist)
 
-admin_route.get('/add-user', adminController.loadadduser)
+admin_route.get('/add-user', adminauth.isLogin,adminController.loadadduser)
 
 admin_route.post('/add-user', adminController.insertUser)
 
-admin_route.get('/edit-user', adminController.loadEditUser)
+admin_route.get('/edit-user',adminauth.isLogin, adminController.loadEditUser)
 
-admin_route.post('/edit-user', adminController.editUser)
+admin_route.post('/edit-user',adminauth.isLogin, adminController.editUser)
 admin_route.post('/profile', adminController.editAdmin)
 
 admin_route.get('/block-user',adminController.blockUser)

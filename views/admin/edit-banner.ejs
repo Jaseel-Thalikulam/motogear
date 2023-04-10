@@ -123,32 +123,30 @@
           <h5 class="card-title">Please Enter the details</h5>
 
           <!-- Floating Labels Form -->
-          <form class="row g-3" action="" method="post" enctype="multipart/form-data" >
+          <form class="row g-3" action="" method="post"  >
             <div class="col-md-12">
               <div class="form-floating">
-                <input type="text" name="heading" class="form-control" id="floatingName"  required>
+                <input type="text" name="heading" class="form-control" value="<%=banner.heading%>" id="floatingName" required>
                 <label for="floatingName">Banner Heading</label>
               </div>
             </div>
            
           
+            <input type="hidden" name="id" value="<%= banner._id %>">
+
+
             <div class="col-12 mb-3">
               <div class="form-floating">
-                <textarea class="form-control" name="description"  id="floatingTextarea" style="height: 100px;" required></textarea>
+                <textarea class="form-control" name="description"  id="floatingTextarea" style="height: 100px;" required><%=banner.description%></textarea>
                 <label for="floatingTextarea">Description</label>
               </div>
             </div>
       
-            <div class="row">
-                <label for="inputNumber" class="col-sm-2 col-form-label">Add Background Image</label>
-                <div class="col-sm-10">
-                  <input multiple type="file" id="formFile" name="image"  onchange="previewImages(event)" required>
-                  <div class="mt-2">
-                    <div id="preview-container" ></div>
-                  </div>
-                </div>
-              </div>
-          
+
+
+           
+
+           
             <div class="text-center">
               <button type="submit" class="btn btn-primary">Submit</button>
               <button type="reset" class="btn btn-secondary">Reset</button>
@@ -169,30 +167,55 @@
 
           </form><!-- End floating Labels Form -->
 
+          <form method="post" action="/admin/update-banner-image" enctype="multipart/form-data">
+
+         
+
+          <div class="row">
+            <label for="inputNumber" class="col-sm-2 col-form-label">Add Background Image</label>
+            <div class="col-sm-10">
+              <input multiple type="file" id="formFile" name="image"  onchange="viewImage(event)"required >
+              <div class="mt-2">
+                <div id="preview-container" ></div>
+              </div>
+            </div>
+          </div>
+
+          <td style="height: 200px; width: 600px; align-content: center;" >               
+
+            <img style="height: 200px; width:450px; border-radius: 5px;margin-bottom:10px ;" src="/assets/img/<%=banner.image%>" id="imgView"> 
+
+
+           
+        </td>   
+
+          <input type="hidden" name="id" value="<%= banner._id %>">
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+            <p style="color: red;"></p>
+          </div>
+          
+      
+
+        </form>
+
         </div>
       </div>
 
       <script>
-        function previewImages(event) {
-    var files = event.target.files;
-    var previewContainer = document.getElementById('preview-container');
-    previewContainer.innerHTML = '';
-    for (var i = 0; i < files.length; i++) {
-      var file = files[i];
-      var reader = new FileReader();
-      reader.onload = function() {
-        var image = new Image();
-        image.src = this.result;
-        image.style.width = '500px'; // set the width to 500 pixels
-        image.style.height = '200px';
-        image.style.margin ="2px" // set the height to 200 pixels
-        previewContainer.appendChild(image);
-      }
-      reader.readAsDataURL(file);
-    }
-  }
-  
-      </script>
+        function viewImage(event){
+          
+        
+          document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+          
+        }
+       
+
+       </script>
+
+     
 
 
 <%-include('../layouts/footer.ejs') %>

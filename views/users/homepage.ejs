@@ -256,6 +256,8 @@
 
                 <%  if(user){%>
                 
+                  <%  if(product[i].offer>0){%>
+                
                   
 
                     <div class="col-12 col-sm-6 col-md-4 single_gallery_item <%=product[i].Category%> wow fadeInUpBig" data-wow-delay="0.2s">
@@ -272,7 +274,7 @@
                         <!-- Product Description -->
 
                         <div class="product-description">
-                            <h4 class="product-price">₹<%= product[i].price %></h4>
+                          <h4 class="product-price">₹<%= product[i].offerprice%>  <span style="text-decoration: line-through;">₹<%= product[i].price %></span> </h4>
                             <p><%=product[i].product %></p>
                            
                             <!-- Add to Cart -->
@@ -280,9 +282,36 @@
                         </div>  
 
                     </div>
+
+                    <%}else{%>
                     
+                     <div class="col-12 col-sm-6 col-md-4 single_gallery_item <%=product[i].Category%> wow fadeInUpBig" data-wow-delay="0.2s">
+                      
+                        <!-- Product Image -->
+                        <a href="/productdetails/<%= product[i]._id%>">
+                        <div class="product-img">
+                         <img style="border-radius: 5px;" src="/assets/img/<%= product[i].image[0]%>" alt="">
+                       
+                        </a>
+
+                        </div>
+                  
+                        <!-- Product Description -->
+
+                        <div class="product-description">
+                          <h4 class="product-price">₹<%= product[i].price%> </h4>
+                            <p><%=product[i].product %></p>
+                           
+                            <!-- Add to Cart -->
+                            <a href="#"  onclick="addToWishlist('<%= product[i]._id %>')"  class="add-to-cart-btn">ADD TO WISHLIST</a>
+                        </div>  
+
+
+                      <%}%>                    
+
            <%       }else{ %>
 
+            <%  if(product[i].offer>0){%>
 
                     <div class="col-12 col-sm-6 col-md-4 single_gallery_item <%=product[i].Category%> wow fadeInUpBig" data-wow-delay="0.2s">
                       
@@ -298,7 +327,7 @@
                       <!-- Product Description -->
 
                       <div class="product-description">
-                          <h4 class="product-price">₹<%= product[i].price %></h4>
+                        <h4 class="product-price">₹<%= product[i].offerprice %>  <span style="text-decoration: line-through; ">₹<%= product[i].price %></span> </h4>
                           <p><%=product[i].product %></p>
                          
                           <!-- Add to Cart -->
@@ -306,6 +335,36 @@
                       </div>  
 
                   </div>
+
+                  <%}else{%>
+                  
+
+                    <div class="col-12 col-sm-6 col-md-4 single_gallery_item <%=product[i].Category%> wow fadeInUpBig" data-wow-delay="0.2s">
+                      
+                      <!-- Product Image -->
+                      <a href="/login">
+                      <div class="product-img">
+                       <img style="border-radius: 5px;" src="/assets/img/<%= product[i].image[0]%>" alt="">
+                     
+                      </a>
+
+                      </div>
+                
+                      <!-- Product Description -->
+
+                      <div class="product-description">
+                        <h4 class="product-price">₹<%= product[i].price %></h4>
+                          <p><%=product[i].product %></p>
+                         
+                          <!-- Add to Cart -->
+                          <a href="/login"    class="add-to-cart-btn">ADD TO WISHLIST</a>
+                      </div>  
+
+                  </div>
+
+
+                  
+                  <%}%>
                     
            <%}%>
            
@@ -672,7 +731,7 @@ $('#search-input, #sort-select, #filter-select').on('change input', function() {
           var productUrl = '/productdetails/'+result._id;
           var productName = '<p>'+result.product+'</p>';
           var productPrice = '<h4 style="color:#9f9f9f ;font-weight: 450" class="product-price">'+'₹'+result.price+'</h4>';
-          $('#search-results').append('<div class="col-12 col-sm-6 col-md-4">' + '<a href="' + productUrl+ '">' + '<div>' + imageTag +  productPrice + productName + '</div>' + '</a>' + '</div>');
+          $('#search-results').append('<div class="col-12 col-sm-6 col-md-4" >' + '<a href="' + productUrl+ '">' + '<div>' + imageTag +  productPrice + productName + '</div>' + '</a>' + '</div>');
         });
       },
       error: function(xhr, status, error) {

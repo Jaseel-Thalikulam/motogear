@@ -149,6 +149,7 @@
             <th scope="col">SI.No</th>
             <th scope="col">Heading</th>
             <th scope="col">Description</th>
+            <th scope="col">Image</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -163,10 +164,23 @@
             <th scope="row"><%= i+1 %></th>
             <td><%= banner[i].heading %></td>
           <td><%= banner[i].description %></td>
-          <td><%= banner[i].image %></td>
+         
 
-          <td> <img style="height: 64px ; width:64px ;" src="/assets/img/<%= banner[i].image[0]%>" alt=""> </td>
+          <td> <img style="height: 60px ; width:120px ;" src="/assets/img/<%= banner[i].image[0]%>" alt=""> </td>
        
+          <td><div class="dropdown">
+            <button class="btn" style="font-family: monospace;" type="button" data-toggle="dropdown" aria-expanded="false">
+              <span style="font-size: 20px; color: #4c4658; font-family: Arial, Helvetica, sans-serif;">︙</span>
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item"  href="/admin/edit-banner?id=<%= banner[i]._id %>">Edit</a>
+
+              <a class="dropdown-item" onclick="" href="/admin/delete-banner?id=<%= banner[i]._id %>">Delete</a>
+            </div>
+          </div>
+</td>
+          
+
         </tr>
 
         <% }%>
