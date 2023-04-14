@@ -962,7 +962,7 @@ const userData = await User.findOne({email:email})
 
     } catch (err) {
         
-        console.log('404')
+        console.log(err)
     }
 
 

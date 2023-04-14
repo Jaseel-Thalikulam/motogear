@@ -2,9 +2,10 @@
 const mongoose = require('mongoose');
 require('dotenv').config()
 mongoose.connect(process.env.MONGO)
-
 const express = require('express')
-const session=require('express-session')
+const bodyParser = require('body-parser');
+const session = require('express-session')
+const nocache = require('nocache');
 
 const app = express()
 app.use(session({
@@ -17,6 +18,7 @@ app.use(express.static(path.join(__dirname,'public')))
 const user_route = require('./routes/userRoute')
 app.use('/', user_route);
 
+app.use(nocache());
 
     const admin_route = require('./routes/adminRoute')
 app.use('/admin', admin_route);
@@ -25,8 +27,12 @@ app.use((req, res, next) => {
     res.status(404).render('404.ejs');
   });
     
+;
 
 
+// view engine setup
+app.set('view engine', 'ejs')
+app.set('views','./views/')
 
 
 // server
