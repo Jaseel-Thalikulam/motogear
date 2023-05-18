@@ -1,56 +1,61 @@
-<%-include('../layouts/header.ejs') %>
+<%-include('.. /layouts/header.ejs') %>
 
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-       
+
         <span class="d-none d-lg-block">MOTOGEAR</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-  
+
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
-       
 
-     
 
-       
+
+
+
         <li class="nav-item dropdown pe-3">
 
-        </a><!-- End Profile Iamge Icon -->
-        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-          <img src="/assets/img/profile-user.png" alt="Profile" class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2"><%=user.name%></span>
-        </a><!-- End Profile Iamge Icon -->
+          </a><!-- End Profile Iamge Icon -->
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="/assets/img/profile-user.png" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">
+              <%=user.name%>
+            </span>
+          </a><!-- End Profile Iamge Icon -->
 
-        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-          <li class="dropdown-header">
-            <h6><%=user.name%></h6>
-            <span>Admin</span>
-          </li>
-          
-          <li>
-            <a class="dropdown-item d-flex align-items-center" href="/admin/profile">
-              <i class="bi bi-person"></i>
-              <span>My Profile</span>
-            </a>
-          </li>
-          
-          <li>
-            <a class="dropdown-item d-flex align-items-center" href="/admin/logout">
-              <i class="bi bi-box-arrow-right"></i>
-              <span>Sign Out</span>
-            </a>
-          </li>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>
+                <%=user.name%>
+              </h6>
+              <span>Admin</span>
+            </li>
 
-        </ul><!-- End Profile Dropdown Items -->
-      </li><!-- End Profile Nav -->      </ul>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/admin/profile">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/admin/logout">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+      </ul>
     </nav><!-- End Icons Navigation -->
 
   </header><!-- End Header -->
@@ -67,46 +72,46 @@
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="/admin/category">
-            <i class="bi bi-menu-button-wide"></i>
+        <a class="nav-link collapsed" href="/admin/category">
+          <i class="bi bi-menu-button-wide"></i>
           <span>Category</span>
         </a>
       </li><!-- End Dashboard Nav -->
-     
+
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="/admin/products">
-            <i class="bi bi-menu-button-wide"></i>
+        <a class="nav-link collapsed" href="/admin/products">
+          <i class="bi bi-menu-button-wide"></i>
           <span>Products</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="/admin/userslist">
-            <i class="ri-account-circle-line"></i>
+        <a class="nav-link collapsed" href="/admin/userslist">
+          <i class="ri-account-circle-line"></i>
           <span>Users</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link"  href="/admin/orders">
-            <i class="bi bi-menu-button-wide"></i>
+        <a class="nav-link" href="/admin/orders">
+          <i class="bi bi-menu-button-wide"></i>
           <span>Orders</span>
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="/admin/coupon">
+        <a class="nav-link collapsed" href="/admin/coupon">
           <i class="bi bi-journal-text"></i><span>Coupon</span>
         </a>
-        <li class="nav-item">
-          <a class="nav-link collapsed"  href="/admin/sales">
-            <i class="bi bi-journal-text"></i><span>Sales</span>
-          </a>
-          
-        </li><!-- End Icons Nav -->
-        
-        
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/sales">
+          <i class="bi bi-journal-text"></i><span>Sales</span>
+        </a>
+
       </li><!-- End Icons Nav -->
- <!-- End Register Page Nav -->
+
+
+      </li><!-- End Icons Nav -->
+      <!-- End Register Page Nav -->
 
     </ul>
 
@@ -116,13 +121,13 @@
 
     <div class="pagetitle">
       <h1>Orders</h1>
-      
+
     </div><!-- End Page Title -->
 
     <section class="section dashboard">
       <div class="row">
 
-        
+
         <div class="col-lg-12">
           <div class="row">
 
@@ -146,12 +151,12 @@
                 <div class="card-body">
                   <h5 class="card-title">Recent Orders <span>| Today</span></h5>
 
-                  <table class="table table-borderless datatable"  id="refreshtr">
+                  <table class="table table-borderless datatable" id="refreshtr">
                     <thead>
 
-                        
+
                       <tr>
-                       
+
                         <th scope="col">Date</th>
                         <th scope="col">Customer</th>
                         <th scope="col">OrderId</th>
@@ -162,212 +167,242 @@
                       </tr>
 
                     </thead>
-                    <tbody >
-                   
-                     
-                      <% orderData.forEach((order,index) => { %>
+                    <tbody>
 
-                        <% order.product.forEach((item) => { %>
-                            <tr>
-                                
-                              
-                                <td><%=order.date%></td>
-                                <td><%=order.userId.email%></td>
-                                <td><%= order._id %></td>
-                                <td class="cart_product_img d-flex align-items-center">
-                                    <a href="#"><img style="height: 64px; width: 64px; border-radius: 10px; margin-right:5px;" src="/assets/img/<%=item.productId.image[0]%>" alt="Product"></a>
 
-                                    <h6><%=item.productId.product%></h6>
-                                    
-                                </td>
-                              <td><%= item.quantity %></td>
-                              <td>₹<%= item.singleTotal %></td>
-                            
+                      <% orderData.forEach((order,index)=> { %>
 
-                             
+                        <% order.product.forEach((item)=> { %>
+                          <tr>
 
-                                
-                             
-                                
 
-                                <% if (item.status === 'order placed') { %>
+                            <td>
+                              <%=order.date%>
+                            </td>
+                            <td>
+                              <%=order.userId.email%>
+                            </td>
+                            <td>
+                              <%= order._id %>
+                            </td>
+                            <td class="cart_product_img d-flex align-items-center">
+                              <a href="#"><img style="height: 64px; width: 64px; border-radius: 10px; margin-right:5px;"
+                                  src="/assets/img/<%=item.productId.image[0]%>" alt="Product"></a>
 
-                                <td>
+                              <h6>
+                                <%=item.productId.product%>
+                              </h6>
 
-                                  <div class="dropdown">
-                  <button class="btn" style="font-family: monospace;" type="button" data-toggle="dropdown" aria-expanded="false">
-                    <span class="badge bg-warning">Pending</span>
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" onclick="statusconfirm('<%=item._id%>')" >Confirm Order</a>
-  
-                    <a class="dropdown-item" onclick="statuscancel('<%=item._id%>')">Cancel Order</a>
-  
-                    
-                  </div>
-                </div>
-  
-                </td>
+                            </td>
+                            <td>
+                              <%= item.quantity %>
+                            </td>
+                            <td>₹<%= item.singleTotal %>
+                            </td>
 
-                <% } %>
-              
-                <% if (item.status === 'Order Cancelled') { %>
-              
 
-                  <td>
 
-                    <div class="dropdown">
-    <button class="btn" style="font-family: monospace;" type="button" data-toggle="dropdown" aria-expanded="false">
-      <span class="badge bg-danger">Cancelled</span>
-    </button>
-    <!-- <div class="dropdown-menu">
+
+
+
+
+
+                            <% if (item.status==='order placed' ) { %>
+
+                              <td>
+
+                                <div class="dropdown">
+                                  <button class="btn" style="font-family: monospace;" type="button"
+                                    data-toggle="dropdown" aria-expanded="false">
+                                    <span class="badge bg-warning">Pending</span>
+                                  </button>
+                                  <div class="dropdown-menu">
+                                    <a class="dropdown-item" onclick="statusconfirm('<%=item._id%>')">Confirm Order</a>
+
+                                    <a class="dropdown-item" onclick="statuscancel('<%=item._id%>')">Cancel Order</a>
+
+
+                                  </div>
+                                </div>
+
+                              </td>
+
+                              <% } %>
+
+                                <% if (item.status==='Order Cancelled' ) { %>
+
+
+                                  <td>
+
+                                    <div class="dropdown">
+                                      <button class="btn" style="font-family: monospace;" type="button"
+                                        data-toggle="dropdown" aria-expanded="false">
+                                        <span class="badge bg-danger">Cancelled</span>
+                                      </button>
+                                      <!-- <div class="dropdown-menu">
       <a class="dropdown-item"  href="/admin/status-packing?id=<%=item._id %>">Packing</a>
 
       <a class="dropdown-item" href="/admin/status-cancel?id=<%=item._id %>">Cancel Order</a>
 
       
     </div> -->
-  </div>
+                                    </div>
 
-  </td>
-
-
+                                  </td>
 
 
 
 
-                  <% } %>
-                <% if (item.status === 'Order Confirmed') { %>
-              
 
-                  <td>
 
-                    <div class="dropdown">
-    <button class="btn" style="font-family: monospace;" type="button" data-toggle="dropdown" aria-expanded="false">
-      <span class="badge bg-info">Confirmed</span>
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" onclick="statuspacking('<%=item._id%>')" >Packing</a>
+                                  <% } %>
+                                    <% if (item.status==='Order Confirmed' ) { %>
 
-      <a class="dropdown-item" onclick="statuscancel('<%=item._id%>')" >Cancel Order</a>
 
-      
-    </div>
-  </div>
+                                      <td>
 
-  </td>
+                                        <div class="dropdown">
+                                          <button class="btn" style="font-family: monospace;" type="button"
+                                            data-toggle="dropdown" aria-expanded="false">
+                                            <span class="badge bg-info">Confirmed</span>
+                                          </button>
+                                          <div class="dropdown-menu">
+                                            <a class="dropdown-item"
+                                              onclick="statuspacking('<%=item._id%>')">Packing</a>
 
-                  <% } %>
-                
-                <% if (item.status === 'Packing') { %>
-              
+                                            <a class="dropdown-item" onclick="statuscancel('<%=item._id%>')">Cancel
+                                              Order</a>
 
-                  <td>
 
-                    <div class="dropdown">
-    <button class="btn" style="font-family: monospace;" type="button" data-toggle="dropdown" aria-expanded="false">
-      <span class="badge badge-light" style="color: black;">Packing</span>
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item"  onclick="statusShipped('<%=item._id%>')">Shipped</a>
+                                          </div>
+                                        </div>
 
-      <a class="dropdown-item" >Cancel Order</a>
+                                      </td>
 
-      
-    </div>
-  </div>
+                                      <% } %>
 
-  </td>
+                                        <% if (item.status==='Packing' ) { %>
 
-                  <% } %>
 
-                <% if (item.status === 'Shipped') { %>
-              
+                                          <td>
 
-                  <td>
+                                            <div class="dropdown">
+                                              <button class="btn" style="font-family: monospace;" type="button"
+                                                data-toggle="dropdown" aria-expanded="false">
+                                                <span class="badge badge-light" style="color: black;">Packing</span>
+                                              </button>
+                                              <div class="dropdown-menu">
+                                                <a class="dropdown-item"
+                                                  onclick="statusShipped('<%=item._id%>')">Shipped</a>
 
-                    <div class="dropdown">
-    <button class="btn" style="font-family: monospace; " type="button" data-toggle="dropdown" aria-expanded="false">
-      <span class="badge bg-primary" >Shipped</span>
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item"  onclick="statusoutfordelivery('<%=item._id%>')">Out for Delivery</a>
+                                                <a class="dropdown-item">Cancel Order</a>
 
-      
-      
-    </div>
-  </div>
 
-  </td>
+                                              </div>
+                                            </div>
 
-                  <% } %>
-                
-                <% if (item.status === 'Out for delivery') { %>
-              
+                                          </td>
 
-                  <td>
+                                          <% } %>
 
-                    <div class="dropdown">
-    <button class="btn" style="font-family: monospace; " type="button" data-toggle="dropdown" aria-expanded="false">
-      <span class="badge badge-info" style="background-color: cornflowerblue;" >Out For Delivery</span>
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" onclick="statusdelivered('<%=item._id%>')" >Delivered</a>
+                                            <% if (item.status==='Shipped' ) { %>
 
-      
-      
-    </div>
-  </div>
 
-  </td>
+                                              <td>
 
-                  <% } %>
-                
-                <% if (item.status === 'Delivered') { %>
-              
+                                                <div class="dropdown">
+                                                  <button class="btn" style="font-family: monospace; " type="button"
+                                                    data-toggle="dropdown" aria-expanded="false">
+                                                    <span class="badge bg-primary">Shipped</span>
+                                                  </button>
+                                                  <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                      onclick="statusoutfordelivery('<%=item._id%>')">Out for
+                                                      Delivery</a>
 
-                  <td>
 
-                    <div class="dropdown">
-    <button class="btn" style="font-family: monospace; " type="button" data-toggle="dropdown" aria-expanded="false">
-      <span class="badge bg-success"  >Delivered</span>
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item"  onclick="statusreturn('<%=item._id%>')">Return</a>
 
-      
-      
-    </div>
-  </div>
+                                                  </div>
+                                                </div>
 
-  </td>
+                                              </td>
 
-                  <% } %>
-                <% if (item.status === 'Return') { %>
-              
+                                              <% } %>
 
-                  <td>
+                                                <% if (item.status==='Out for delivery' ) { %>
 
-                    <div class="dropdown">
-    <button class="btn" style="font-family: monospace; " type="button" data-toggle="dropdown" aria-expanded="false">
-      <span class="badge bg-dark"  >Return</span>
-    </button>
-    <div class="dropdown-menu">
-      <!-- <a class="dropdown-item"  href="/admin/status-return?id=<%=item._id %>">Return</a>
+
+                                                  <td>
+
+                                                    <div class="dropdown">
+                                                      <button class="btn" style="font-family: monospace; " type="button"
+                                                        data-toggle="dropdown" aria-expanded="false">
+                                                        <span class="badge badge-info"
+                                                          style="background-color: cornflowerblue;">Out For
+                                                          Delivery</span>
+                                                      </button>
+                                                      <div class="dropdown-menu">
+                                                        <a class="dropdown-item"
+                                                          onclick="statusdelivered('<%=item._id%>')">Delivered</a>
+
+
+
+                                                      </div>
+                                                    </div>
+
+                                                  </td>
+
+                                                  <% } %>
+
+                                                    <% if (item.status==='Delivered' ) { %>
+
+
+                                                      <td>
+
+                                                        <div class="dropdown">
+                                                          <button class="btn" style="font-family: monospace; "
+                                                            type="button" data-toggle="dropdown" aria-expanded="false">
+                                                            <span class="badge bg-success">Delivered</span>
+                                                          </button>
+                                                          <div class="dropdown-menu">
+                                                            <a class="dropdown-item"
+                                                              onclick="statusreturn('<%=item._id%>')">Return</a>
+
+
+
+                                                          </div>
+                                                        </div>
+
+                                                      </td>
+
+                                                      <% } %>
+                                                        <% if (item.status==='Return' ) { %>
+
+
+                                                          <td>
+
+                                                            <div class="dropdown">
+                                                              <button class="btn" style="font-family: monospace; "
+                                                                type="button" data-toggle="dropdown"
+                                                                aria-expanded="false">
+                                                                <span class="badge bg-dark">Return</span>
+                                                              </button>
+                                                              <div class="dropdown-menu">
+                                                                <!-- <a class="dropdown-item"  href="/admin/status-return?id=<%=item._id %>">Return</a>
 
        -->
-      
-    </div>
-  </div>
 
-  </td>
+                                                              </div>
+                                                            </div>
 
-                  <% } %>
-                
-                            </tr>
+                                                          </td>
+
+                                                          <% } %>
+
+                          </tr>
                           <% }) %>
-                        
-                        <%})%>
+
+                            <%})%>
 
 
                     </tbody>
@@ -378,7 +413,7 @@
               </div>
             </div><!-- End Recent Sales -->
 
-            
+
 
           </div>
         </div>
@@ -391,373 +426,374 @@
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
-   
+
   </footer><!-- End Footer -->
 
 
   <script>
 
 
-function statusconfirm(proId) {
-   
-   console.log(proId)
+    function statusconfirm(proId) {
+
+      console.log(proId)
 
 
 
 
 
-   Swal.fire({
-            title: 'Are you sure?',
-            text: "You wan't to Confirm the Order!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'yes, Confirm!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-               
-                
-                $.ajax({
-   url: '/admin/status-confirm',
-   data: {
-     productId: proId,
-   },
-   method: "post",
-   success: (response) => {
-     if (response.success) {
-       $('#refreshtr').load('/loadorders #refreshtr')
-       console.log(response);
-       Swal.fire({
-         title: 'Confirmed',
-         text: 'Order Confirmed',
-         icon: 'success',
-         timer: 1000,
-         showConfirmButton: false
-       })
-     } else {
-       Swal.fire({
-         text: 'Order already Confirmed',
-         icon: 'info',
-         timer: 1000,
-         showConfirmButton: false
-       })
-     }
-     console.log(response);
-   }
- })
-           }
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You wan't to Confirm the Order!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'yes, Confirm!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+
+          $.ajax({
+            url: '/admin/status-confirm',
+            data: {
+              productId: proId,
+            },
+            method: "post",
+            success: (response) => {
+              if (response.success) {
+                $('#refreshtr').load('/loadorders #refreshtr')
+                console.log(response);
+                Swal.fire({
+                  title: 'Confirmed',
+                  text: 'Order Confirmed',
+                  icon: 'success',
+                  timer: 1000,
+                  showConfirmButton: false
                 })
-
-}
-
-function statuscancel(proId) {
-   
-   console.log(proId)
-
-
-
-
-
-   Swal.fire({
-            title: 'Are you sure?',
-            text: "You wan't to Cancel the Order!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'yes, Cancel!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-               
-                
-                $.ajax({
-   url: '/admin/status-cancel',
-   data: {
-     productId: proId,
-   },
-   method: "post",
-   success: (response) => {
-     if (response.success) {
-       $('#refreshtr').load('/loadorders #refreshtr')
-       console.log(response);
-       Swal.fire({
-         title: 'Cancelled',
-         text: 'Order Cancelled',
-         icon: 'success',
-         timer: 1000,
-         showConfirmButton: false
-       })
-     } else {
-       Swal.fire({
-         text: 'Order already Cancelled',
-         icon: 'info',
-         timer: 1000,
-         showConfirmButton: false
-       })
-     }
-     console.log(response);
-   }
- })
-           }
+              } else {
+                Swal.fire({
+                  text: 'Order already Confirmed',
+                  icon: 'info',
+                  timer: 1000,
+                  showConfirmButton: false
                 })
+              }
+              console.log(response);
+            }
+          })
+        }
+      })
 
-}
+    }
 
-function statuspacking(proId) {
-   
-   console.log(proId)
+    function statuscancel(proId) {
+
+      console.log(proId)
 
 
-   Swal.fire({
-            title: 'Are you sure?',
-            text: "You wan't to Change the Order Status to Packing!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'yes, Change!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-               
-                
-                $.ajax({
-   url: '/admin/status-packing',
-   data: {
-     productId: proId,
-   },
-   method: "post",
-   success: (response) => {
-     if (response.success) {
-       $('#refreshtr').load('/loadorders #refreshtr')
-       console.log(response);
-       Swal.fire({
-         title: 'Status Changed',
-         text: 'Order Status Changed to Packing',
-         icon: 'success',
-         timer: 1000,
-         showConfirmButton: false
-       })
-     } else {
-       Swal.fire({
-         text: 'Order already Cancelled',
-         icon: 'info',
-         timer: 1000,
-         showConfirmButton: false
-       })
-     }
-     console.log(response);
-   }
- })
-           }
+
+
+
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You wan't to Cancel the Order!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'yes, Cancel!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+
+          $.ajax({
+            url: '/admin/status-cancel',
+            data: {
+              productId: proId,
+            },
+            method: "post",
+            success: (response) => {
+              if (response.success) {
+                $('#refreshtr').load('/loadorders #refreshtr')
+                console.log(response);
+                Swal.fire({
+                  title: 'Cancelled',
+                  text: 'Order Cancelled',
+                  icon: 'success',
+                  timer: 1000,
+                  showConfirmButton: false
                 })
-
-}
-
-
-function statusShipped(proId) {
-   
-   console.log(proId)
-
-
-   Swal.fire({
-            tishippedtle: 'Are you sure?',
-            text: "You wan't to Change the Order Status to Shipped!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'yes, Change!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-               
-                
-                $.ajax({
-   url: '/admin/status-shipped',
-   data: {
-     productId: proId,
-   },
-   method: "post",
-   success: (response) => {
-     if (response.success) {
-       $('#refreshtr').load('/loadorders #refreshtr')
-       console.log(response);
-       Swal.fire({
-         title: 'Status Changed',
-         text: 'Order Status Changed to Shipped',
-         icon: 'success',
-         timer: 1000,
-         showConfirmButton: false
-       })
-     } else {
-       Swal.fire({
-         text: 'Order already Cancelled',
-         icon: 'info',
-         timer: 1000,
-         showConfirmButton: false
-       })
-     }
-     console.log(response);
-   }
- })
-           }
+              } else {
+                Swal.fire({
+                  text: 'Order already Cancelled',
+                  icon: 'info',
+                  timer: 1000,
+                  showConfirmButton: false
                 })
+              }
+              console.log(response);
+            }
+          })
+        }
+      })
 
-}
+    }
 
-function statusoutfordelivery(proId) {
-   
-   console.log(proId)
+    function statuspacking(proId) {
+
+      console.log(proId)
 
 
-   Swal.fire({
-            title: 'Are you sure?',
-            text: "You wan't to Change the Order Status to OutForDelivery!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'yes, Change!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-               
-                
-                $.ajax({
-   url: '/admin/status-outfordelivery',
-   data: {
-     productId: proId,
-   },
-   method: "post",
-   success: (response) => {
-     if (response.success) {
-       $('#refreshtr').load('/loadorders #refreshtr')
-       console.log(response);
-       Swal.fire({
-         title: 'Status Changed',
-         text: 'Order Status Changed to Out For Delivery',
-         icon: 'success',
-         timer: 1000,
-         showConfirmButton: false
-       })
-     } else {
-       Swal.fire({
-         text: 'Order already Cancelled',
-         icon: 'info',
-         timer: 1000,
-         showConfirmButton: false
-       })
-     }
-     console.log(response);
-   }
- })
-           }
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You wan't to Change the Order Status to Packing!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'yes, Change!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+
+          $.ajax({
+            url: '/admin/status-packing',
+            data: {
+              productId: proId,
+            },
+            method: "post",
+            success: (response) => {
+              if (response.success) {
+                $('#refreshtr').load('/loadorders #refreshtr')
+                console.log(response);
+                Swal.fire({
+                  title: 'Status Changed',
+                  text: 'Order Status Changed to Packing',
+                  icon: 'success',
+                  timer: 1000,
+                  showConfirmButton: false
                 })
-
-}
-function statusdelivered(proId) {
-   
-   console.log(proId)
-
-
-   Swal.fire({
-            title: 'Are you sure?',
-            text: "You wan't to Change the Order Status to Delivered!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'yes, Change!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-               
-                
-                $.ajax({
-   url: '/admin/status-delivered',
-   data: {
-     productId: proId,
-   },
-   method: "post",
-   success: (response) => {
-     if (response.success) {
-       $('#refreshtr').load('/loadorders #refreshtr')
-       console.log(response);
-       Swal.fire({
-         title: 'Status Changed',
-         text: 'Order Status Changed to Delivered',
-         icon: 'success',
-         timer: 1000,
-         showConfirmButton: false
-       })
-     } else {
-       Swal.fire({
-         text: 'Order already Cancelled',
-         icon: 'info',
-         timer: 1000,
-         showConfirmButton: false
-       })
-     }
-     console.log(response);
-   }
- })
-           }
+              } else {
+                Swal.fire({
+                  text: 'Order already Cancelled',
+                  icon: 'info',
+                  timer: 1000,
+                  showConfirmButton: false
                 })
+              }
+              console.log(response);
+            }
+          })
+        }
+      })
 
-}
-
-function statusreturn(proId) {
-   
-   console.log(proId)
+    }
 
 
-   Swal.fire({
-            title: 'Are you sure?',
-            text: "You wan't to Change the Order Status to Return!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'yes, Change!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-               
-                
-                $.ajax({
-   url: '/admin/status-return',
-   data: {
-     productId: proId,
-   },
-   method: "post",
-   success: (response) => {
-     if (response.success) {
-     
-       $('#refreshtr').load('/loadorders #refreshtr')
-       console.log(response);
-       Swal.fire({
-         title: 'Status Changed',
-         text: 'Order Status Changed to Return',
-         icon: 'success',
-         timer: 1000,
-         showConfirmButton: false
-       })
-     } else {
-       Swal.fire({
-         text: 'Order already Cancelled',
-         icon: 'info',
-         timer: 1000,
-         showConfirmButton: false
-       })
-     }
-     console.log(response);
-   }
- })
-           }
+    function statusShipped(proId) {
+
+      console.log(proId)
+
+
+      Swal.fire({
+        tishippedtle: 'Are you sure?',
+        text: "You wan't to Change the Order Status to Shipped!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'yes, Change!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+
+          $.ajax({
+            url: '/admin/status-shipped',
+            data: {
+              productId: proId,
+            },
+            method: "post",
+            success: (response) => {
+              if (response.success) {
+                $('#refreshtr').load('/loadorders #refreshtr')
+                console.log(response);
+                Swal.fire({
+                  title: 'Status Changed',
+                  text: 'Order Status Changed to Shipped',
+                  icon: 'success',
+                  timer: 1000,
+                  showConfirmButton: false
                 })
+              } else {
+                Swal.fire({
+                  text: 'Order already Cancelled',
+                  icon: 'info',
+                  timer: 1000,
+                  showConfirmButton: false
+                })
+              }
+              console.log(response);
+            }
+          })
+        }
+      })
 
-}
+    }
+
+    function statusoutfordelivery(proId) {
+
+      console.log(proId)
+
+
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You wan't to Change the Order Status to OutForDelivery!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'yes, Change!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+
+          $.ajax({
+            url: '/admin/status-outfordelivery',
+            data: {
+              productId: proId,
+            },
+            method: "post",
+            success: (response) => {
+              if (response.success) {
+                $('#refreshtr').load('/loadorders #refreshtr')
+                console.log(response);
+                Swal.fire({
+                  title: 'Status Changed',
+                  text: 'Order Status Changed to Out For Delivery',
+                  icon: 'success',
+                  timer: 1000,
+                  showConfirmButton: false
+                })
+              } else {
+                Swal.fire({
+                  text: 'Order already Cancelled',
+                  icon: 'info',
+                  timer: 1000,
+                  showConfirmButton: false
+                })
+              }
+              console.log(response);
+            }
+          })
+        }
+      })
+
+    }
+    function statusdelivered(proId) {
+
+      console.log(proId)
+
+
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You wan't to Change the Order Status to Delivered!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'yes, Change!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+
+          $.ajax({
+            url: '/admin/status-delivered',
+            data: {
+              productId: proId,
+            },
+            method: "post",
+            success: (response) => {
+              if (response.success) {
+                $('#refreshtr').load('/loadorders #refreshtr')
+                console.log(response);
+                Swal.fire({
+                  title: 'Status Changed',
+                  text: 'Order Status Changed to Delivered',
+                  icon: 'success',
+                  timer: 1000,
+                  showConfirmButton: false
+                })
+              } else {
+                Swal.fire({
+                  text: 'Order already Cancelled',
+                  icon: 'info',
+                  timer: 1000,
+                  showConfirmButton: false
+                })
+              }
+              console.log(response);
+            }
+          })
+        }
+      })
+
+    }
+
+    function statusreturn(proId) {
+
+      console.log(proId)
+
+
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You wan't to Change the Order Status to Return!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'yes, Change!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+
+
+          $.ajax({
+            url: '/admin/status-return',
+            data: {
+              productId: proId,
+            },
+            method: "post",
+            success: (response) => {
+              if (response.success) {
+
+                $('#refreshtr').load('/loadorders #refreshtr')
+                console.log(response);
+                Swal.fire({
+                  title: 'Status Changed',
+                  text: 'Order Status Changed to Return',
+                  icon: 'success',
+                  timer: 1000,
+                  showConfirmButton: false
+                })
+              } else {
+                Swal.fire({
+                  text: 'Order already Cancelled',
+                  icon: 'info',
+                  timer: 1000,
+                  showConfirmButton: false
+                })
+              }
+              console.log(response);
+            }
+          })
+        }
+      })
+
+    }
 
   </script>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
-  
-<%-include('../layouts/footer.ejs') %>
+
+  <%-include('.. /layouts/footer.ejs') %>

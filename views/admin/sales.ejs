@@ -1,55 +1,60 @@
-<%-include('../layouts/header.ejs') %>
+<%-include('.. /layouts/header.ejs') %>
 
-<header id="header" class="header fixed-top d-flex align-items-center">
+  <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-       
+
         <span class="d-none d-lg-block">MOTOGEAR</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-  
+
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
-       
-     
 
-       
+
+
+
         <li class="nav-item dropdown pe-3">
 
-        </a><!-- End Profile Iamge Icon -->
-        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-          <img src="/assets/img/profile-user.png" alt="Profile" class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2"><%=user.name%></span>
-        </a><!-- End Profile Iamge Icon -->
+          </a><!-- End Profile Iamge Icon -->
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="/assets/img/profile-user.png" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">
+              <%=user.name%>
+            </span>
+          </a><!-- End Profile Iamge Icon -->
 
-        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-          <li class="dropdown-header">
-            <h6><%=user.name%></h6>
-            <span>Admin</span>
-          </li>
-          
-          <li>
-            <a class="dropdown-item d-flex align-items-center" href="/admin/profile">
-              <i class="bi bi-person"></i>
-              <span>My Profile</span>
-            </a>
-          </li>
-          
-          <li>
-            <a class="dropdown-item d-flex align-items-center" href="/admin/logout">
-              <i class="bi bi-box-arrow-right"></i>
-              <span>Sign Out</span>
-            </a>
-          </li>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>
+                <%=user.name%>
+              </h6>
+              <span>Admin</span>
+            </li>
 
-        </ul><!-- End Profile Dropdown Items -->
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/admin/profile">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
 
-      </li><!-- End Profile Nav -->      </ul>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/admin/logout">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+
+        </li><!-- End Profile Nav -->
+      </ul>
     </nav><!-- End Icons Navigation -->
 
   </header><!-- End Header -->
@@ -66,132 +71,142 @@
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="/admin/category">
-            <i class="bi bi-menu-button-wide"></i>
+        <a class="nav-link collapsed" href="/admin/category">
+          <i class="bi bi-menu-button-wide"></i>
           <span>Category</span>
         </a>
       </li><!-- End Dashboard Nav -->
-     
-     
+
+
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="/admin/products">
-            <i class="bi bi-menu-button-wide"></i>
+        <a class="nav-link collapsed" href="/admin/products">
+          <i class="bi bi-menu-button-wide"></i>
           <span>Products</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="/admin/userslist">
-            <i class="ri-account-circle-line"></i>
+        <a class="nav-link collapsed" href="/admin/userslist">
+          <i class="ri-account-circle-line"></i>
           <span>Users</span>
         </a>
       </li><!-- End Dashboard Nav -->
- <!-- End Register Page Nav -->
+      <!-- End Register Page Nav -->
 
- <li class="nav-item">
-  <a class="nav-link collapsed"  href="/admin/orders">
-      <i class="bi bi-menu-button-wide"></i>
-    <span>Orders</span>
-  </a>
-</li><!-- End Dashboard Nav -->
-<li class="nav-item">
-  <a class="nav-link collapsed"  href="/admin/coupon">
-    <i class="bi bi-journal-text"></i><span>Coupon</span>
-  </a>
-  
-</li><!-- End Icons Nav -->
-<li class="nav-item">
-  <a class="nav-link "  href="/admin/sales">
-    <i class="bi bi-journal-text"></i><span>Sales</span>
-  </a>
-  
-</li><!-- End Icons Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/orders">
+          <i class="bi bi-menu-button-wide"></i>
+          <span>Orders</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/coupon">
+          <i class="bi bi-journal-text"></i><span>Coupon</span>
+        </a>
+
+      </li><!-- End Icons Nav -->
+      <li class="nav-item">
+        <a class="nav-link " href="/admin/sales">
+          <i class="bi bi-journal-text"></i><span>Sales</span>
+        </a>
+
+      </li><!-- End Icons Nav -->
     </ul>
 
   </aside><!-- End Sidebar-->
 
 
-<main id="main" class="main">
+  <main id="main" class="main">
     <section>
 
-        <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Sales</h5>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Sales</h5>
 
-            
 
-              <!-- Horizontal Form -->
-              <form method="post">
-                <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-2 col-form-label">From Date</label>
-                  <div class="col-sm-10">
-                    <input type="date" name="from" id="from" class="form-control" >
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="inputEmail3" class="col-sm-2 col-form-label">To Date</label>
-                  <div class="col-sm-10">
-                    <input type="date" name="to" id="to" class="form-control" >
-                  </div>
-                </div>
-              
-                </fieldset>
-               
-                <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <button type="reset" class="btn btn-secondary">Reset</button>
-                </div>
 
-                <% if(typeof message !=="undefined") { %>
-                    <h1 style="font-size: 14px;color: red;"><%=message  %></h1>
-                <% } %>
-
-              </form><!-- End Horizontal Form -->
-
-              <table class="table table-borderless datatable">
-                <thead>
-                  <tr>
-                    
-                  <th scope="col">Order ID</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Products</th>
-                  <th scope="col">Payment Method</th>
-                  
-                  <th scope="col">Total</th>
-              
-                
-                  </tr>
-                </thead>
-                <tbody>
-    
-
-                 
-                  <% Deliveredorder.forEach(function(order) { %>
-                    <tr>
-                      <th scope="row"><%= order._id %></th>
-                      <td><%= order.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></td>
-                     
-                       <td>
-                                     <% order.product.forEach((element)=>{%>
-                                         <%=element.productId.product%><br>
-                                   <%})   %>
-                                </td>
-                     
-                     
-                      <td><%= order.paymentType %></td>
-                      <td><%=order.total%></td>
-                    </tr>
-                  <% }) %>
-                  
-                </tbody>
-              </table>
+          <!-- Horizontal Form -->
+          <form method="post">
+            <div class="row mb-3">
+              <label for="inputEmail3" class="col-sm-2 col-form-label">From Date</label>
+              <div class="col-sm-10">
+                <input type="date" name="from" id="from" class="form-control">
+              </div>
             </div>
-          </div> 
+            <div class="row mb-3">
+              <label for="inputEmail3" class="col-sm-2 col-form-label">To Date</label>
+              <div class="col-sm-10">
+                <input type="date" name="to" id="to" class="form-control">
+              </div>
+            </div>
 
-    
-</main>
+            </fieldset>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+
+            <% if(typeof message !=="undefined" ) { %>
+              <h1 style="font-size: 14px;color: red;">
+                <%=message %>
+              </h1>
+              <% } %>
+
+          </form><!-- End Horizontal Form -->
+
+          <table class="table table-borderless datatable">
+            <thead>
+              <tr>
+
+                <th scope="col">Order ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Products</th>
+                <th scope="col">Payment Method</th>
+
+                <th scope="col">Total</th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+
+
+
+              <% Deliveredorder.forEach(function(order) { %>
+                <tr>
+                  <th scope="row">
+                    <%= order._id %>
+                  </th>
+                  <td>
+                    <%= order.date.toLocaleDateString('en-US', { year: 'numeric' , month: 'long' , day: 'numeric' }) %>
+                  </td>
+
+                  <td>
+                    <% order.product.forEach((element)=>{%>
+                      <%=element.productId.product%><br>
+                        <%}) %>
+                  </td>
+
+
+                  <td>
+                    <%= order.paymentType %>
+                  </td>
+                  <td>
+                    <%=order.total%>
+                  </td>
+                </tr>
+                <% }) %>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+  </main>
 
 
 
 
-<%-include('../layouts/footer.ejs') %>
+  <%-include('.. /layouts/footer.ejs') %>

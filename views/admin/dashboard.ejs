@@ -1,56 +1,61 @@
-<%-include('../layouts/header.ejs') %>
+<%-include('.. /layouts/header.ejs') %>
 
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-       
+
         <span class="d-none d-lg-block">MOTOGEAR</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-  
+
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
-       
-     
 
-       
+
+
+
         <li class="nav-item dropdown pe-3">
 
-        </a><!-- End Profile Iamge Icon -->
-        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-          <img src="/assets/img/profile-user.png" alt="Profile" class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2"><%=user.name%></span>
-        </a><!-- End Profile Iamge Icon -->
+          </a><!-- End Profile Iamge Icon -->
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="/assets/img/profile-user.png" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">
+              <%=user.name%>
+            </span>
+          </a><!-- End Profile Iamge Icon -->
 
-        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-          <li class="dropdown-header">
-            <h6><%=user.name%></h6>
-            <span>Admin</span>
-          </li>
-          
-          <li>
-            <a class="dropdown-item d-flex align-items-center" href="/admin/profile">
-              <i class="bi bi-person"></i>
-              <span>My Profile</span>
-            </a>
-          </li>
-          
-          <li>
-            <a class="dropdown-item d-flex align-items-center" href="/admin/logout">
-              <i class="bi bi-box-arrow-right"></i>
-              <span>Sign Out</span>
-            </a>
-          </li>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>
+                <%=user.name%>
+              </h6>
+              <span>Admin</span>
+            </li>
 
-        </ul><!-- End Profile Dropdown Items -->
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/admin/profile">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
 
-      </li><!-- End Profile Nav -->      </ul>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/admin/logout">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+
+        </li><!-- End Profile Nav -->
+      </ul>
     </nav><!-- End Icons Navigation -->
 
   </header><!-- End Header -->
@@ -67,53 +72,53 @@
         </a>
       </li><!-- End Dashboard Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="/admin/category">
-            <i class="bi bi-menu-button-wide"></i>
+        <a class="nav-link collapsed" href="/admin/category">
+          <i class="bi bi-menu-button-wide"></i>
           <span>Category</span>
         </a>
       </li><!-- End Dashboard Nav -->
-     
-     
+
+
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="/admin/products">
-            <i class="bi bi-menu-button-wide"></i>
+        <a class="nav-link collapsed" href="/admin/products">
+          <i class="bi bi-menu-button-wide"></i>
           <span>Products</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="/admin/userslist">
-            <i class="ri-account-circle-line"></i>
+        <a class="nav-link collapsed" href="/admin/userslist">
+          <i class="ri-account-circle-line"></i>
           <span>Users</span>
         </a>
       </li><!-- End Dashboard Nav -->
- <!-- End Register Page Nav -->
+      <!-- End Register Page Nav -->
 
- <li class="nav-item">
-  <a class="nav-link collapsed"  href="/admin/orders">
-      <i class="bi bi-menu-button-wide"></i>
-    <span>Orders</span>
-  </a>
-</li><!-- End Dashboard Nav -->
-<li class="nav-item">
-  <a class="nav-link collapsed"  href="/admin/coupon">
-    <i class="bi bi-journal-text"></i><span>Coupon</span>
-  </a>
-  
-  <li class="nav-item">
-    <a class="nav-link collapsed"  href="/admin/banner">
-      <i class="bi bi-journal-text"></i><span>Banner</span>
-    </a>
-    
-  </li><!-- End Icons Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/orders">
+          <i class="bi bi-menu-button-wide"></i>
+          <span>Orders</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/coupon">
+          <i class="bi bi-journal-text"></i><span>Coupon</span>
+        </a>
 
-</li><!-- End Icons Nav -->
-<li class="nav-item">
-  <a class="nav-link collapsed"  href="/admin/sales">
-    <i class="bi bi-journal-text"></i><span>Sales</span>
-  </a>
-  
-</li><!-- End Icons Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/banner">
+          <i class="bi bi-journal-text"></i><span>Banner</span>
+        </a>
+
+      </li><!-- End Icons Nav -->
+
+      </li><!-- End Icons Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/sales">
+          <i class="bi bi-journal-text"></i><span>Sales</span>
+        </a>
+
+      </li><!-- End Icons Nav -->
     </ul>
 
   </aside><!-- End Sidebar-->
@@ -122,7 +127,7 @@
 
     <div class="pagetitle">
       <h1>Dashboard</h1>
-     
+
     </div><!-- End Page Title -->
 
     <section class="section dashboard">
@@ -136,7 +141,7 @@
             <div class="col-xxl-4 col-md-6">
               <div class="card info-card sales-card">
 
-            
+
 
                 <div class="card-body">
                   <h5 class="card-title">Sales </h5>
@@ -146,8 +151,10 @@
                       <i class="bi bi-cart"></i>
                     </div>
                     <div class="ps-3">
-                      <h6><%=sales%></h6>
-                      
+                      <h6>
+                        <%=sales%>
+                      </h6>
+
 
                     </div>
                   </div>
@@ -160,7 +167,7 @@
             <div class="col-xxl-4 col-md-6">
               <div class="card info-card revenue-card">
 
-                
+
                 <div class="card-body">
                   <h5 class="card-title">Revenue</h5>
 
@@ -169,8 +176,10 @@
                       <i class="bi bi-currency-rupee"></i>
                     </div>
                     <div class="ps-3">
-                      <h6><%=revenue%></h6>
-                     
+                      <h6>
+                        <%=revenue%>
+                      </h6>
+
 
                     </div>
                   </div>
@@ -180,7 +189,7 @@
             </div><!-- End Revenue Card -->
 
             <!-- Customers Card -->
-           
+
 
             <!-- Reports -->
             <div class="col-12">
@@ -189,9 +198,9 @@
                 <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                 
 
-                    
+
+
                   </ul>
                 </div>
 
@@ -204,9 +213,9 @@
                   <script>
                     document.addEventListener("DOMContentLoaded", () => {
                       new ApexCharts(document.querySelector("#reportsChart"), {
-                        series: [ {
+                        series: [{
                           name: 'Revenue',
-                          data: ["<%=revenueChart[0]%>","<%=revenueChart[1]%>","<%=revenueChart[2]%>","<%=revenueChart[3]%>","<%=revenueChart[4]%>","<%=revenueChart[5]%>","<%=revenueChart[6]%>"]
+                          data: ["<%=revenueChart[0]%>", "<%=revenueChart[1]%>", "<%=revenueChart[2]%>", "<%=revenueChart[3]%>", "<%=revenueChart[4]%>", "<%=revenueChart[5]%>", "<%=revenueChart[6]%>"]
                         }],
                         chart: {
                           height: 350,
@@ -237,7 +246,7 @@
                         },
                         xaxis: {
                           type: 'date',
-                          categories: ["<%=dateChart[0]%>","<%=dateChart[1]%>","<%=dateChart[2]%>","<%=dateChart[3]%>","<%=dateChart[4]%>","<%=dateChart[5]%>","<%=dateChart[6]%>"]
+                          categories: ["<%=dateChart[0]%>", "<%=dateChart[1]%>", "<%=dateChart[2]%>", "<%=dateChart[3]%>", "<%=dateChart[4]%>", "<%=dateChart[5]%>", "<%=dateChart[6]%>"]
                         },
                         tooltip: {
                           x: {
@@ -254,16 +263,16 @@
               </div>
             </div><!-- End Reports -->
 
-          
 
-          
-        
+
+
+
 
           </div>
         </div><!-- End Left side columns -->
 
-        
-             </div>
+
+      </div>
     </section>
 
 
@@ -271,10 +280,11 @@
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
-   
+
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
-  
-<%-include('../layouts/footer.ejs') %>
+
+  <%-include('.. /layouts/footer.ejs') %>

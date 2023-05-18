@@ -1,25 +1,25 @@
 const mongoose = require('mongoose');
 const bannerSchema = new mongoose.Schema({
-  
-    
+
+
     heading: {
 
         type: String,
-        required:true
+        required: true
     },
     description: {
         type: String,
-        required:true
+        required: true
     },
     image: {
         type: Array,
         required: true,
     },
-   
 
-    
+
+
 })
 
 
 
-module.exports = mongoose.model('Banner',bannerSchema);
+module.exports = mongoose.model('Banner', bannerSchema);

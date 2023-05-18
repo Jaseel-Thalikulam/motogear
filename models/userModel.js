@@ -18,30 +18,30 @@ const userSchema = new mongoose.Schema({
     },
     referralCode: {
         type: String,
-        
-      
+
+
     },
     referralCount: {
         type: Number,
         default: 0
-      },
+    },
     referredUsers: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-      }],
+    }],
     is_admin: {
         type: Number,
         required: true
     },
     is_active: {
         type: Boolean,
-        default:true
+        default: true
     },
     wishlist: [{
         products: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Product',
-            required:true
+            required: true
         }
     }],
     cart: [{
@@ -57,42 +57,42 @@ const userSchema = new mongoose.Schema({
         prototalprice: {
             type: Number,
             required: true,
-            
+
         },
-        
+
     }],
-    
+
     cartTotalPrice: {
         type: Number,
-        default:0
+        default: 0
     },
     Address: [{
         name: {
             type: String,
-            required:true
+            required: true
         },
         address: {
             type: String,
-            required:true
+            required: true
         },
         postcode: {
             type: Number,
-            required:true
+            required: true
         },
         state: {
             type: String,
-            required:true
+            required: true
         },
         town: {
             type: String,
-            required:true
+            required: true
         },
         contactnumber: {
             type: Number,
-            required:true
+            required: true
         },
         landmark: {
-            type:String
+            type: String
         }
     }
 

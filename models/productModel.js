@@ -13,7 +13,7 @@ const productSchema = new mongoose.Schema({
 
         type: mongoose.Schema.Types.String,
         required: true,
-        ref:'Category'
+        ref: 'Category'
     },
     Description: {
         type: String,
@@ -47,4 +47,4 @@ const productSchema = new mongoose.Schema({
 
 
 
-module.exports = mongoose.model('Product',productSchema);
+module.exports = mongoose.model('Product', productSchema);

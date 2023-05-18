@@ -11,56 +11,56 @@ const orderschema = mongoose.Schema({
 
         type: String,
         unique: true,
-        required:true,
-        
+        required: true,
+
     },
     deliveryAddress: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User.Address',
         required: true,
-        
+
     },
     date: {
         type: Date,
-        default:Date
+        default: Date
     },
     product: [{
         productId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Product",
-            required:true,
+            required: true,
         },
         quantity: {
             type: Number,
-            required:true
+            required: true
         },
-        singleTotal: {     
+        singleTotal: {
             type: Number,
-            required:true
+            required: true
         },
         status: {
             type: String,
-            default:"order placed"
+            default: "order placed"
         },
         deliveredDate: {
             type: Date,
-            required:false
+            required: false
         }
 
 
     }],
 
     total: {
-        type:Number
+        type: Number
     },
     discount: {
-        type:Number
+        type: Number
     },
     paymentType: {
         type: String,
-        required:true
+        required: true
     },
-   
+
 
 
 

@@ -37,5 +37,5 @@ app.set('views','./views/')
 
 // server
 app.listen(3000, function () {
-    console.log('porst 3000 listening')
+    console.log('Listening  to port 3000')
 })
