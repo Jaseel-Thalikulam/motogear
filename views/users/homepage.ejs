@@ -6,55 +6,15 @@
     <header class="header_area bg-img background-overlay-dark" style="background-image: url(/assets/img/pexels-pragyan-bezbaruah-1715193.jpg);">
         <!-- Top Header Area Start -->
         <div class="top_header_area" style="background-color: rgba(0,0,0,0.5);">
-            <div class="container h-100">
+            <div class="container h-200">
                 <div class="row h-100 align-items-center justify-content-end">
 
                     <div class="col-12 col-lg-7">
-                        <div class="top_logo">
-                            <a href="#"><img src="/assets/img/filename.png" style="width: 150px; height: 100px;" alt=""></a>
-                        </div>
-                        <div class="top_single_area d-flex align-items-center">
-                            <!-- Logo Area -->
-                           
-                            <!-- Cart & Menu Area -->
-
-                            <div class="newdiv col-sm-4">
-                              <div class="content">
-                                <div class="search">
-                                  <input style="color: grey;" id="search-input" type="text" class="search__input" aria-label="search" placeholder="Search here">
-                                  <button class="search__submit" aria-label="submit search">
-                                    <i>
-                                      <img style="height: 1em; width: 1em;" src="/assets/img/magnifying-glass (1).png">
-                                    </i>
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                            
-
-                          
-                           
-                            <div class="select-container">
-                              <select id="sort-select" class="form-select" aria-label="sort by">
-                                <option value="" selected>Sort by</option>
-                                <option value="asc">Price: Low to High</option>
-                                <option value="desc">Price: High to Low</option>
-                              </select>
-                            
-                              <select id="filter-select" class="form-select" aria-label="filter by">
-                                <option value="" selected>Filter by</option>
-                                <% if (categories.length > 0) { %>
-                                <% for (let i = 0; i < categories.length; i++) { %>
-                                <% if (categories[i].categoryStatus == true) { %>
-                                <option value="<%= categories[i].category %>"><%= categories[i].category %></option>
-                                <% } %>
-                                <% } %>
-                                <% } %>
-                              </select>
-                            </div>
-                            
-                          
-                            
+                      <div class="top_single_area d-flex align-items-center">
+                          <div class="top_logo">
+                              <a href="#"><img src="/assets/img/White logo - no background.svg" style="width: 150px; height: 100px;" alt=""></a>
+                          </div>
+                
                             <div class="header-cart-menu d-flex align-items-center ml-auto">
                                 <!-- Cart Area -->
                                 <%if(user){%>
@@ -72,6 +32,22 @@
                     </div>
 
                 </div>
+
+                <div class="row h-100 align-items-center justify-content-center ">
+
+                  <div class="col-12 col-lg-7 ">
+                    <div class="content">
+                      <div class="search">
+                        <input style="background-color: transparent; color: #ccc;" id="search-input" type="text" class="search__input" aria-label="search" placeholder="Find the perfect gear for your ride..." autocomplete="off">
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+                  
+       
+                  </div>
+
             </div>
         </div>
 
@@ -93,7 +69,7 @@
 
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="ti-menu"></i></span></button>
 
-                                <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
+                                <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar" style="background-color: transparent;">
                                     <ul class="navbar-nav animated" id="nav" >
                                         <li class="nav-item active"><a class="nav-link" href="/"  style="color: #fff;">Home</a></li>
                                       
@@ -141,10 +117,31 @@
     
         <!-- ****** Header Area Start ****** -->
 
-        <div id="search-title" style="text-align: center ;"  ></div>
+        <div id="search-title" style="text-align: center ; "  ></div>
 
         <div class="container">
+          
+          <div class="select-container"  >
+            <select id="sort-select" class="form-select" aria-label="sort by">
+              <option value="" hidden selected>Sort by</option>
+              <option value="asc">Price: Low to High</option>
+              <option value="desc">Price: High to Low</option>
+            </select>
+          
+            <select id="filter-select" class="form-select" aria-label="filter by">
+              <option value="" hidden selected>Filter by</option>
+              <% if (categories.length > 0) { %>
+              <% for (let i = 0; i < categories.length; i++) { %>
+              <% if (categories[i].categoryStatus == true) { %>
+              <option value="<%= categories[i].category %>"><%= categories[i].category %></option>
+              <% } %>
+              <% } %>
+              <% } %>
+            </select>
+          </div>
         <div id="search-results" class="row"  ></div>
+        <div id="search-results-404"  style="text-align: center;"  ></div>
+        
 
     </div>
                  
@@ -442,255 +439,42 @@
 </footer>
 <!-- ****** Footer Area End ****** -->
 <style>
-    *,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-:root {
-  --clr-primary: #fff;
-  --clr-body: #333;
-  --clr-bg: #ddd;
-}
-
-.newdiv {
-  font-family: basic-sans, sans-serif;
-  /* min-height: 100vh; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.125em;
-  line-height: 1.6;
-  color: var(--clr-body);
-  margin-top: 40px;
-  max-width: 200px;
   
-  background: var(--clr-bg);
-
-
-
-}
-
-.content {
-  background: #0000;
-  width: 40vw;
- 
-  
-  /* box-shadow: 0 0 3em rgba(0, 0, 0, 0.15); */
-  position: absolute;
-
-}
-
-.search {
-  --size: 60px;
-  border: 2px solid var(--clr-primary);
-  display: flex;
-  border-radius: 100px;
-  overflow: hidden;
-  font-size: 1.25em;
-  position: relative;
-  width: var(--size);
-  height: var(--size);
-  /* margin-left: auto; */
-  padding: 3px;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .search {
-    transition: width 450ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
-  }
-}
-
-.search__input {
-  border: 0;
-  padding: 0.25em 1em;
-  flex-grow: 1;
-  outline: 0;
-  z-index: 2;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: transparent;
-  opacity: 0;
-  cursor: pointer;
-
-}
-
-.search__submit {
-  font-size: 1.5rem;
-  margin-left: auto;
-  background: 0;
-  border: 0;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: background 200ms ease-out;
-  width: calc(var(--size) - 10px);
-  height: calc(var(--size) - 10px);
-  color: var(--clr-body);
-}
-
-.search:focus-within {
-  /* box-shadow: 0 0 5px var(--clr-primary); */
-  width: 100%;
-}
-
-.search:focus-within .search__input {
-  opacity: 1;
-  z-index: initial;
-  cursor: initial;
-  width: calc(100% - var(--size));
-
-}
-
-
-.search:focus-within .search__submit {
-  background-color: #00000000;
-  color: white;
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); */
-  transition: transform 500ms ease-out;
-
-  
-}
-
-.search:focus-within .search__submit :hover{
-
-    outline: 0;
-    /* transform: rotate(1turn); */
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.65); */
-
-}
-
-.search:focus-within .search__submit :focus{
-
-outline: 0;
-/* transform: rotate(1turn); */
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.65);
-
-}
-.product-img {
-  position: relative;
-  overflow: hidden; /* hide the overflow when scaled */
-}
-
-.product-img img {
-  display: block; /* make the image a block element to prevent wrapping */
-  transition: transform 0.5s ease;
-}
-
-.product-img:hover img {
-  transform: scale(1.2);
-}
-
-.product-img:hover::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 1px solid #ccc;
-  z-index: 9999;
-  pointer-events: none;
-}
-
-.product-img::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  z-index: 9999;
-  pointer-events: none;
-}
-
-.product-img:not(:hover)::before {
-  opacity: 1;
-}
-
-
-.gradient-div {
-      width: 100%;
-      height: 200px;
-      background: rgba(0, 0, 0, 0.5);
-      background: linear-gradient(rgba(0, 0, 0, 0.5), #fff);
-    }
-
-    .newdiv {
-    width: 100%;
-    max-width: 300px; /* Adjust the maximum width as needed */
-    margin: 0 auto;
-  }
-
-  .search__input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  .search__submit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #00000000;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 0px;
-  }
-
-  .search__submit:focus {
-    outline: none;
-    /* or border: none; */
-  }
-
-  .search__submit img {
-    height: 1em;
-    width: 1em;
-  }
-
-  /* Responsive styles */
-  @media (max-width: 767px) {
-    .newdiv {
-      max-width: 100%;
-    }
-  }
   .select-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-  }
+  display: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
 
-  .form-select {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 3px;
-    font-size: 14px;
-    border: none;
-    border-radius: 3px;
-    background-color: #00000000;
-    color: #FF084E;
-  }
+}
 
-  /* Responsive styles */
-  @media (min-width: 768px) {
-    .select-container {
-      justify-content: flex-end;
-    }
 
-    .form-select {
-      width: auto;
-      margin-left: 10px;
-    }
-  }
+/* Styles for the search input */
+.search__input {
+  background-color: transparent;
+  color: #ccc;
+
+  padding: 5px;
+  font-size: 16px;
+  width: 80%;
+}
+
+/* Styles for the search input */
+.search__input {
+  background-color: transparent;
+  color: #ccc;
+  padding: 5px;
+  font-size: 16px;
+  width: 80%;
+  outline: none; /* Remove the default outline */
+border-radius: 20px;
+
+}
+.search__input::placeholder {
+  color: #ccc; /* Placeholder color */
+  font-size: 14px; /* Adjust the size of the placeholder text */
+  padding-left: 2px;
+}
+
 
 
 </style>
@@ -710,7 +494,7 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.65);
         success: (response) => {
           if (response.success) {
             $('.table-shopping-cart').load('/wishlist .table-shopping-cart')
-            console.log(response);
+           
             Swal.fire({
               title: 'Added',
               text: 'Item added to Cart',
@@ -726,7 +510,7 @@ box-shadow: 0 0 10px rgba(0, 0, 0, 0.65);
               showConfirmButton: false
             })
           }
-          console.log(response);
+       
         }
       })
     }
@@ -788,9 +572,13 @@ $('#search-input, #sort-select, #filter-select').on('change input', function() {
       dataType: 'json',
       success: function(results) {
         // Update the search results on the pages
+    
+        if(results.length>0){
+
+        
         $('#search-results').html('');
         $('#search-title').html('');
-        $('#search-title').append('<h2 style="font-size:48px">SEARCH RESULTS</h2>');
+        $('#search-title').html('<h2 style="font-size:48px">SEARCH RESULTS</h2>');
         results.forEach(function(result) {
           var imageUrl = '/assets/img/' + result.image[0];
           var imageTag = '<img style="height: 350px; width: 350px;" src="' + imageUrl + '">';
@@ -798,7 +586,20 @@ $('#search-input, #sort-select, #filter-select').on('change input', function() {
           var productName = '<p>'+result.product+'</p>';
           var productPrice = '<h4 style="color:#9f9f9f ;font-weight: 450" class="product-price">'+'₹'+result.price+'</h4>';
           $('#search-results').append('<div class="col-12 col-sm-6 col-md-4" >' + '<a href="' + productUrl+ '">' + '<div>' + imageTag +  productPrice + productName + '</div>' + '</a>' + '</div>');
+          $('.select-container').show();  
         });
+        $('#search-results-404').html('');
+
+      }else{
+        $('#search-results').html('');
+     
+        $('#search-title').html('<h2 style="font-size:48px">SEARCH RESULTS</h2>');
+     
+        
+        $('#search-results-404').html('<h1>Oh no! Your search came up empty.</h1><p>We couldn\'t find any results matching your search terms. Feel free to explore our other categories or get in touch with us for personalized recommendations.</p>');
+        
+
+      }
       },
       error: function(xhr, status, error) {
         console.log(error);
@@ -806,8 +607,11 @@ $('#search-input, #sort-select, #filter-select').on('change input', function() {
     });
   } else {
     // Clear search results and title
+
     $('#search-results').html('');
+    $('#search-results-404').html('');
     $('#search-title').html('');
+    $('.select-container').hide();
   }
 });
 
