@@ -3,23 +3,23 @@
 
 
 <main >
-    <div class="container" >
+    <div class="container " >
 
       <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-              <div class="d-flex justify-content-center py-4">
-                <a href="/" class="logo d-flex align-items-center w-auto">
-                  <img src="" alt="">
-                  <span class="d-none d-lg-block">MOTOGEAR</span>
+              <div class="logodiv">
+                <a href="/" class="logo d-flex align-items-center ">
+                  <img src="/assets/img/Black logo - no background.svg" alt="" >
+               
                 </a>
               </div><!-- End Logo -->
 
-              <div class="card mb-3" style="border-radius: 25px; background-color: #FF084E ;">
+              <div class="card mb-3" >
 
-                <div class="card-body" style="background-color: #fff; border-radius: 12em 23px 23px 23px">
+                <div class="card-body" >
 
                   <div class="pt-4 pb-2">
                     <h5 class="card-title text-center pb-0 fs-4" >Welcome Back</h5>
@@ -50,10 +50,10 @@
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn  w-100"  style="background-color: #fff;border-color: #FF084E;border-radius: 25px ;color: #FF084E;"  type="submit">Login</button>
+                      <button class="btn  w-100"    type="submit">Login</button>
                     </div>
                     <div class="col-12">
-                   <a href="/register">   <button class="btn  w-100"  style="background-color: #fff;border-color: #FF084E;border-radius: 25px ;color: #FF084E;"  type="button">Get Started</button></a>
+                   <a href="/register">   <button class="btn  w-100"   type="button">Register</button></a>
 
                    <a href="/forgetpassword" style="font-size: 12px; padding-left: 5px;">Trouble logging in?</a>
 
@@ -90,6 +90,44 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+<style>
+ body {
+  background-image: url("/assets/img/Outback-D-2560x850.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  backdrop-filter: blur(10px);
+}
 
+.logodiv{
+  position: fixed;
+  left: 20px;
+  top:20px;
+  width: 5rem;
+  
+}
+
+.btn {
+  background-color: #337ab7;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  background-color: #23527c;
+  color: #fff;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 5px #23527c;
+}
+
+</style>
 
 <%-include('../layouts/footer.ejs') %>
