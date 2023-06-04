@@ -1,210 +1,246 @@
 <%-include('../layouts/userheader.ejs') %>
 
 
-<div id="wrapper">
+    <div id="wrapper">
 
-    <!-- ****** Header Area Start ****** -->
-    <header class="header_area bg-img background-overlay-white" style="background-image: url(/assets/img/pexels-pragyan-bezbaruah-1715193.jpg);">
-        <!-- Top Header Area Start -->
-        <div class="top_header_area">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center justify-content-end">
+        <!-- ****** Header Area Start ****** -->
+        <header class="header_area bg-img background-overlay-white"
+            style="background-image: url(/assets/img/pexels-pragyan-bezbaruah-1715193.jpg);">
+            <!-- Top Header Area Start -->
+            <div class="top_header_area">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center justify-content-end">
 
-                    <div class="col-12 col-lg-7">
-                        <div class="top_logo">
-                            <a href="#"><img src="/userassets/img/core-img/logo.png" style="width: 70px;" alt=""></a>
-                        </div>
-                        <div class="top_single_area d-flex align-items-center">
-                            <!-- Logo Area -->
-                           
-                            <!-- Cart & Menu Area -->
+                        <div class="col-12 col-lg-7">
+                            <div class="top_logo">
+                                <a href="#"><img src="/userassets/img/core-img/logo.png" style="width: 70px;"
+                                        alt=""></a>
+                            </div>
+                            <div class="top_single_area d-flex align-items-center">
+                                <!-- Logo Area -->
 
-                         
+                                <!-- Cart & Menu Area -->
 
-                            <div class="header-cart-menu d-flex align-items-center ml-auto">
-                                <!-- Cart Area -->
-                                <%if(user){%>
-                                    <div class="cart">
-                                        <a href="/cart" id="header-cart-btn" target="_blank"><span class="cart_quantity"><%=countcart%></span><i class="ti-bag"></i></a>
-                                        <!-- Cart List Area Start -->
-                                        
-                                    </div>
-                                  <%}%>
-                                <!-- <div class="header-right-side-menu ml-15">
+
+
+                                <div class="header-cart-menu d-flex align-items-center ml-auto">
+                                    <!-- Cart Area -->
+                                    <%if(user){%>
+                                        <div class="cart">
+                                            <a href="/cart" id="header-cart-btn" target="_blank"><span
+                                                    class="cart_quantity">
+                                                    <%=countcart%>
+                                                </span><i class="ti-bag"></i></a>
+                                            <!-- Cart List Area Start -->
+
+                                        </div>
+                                        <%}%>
+                                            <!-- <div class="header-right-side-menu ml-15">
                                     <a href="#" id="sideMenuBtn"><i class="ti-menu" aria-hidden="true"></i></a>
                                 </div> -->
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Top Header Area End -->
-        <div class="main_header_area">
-            <div class="container h-100">
-                <div class="row h-100">
+            <!-- Top Header Area End -->
+            <div class="main_header_area">
+                <div class="container h-100">
+                    <div class="row h-100">
 
-                   
 
-                    <div class="col-12 d-md-flex justify-content-center"  >
-                        <!-- Header Social Area -->
-                       
-                        <!-- Menu Area -->
-                      
-                                                   
+
+                        <div class="col-12 d-md-flex justify-content-center">
+                            <!-- Header Social Area -->
+
+                            <!-- Menu Area -->
+
+
                             <div class="main-menu-area">
-                            <nav class="navbar navbar-expand-lg align-items-start">
+                                <nav class="navbar navbar-expand-lg align-items-start">
 
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="ti-menu"></i></span></button>
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                        data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false"
+                                        aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i
+                                                class="ti-menu"></i></span></button>
 
-                                <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
-                                    <ul class="navbar-nav animated" id="nav">
-                                        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
-                                      
-                                        <li class="nav-item"><a class="nav-link" href="/allproducts">EXPLORE OUR PRODUCTS</a></li>
-                                        <!-- <li class="nav-item"><a class="nav-link" href="#"> RIDING GLOVES</a></li>
+                                    <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
+                                        <ul class="navbar-nav animated" id="nav">
+                                            <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+
+                                            <li class="nav-item"><a class="nav-link" href="/allproducts">EXPLORE OUR
+                                                    PRODUCTS</a></li>
+                                            <!-- <li class="nav-item"><a class="nav-link" href="#"> RIDING GLOVES</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#"><span class="karl-level">hot</span> RIDING JACKETS</a></li> -->
 
-                                        <% if (user){%>
+                                            <% if (user){%>
 
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" style="text-transform: capitalize;" aria-expanded="false">Hello,<%=user.name%></a>
-                                                <div class="dropdown-menu"  aria-labelledby="karlDropdown">
-                                                    
-                                                    
-                                                     
-                                                    <a class="dropdown-item" href="/profile/<%=user._id%>">My Profile</a>
-                                                     <a class="dropdown-item" href="/logout">Logout</a>
-                                           
-                                                   
-                                                </div>
-                                            </li>
-                                           
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" href="#" id="karlDropdown"
+                                                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                        style="text-transform: capitalize;" aria-expanded="false">Hello,
+                                                        <%=user.name%></a>
+                                                    <div class="dropdown-menu" aria-labelledby="karlDropdown">
 
-                                        <%}else{%>
 
-                                            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-                                            
-                                        <%}%>
-                                       
+
+                                                        <a class="dropdown-item" href="/profile/<%=user._id%>">My
+                                                            Profile</a>
+                                                        <a class="dropdown-item" href="/logout">Logout</a>
+
+
+                                                    </div>
+                                                </li>
+
+
+                                                <%}else{%>
+
+                                                    <li class="nav-item"><a class="nav-link" href="/login">Login</a>
+                                                    </li>
+
+                                                    <%}%>
+
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                            <!-- Help Line -->
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- ****** Header Area End ****** -->
+
+
+        <div class="checkout_area section_padding_100">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="checkout_details_area mt-50 clearfix">
+                            <div class="cart-page-heading">
+                                <h5>Referals & Coupons</h5>
+                            </div>
+
+                            <div>
+
+
+                                <div
+                                    style="height: 135px; background-color: #FF084E; width: 150px; border-radius: 10px; text-align: center;">
+                                    <h6 style="color: #fff;font-weight: bold; padding-top: 20px;">TOTAL REFERRALS</h6>
+                                    <br>
+                                    <h1 style="color: #fff;font-weight: bold; line-height: 10px;">
+                                        <%=userData.referralCount%>
+                                    </h1>
+                                </div>
+
+                                <div class="referral-guidelines" style="padding-top: 10px;">
+                                    <h2>Referral Guidelines</h2>
+                                    <ul>
+                                        <li>Refer friends and family to our service using your unique referral Code</li>
+                                        <li>Coupons are valid for one purchase only.</li>
+                                        <li>You can refer as many people as you like, but each person can only be
+                                            referred once.</li>
+                                        <li>You will receive a coupon after your 1st, 5th, 10th, and 20th referrals.
+                                            After 20 referrals, the count will reset.</li>
                                     </ul>
                                 </div>
-                            </nav>
-                        </div>
-                        <!-- Help Line -->
-                 
 
-                       
+
+                            </div>
+
+
+
+                        </div>
                     </div>
+
+                    <% for (let i=Coupons.length-1; i>=0; i--) { %>
+
+                        <% if(Coupons[i].userUsed==user._id){%>
+
+
+
+
+
+
+
+                            <% }else{ %>
+
+                                <a onclick="copyCouponCode('<%= Coupons[i].code %>')">
+                                    <div class=" card text-center m-3 " style="user-select: none;">
+
+                                        <div class="image"><img src="https://i.imgur.com/DC94rZe.png" width="150"></div>
+                                        <div class="image2"><img src="https://i.imgur.com/DC94rZe.png" width="150">
+                                        </div>
+                                        <h1>
+                                            <%= Coupons[i].percentageOff %>% OFF
+                                        </h1><span class="d-block">Threshold Amount:</span><span class="d-block">₹<%=
+                                                Coupons[i].MinPurchaseAmount %></span>
+                                        <div class="mt-4"><small>
+                                                <%= Coupons[i].code %>
+                                            </small></div>
+                                    </div>
+                                </a>
+
+
+
+
+                                <%}%>
+
+                                    <%}%>
+
+
+
+                                        <% for (let i=0; i < UserCoupon.length; i++) { %>
+
+                                            <% if(UserCoupon[i].userUsed==user._id){%>
+
+                                                <% }else{ %>
+
+                                                    <a onclick="copyCouponCode('<%= UserCoupon[i].code %>')">
+                                                        <div class=" card text-center m-3 " style="user-select: none;">
+
+                                                            <div class="image"><img
+                                                                    src="https://i.imgur.com/DC94rZe.png" width="150">
+                                                            </div>
+                                                            <div class="image2"><img
+                                                                    src="https://i.imgur.com/DC94rZe.png" width="150">
+                                                            </div>
+                                                            <h1>
+                                                                <%= UserCoupon[i].percentageOff %>% OFF
+                                                            </h1><span class="d-block">Threshold Amount:</span><span
+                                                                class="d-block">₹<%= UserCoupon[i].MinPurchaseAmount %>
+                                                                    </span>
+                                                            <div class="mt-4"><small>
+                                                                    <%= Coupons[i].code %>
+                                                                </small></div>
+                                                        </div>
+                                                    </a>
+
+
+                                                    <%}%>
+
+                                                        <%}%>
+
+
+
                 </div>
             </div>
         </div>
-        </header>
-    <!-- ****** Header Area End ****** -->
-
-
-    <div class="checkout_area section_padding_100">
-        <div class="container">
-            <div class="row">
-    
-                <div class="col-md-12">
-                    <div class="checkout_details_area mt-50 clearfix">
-                        <div class="cart-page-heading">
-                            <h5>Referals & Coupons</h5>
-                        </div>
-    
-                        <div >
-
-
-                            <div style="height: 135px; background-color: #FF084E; width: 150px; border-radius: 10px; text-align: center;">
-                                <h6 style="color: #fff;font-weight: bold; padding-top: 20px;">TOTAL REFERRALS</h6><br>
-                                <h1 style="color: #fff;font-weight: bold; line-height: 10px;"><%=userData.referralCount%></h1>
-                              </div>
-                              
-                              <div class="referral-guidelines" style="padding-top: 10px;">
-                                <h2>Referral Guidelines</h2>
-                                <ul>
-                                  <li>Refer friends and family to our service using your unique referral Code</li>
-                                  <li>Coupons are valid for one purchase only.</li>
-                                  <li>You can refer as many people as you like, but each person can only be referred once.</li>
-                                  <li>You will receive a coupon after your 1st, 5th, 10th, and 20th referrals. After 20 referrals, the count will reset.</li>
-                                </ul>
-                              </div>
-
-
-                        </div>
-                        
-
-                       
-                    </div>
-                </div>
-
-                <% for (let i = Coupons.length-1; i >=0; i--) { %>
-                            
-                    <% if(Coupons[i].userUsed==user._id){%>
-
-
-                       
-
-
-                     
-
-                  <% }else{ %>
-
-                    <a onclick="copyCouponCode('<%= Coupons[i].code %>')">             
-                                   <div class=" card text-center m-3 " style="user-select: none;"  >
-                                    
-                        <div class="image"><img src="https://i.imgur.com/DC94rZe.png" width="150"></div>
-                        <div class="image2"><img src="https://i.imgur.com/DC94rZe.png" width="150"></div>
-                        <h1><%= Coupons[i].percentageOff %>% OFF</h1><span class="d-block">Threshold Amount:</span><span class="d-block">₹<%= Coupons[i].MinPurchaseAmount %></span>
-                        <div class="mt-4"><small  ><%= Coupons[i].code %></small></div>
-                    </div>
-                </a>
-
-
-                   
-
-                    <%}%>
-
-                  <%}%>
-                
-
-                  
-                  <% for (let i = 0; i < UserCoupon.length; i++) { %>
-                            
-                    <% if(UserCoupon[i].userUsed==user._id){%>
-
-                  <% }else{ %>
-                    
-                    <a onclick="copyCouponCode('<%= UserCoupon[i].code %>')">             
-                        <div class=" card text-center m-3 " style="user-select: none;"  >
-                         
-             <div class="image"><img src="https://i.imgur.com/DC94rZe.png" width="150"></div>
-             <div class="image2"><img src="https://i.imgur.com/DC94rZe.png" width="150"></div>
-             <h1><%= UserCoupon[i].percentageOff %>% OFF</h1><span class="d-block">Threshold Amount:</span><span class="d-block">₹<%= UserCoupon[i].MinPurchaseAmount %></span>
-             <div class="mt-4"><small  ><%= Coupons[i].code %></small></div>
-         </div>
-     </a>
-
-
-                    <%}%>
-
-                  <%}%>
-
-              
-    
-            </div>
-        </div>
-    </div>
 
         <!-- ****** Footer Area Start ****** -->
         <footer class="footer_area">
             <div class="container">
                 <div class="row">
                     <!-- Single Footer Area Start -->
-                  
+
                     <!-- Single Footer Area Start -->
                     <div class="col-12 col-sm-6 col-md-3 col-lg-2">
                         <div class="single_footer_area">
@@ -231,57 +267,55 @@
                     <!-- Single Footer Area Start -->
                     <div class="col-12 col-lg-5">
                         <div class="single_footer_area">
-                           
+
                         </div>
                     </div>
                 </div>
                 <div class="line"></div>
 
                 <!-- Footer Bottom Area Start -->
-             
+
         </footer>
         <!-- ****** Footer Area End ****** -->
     </div>
 
     <style>
-   
-   .card {
-  width: 250px;
-  padding: 10px;
-  border-radius: 20px;
-  background: #FF084E;
-  border: none;
-  color: #fff;
-  height: 250px;
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-}
+        .card {
+            width: 250px;
+            padding: 10px;
+            border-radius: 20px;
+            background: #FF084E;
+            border: none;
+            color: #fff;
+            height: 250px;
+            display: flex;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+        }
 
-.card h1 {
-  font-size: 48px;
-  margin-bottom: 0px;
-}
+        .card h1 {
+            font-size: 48px;
+            margin-bottom: 0px;
+        }
 
-.card span {
-  font-size: 28px;
-}
+        .card span {
+            font-size: 28px;
+        }
 
-.image {
-  position: absolute;
-  opacity: .3;
-  left: 0;
-  top: 0;
-}
+        .image {
+            position: absolute;
+            opacity: .3;
+            left: 0;
+            top: 0;
+        }
 
-.image2 {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  opacity: .3;
-}
-   
+        .image2 {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            opacity: .3;
+        }
     </style>
 
     <script>
@@ -291,15 +325,15 @@
 
 
         function copyCouponCode(code) {
-          var tempInput = document.createElement("input");
-          tempInput.value = code;
-          document.body.appendChild(tempInput);
-          tempInput.select();
-          document.execCommand("copy");
-          document.body.removeChild(tempInput);
-          alert("Coupon code copied to clipboard!");
+            var tempInput = document.createElement("input");
+            tempInput.value = code;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            alert("Coupon code copied to clipboard!");
         }
-        </script>
-    
-    
+    </script>
+
+
     <%-include('../layouts/userfooter.ejs') %>

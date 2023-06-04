@@ -9,9 +9,14 @@ const nocache = require('nocache');
 
 const app = express()
 app.use(session({
-    secret: "Key",
-    cookie: {maxAge:6000000
-}}))
+  secret: "Key",
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 6000000
+  }
+}));
+
 const path=require("path")
 app.use(express.static(path.join(__dirname,'public')))
 //for user router

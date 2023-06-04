@@ -1565,15 +1565,14 @@ const insertUser = async (req, res) => {
         const referralCode = generateReferralCode();
         const spassword = await securePassword(req.body.password);
         const user = new User({
-
             name: req.body.name,
             email: req.body.email,
             mobile: req.body.mobile,
             password: spassword,
             referralCode: referralCode,
             is_admin: 0,
-
-        })
+          });
+          
 
 
 
