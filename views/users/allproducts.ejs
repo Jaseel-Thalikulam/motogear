@@ -2,29 +2,23 @@
 
 <div id="wrapper">
 
-    <!-- ****** Header Area Start ****** -->
-    <header class="header_area bg-img background-overlay-white" style="background-image: url(/assets/img/pexels-pragyan-bezbaruah-1715193.jpg);">
+    <header class="header_area bg-img background-overlay-dark" style="background-image: url(/assets/img/pexels-pragyan-bezbaruah-1715193.jpg);">
         <!-- Top Header Area Start -->
-        <div class="top_header_area">
-            <div class="container h-100">
+        <div class="top_header_area" style="background-color: rgba(0,0,0,0.5);">
+            <div class="container h-200">
                 <div class="row h-100 align-items-center justify-content-end">
 
                     <div class="col-12 col-lg-7">
-                        <div class="top_logo">
-                            <a href="#"><img src="/userassets/img/core-img/logo.png" style="width: 70px;" alt=""></a>
-                        </div>
-                        <div class="top_single_area d-flex align-items-center">
-                            <!-- Logo Area -->
-                           
-                            <!-- Cart & Menu Area -->
-
-                          
-
+                      <div class="top_single_area d-flex align-items-center">
+                          <div class="top_logo">
+                              <a href="#"><img src="/assets/img/White logo - no background.svg" style="width: 150px; height: 100px;" alt=""></a>
+                          </div>
+                
                             <div class="header-cart-menu d-flex align-items-center ml-auto">
                                 <!-- Cart Area -->
                                 <%if(user){%>
                                     <div class="cart">
-                                        <a href="/cart" id="header-cart-btn" target="_blank"><span class="cart_quantity"><%=countcart%></span><i class="ti-bag"></i> Your Cart</a>
+                                        <a href="/cart" id="header-cart-btn" target="_blank"><span class="cart_quantity"><%=countcart%></span><i class="ti-bag" style="color:#fff"></i></a>
                                         <!-- Cart List Area Start -->
                                         
                                     </div>
@@ -37,12 +31,28 @@
                     </div>
 
                 </div>
+
+                <div class="row h-100 align-items-center justify-content-center ">
+
+                  <div class="col-12 col-lg-7 ">
+                    <div class="content">
+                      <div class="search">
+                        <input style="background-color: transparent; color: #ccc;" id="search-input" type="text" class="search__input" aria-label="search" placeholder="Find the perfect gear for your ride..." autocomplete="off">
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+                  
+       
+                  </div>
+
             </div>
         </div>
 
         <!-- Top Header Area End -->
-        <div class="main_header_area">
-            <div class="container h-100">
+        <div class="main_header_area"  style="background-color: rgba(0,0,0,0.5);">
+            <div class="container h-100" >
                 <div class="row h-100">
 
                    
@@ -58,24 +68,25 @@
 
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="ti-menu"></i></span></button>
 
-                                <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
-                                    <ul class="navbar-nav animated" id="nav">
-                                        <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+                                <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar" style="background-color: transparent;">
+                                    <ul class="navbar-nav animated" id="nav" >
+                                        <li class="nav-item active"><a class="nav-link" href="/"  style="color: #fff;">Home</a></li>
                                       
-                                        <li class="nav-item"><a class="nav-link" href="/allproducts">EXPLORE OUR PRODUCTS</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/allproducts"  style="color: #fff;">EXPLORE OUR PRODUCTS</a></li>
                                         <!-- <li class="nav-item"><a class="nav-link" href="#"> RIDING GLOVES</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#"><span class="karl-level">hot</span> RIDING JACKETS</a></li> -->
 
                                         <% if (user){%>
 
                                             <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown"  aria-haspopup="true" style="text-transform: capitalize;" aria-expanded="false">Hello,<%=user.name%></a>
+                                              <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" style="text-transform: capitalize; color: #fff;" aria-expanded="false">Hello, <%=user.name%></a>
+
                                                 <div class="dropdown-menu"  aria-labelledby="karlDropdown">
                                                     
                                                     
                                                      
-                                                    <a class="dropdown-item" href="/profile/<%=user._id%>">My Profile</a>
-                                                     <a class="dropdown-item" href="/logout">Logout</a>
+                                                    <a class="dropdown-item" href="/profile/<%=user._id%>"  ">My Profile</a>
+                                                     <a class="dropdown-item" href="/logout"  >Logout</a>
                                            
                                                    
                                                 </div>
@@ -84,7 +95,7 @@
 
                                         <%}else{%>
 
-                                            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="/login"  style="color: #fff;">Login</a></li>
                                             
                                         <%}%>
                                        
@@ -103,6 +114,33 @@
         </header>
 <!-- ****** Header Area End ****** -->
 
+<div id="search-title" style="text-align: center ; "  ></div>
+
+<div class="container">
+  
+  <div class="select-container">
+    <select id="sort-select" class="form-select" aria-label="sort by">
+      <option value="" hidden selected>Sort by</option>
+      <option value="asc">Price: Low to High</option>
+      <option value="desc">Price: High to Low</option>
+    </select>
+  
+    <select id="filter-select" class="form-select" aria-label="filter by" >
+      <option value="" hidden selected>Filter by</option>
+      <% if (categories.length > 0) { %>
+      <% for (let i = 0; i < categories.length; i++) { %> 
+      <% if (categories[i].categoryStatus == true) { %>
+      <option value="<%= categories[i].category %>"><%= categories[i].category %></option>
+      <% } %>
+      <% } %>
+      <% } %>
+    </select>
+  </div>
+<div id="search-results" class="row"  ></div>
+<div id="search-results-404"  style="text-align: center;"  ></div>
+
+
+</div>
     <!-- ****** New Arrivals Area Start ****** -->
     <section class="new_arrivals_area section_padding_100_0 clearfix">
         <div class="container">
@@ -168,7 +206,12 @@
                         </div>
                         <!-- Product Description -->
                         <div class="product-description">
-                            <h4 class="product-price">₹<%= product[i].offerprice %>    <span style="text-decoration: line-through;">₹<%= product[i].price %></span> </h4>
+                            <h4 class="product-price">
+                                ₹<%= product[i].offerprice.toLocaleString('en-IN') %>
+                                <span style="text-decoration: line-through;">
+                                  ₹<%= product[i].price.toLocaleString('en-IN') %>
+                                </span>
+                              </h4>
                           
                             <p><%=product[i].product %></p>
                            
@@ -190,7 +233,7 @@
                             </div>
                             <!-- Product Description -->
                             <div class="product-description">
-                                <h4 class="product-price">₹<%= product[i].price %> </h4>
+                                <h4 class="product-price">₹<%= product[i].price.toLocaleString('en-IN') %></h4>
                               
                                 <p><%=product[i].product %></p>
                                
@@ -308,6 +351,12 @@
 
 <style>
 
+.select-container {
+  display: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  
+}
 .store-pagination li a.active {
   background-color: #FF084E;
   color: #fff;
@@ -346,9 +395,103 @@
   color: #fff;
 }
 
+
+/* Styles for the search input */
+.search__input {
+  background-color: transparent;
+  color: #ccc;
+
+  padding: 5px;
+  font-size: 16px;
+  width: 80%;
+}
+
+/* Styles for the search input */
+.search__input {
+  background-color: transparent;
+  color: #ccc;
+  padding: 5px;
+  font-size: 16px;
+  width: 80%;
+  outline: none; /* Remove the default outline */
+border-radius: 20px;
+
+}
+.search__input::placeholder {
+  color: #ccc; /* Placeholder color */
+  font-size: 14px; /* Adjust the size of the placeholder text */
+  padding-left: 2px;
+}
+
 </style>
 
 <script>
+
+
+
+$('#search-input, #sort-select, #filter-select').on('change input', function() {
+  var query = $('#search-input').val();
+  var sortField = $('#sort-select').val();
+  var filterField = $('#filter-select').val();
+
+  
+
+  if (query.trim() !== '') {
+    // Send AJAX request to server to search, sort, and filter items
+    $.ajax({
+      timeout: 5000,
+      url: '/searchSortFilter',
+      type: 'GET',
+      data: { q: query, sortField: sortField, filterField: filterField },
+      dataType: 'json',
+      success: function(results) {
+        // Update the search results on the pages
+    
+        if(results.length>0){
+
+        
+        $('#search-results').html('');
+        $('#search-title').html('');
+        $('#search-title').html('<h2 style="font-size:48px">SEARCH RESULTS</h2>');
+        results.forEach(function(result) {
+          var imageUrl = '/assets/img/' + result.image[0];
+          var imageTag = '<img style="height: 350px; width: 350px;" src="' + imageUrl + '">';
+          var productUrl = '/productdetails/'+result._id;
+          var productName = '<p>'+result.product+'</p>';
+          var productPrice = '<h4 style="color:#9f9f9f ;font-weight: 450" class="product-price">'+'₹'+result.price+'</h4>';
+          $('#search-results').append('<div class="col-12 col-sm-6 col-md-4" >' + '<a href="' + productUrl+ '">' + '<div>' + imageTag +  productPrice + productName + '</div>' + '</a>' + '</div>');
+          $('.select-container').show();  
+        });
+        $('#search-results-404').html('');
+
+      }else{
+        $('#search-results').html('');
+     
+        $('#search-title').html('<h2 style="font-size:48px">SEARCH RESULTS</h2>');
+     
+        
+        $('#search-results-404').html('<h1>Oh no! Your search came up empty.</h1><p>We couldn\'t find any results matching your search terms. Feel free to explore our other categories or get in touch with us for personalized recommendations.</p>');
+        
+
+      }
+      },
+      error: function(xhr, status, error) {
+        console.log(error);
+      }
+    });
+  } else {
+    // Clear search results and title
+
+    $('#search-results').html('');
+    $('#search-results-404').html('');
+    $('#search-title').html('');
+    $('.select-container').hide();
+  }
+});
+
+
+
+
 function addToWishlist(proId) {
    
     console.log(proId)

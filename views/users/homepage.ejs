@@ -121,17 +121,17 @@
 
         <div class="container">
           
-          <div class="select-container"  >
+          <div class="select-container">
             <select id="sort-select" class="form-select" aria-label="sort by">
               <option value="" hidden selected>Sort by</option>
               <option value="asc">Price: Low to High</option>
               <option value="desc">Price: High to Low</option>
             </select>
           
-            <select id="filter-select" class="form-select" aria-label="filter by">
+            <select id="filter-select" class="form-select" aria-label="filter by" >
               <option value="" hidden selected>Filter by</option>
               <% if (categories.length > 0) { %>
-              <% for (let i = 0; i < categories.length; i++) { %>
+              <% for (let i = 0; i < categories.length; i++) { %> 
               <% if (categories[i].categoryStatus == true) { %>
               <option value="<%= categories[i].category %>"><%= categories[i].category %></option>
               <% } %>
@@ -196,42 +196,8 @@
             </div>
         </div>
 
-        <div class="karl-projects-menu mb-100" >
-            <div class="text-center portfolio-menu">
-
-                 <button class="btn active" data-filter="*">ALL</button>
-                <%
-                if(categories.length > 0){
-                for(let i=0;i<categories.length;i++){ %>
-                  
-                  <%  if(categories[i].categoryStatus==true){
-
-                    
-                    %>
-               
-                <button class="btn" data-filter=".<%= categories[i].category %>"><%= categories[i].category %></button>
-                <!-- <button class="btn" data-filter=".jackets">JACKETS</button>
-                <button class="btn" data-filter=".access">GLOVES</button> -->
-             
-
-                <%
-                }
-            }
-            }else{
-            %>
-            <tr>
-                <td colspan="3">Categories Not Found</td>
-            </tr>
-            
-            <%
-            }
-            
-            %>
-  
-            </div>
-        </div>
-
-        <div class="container">
+    
+        <div class="container" >
             <div class="row karl-new-arrivals mt-3">
 
                 <!-- Single gallery Item Start -->
@@ -260,7 +226,13 @@
                       <!-- Product Description -->
 
                       <div class="product-description">
-                        <h4 class="product-price">₹<%= product[i].offerprice %>  <span style="text-decoration: line-through; ">₹<%= product[i].price %></span> </h4>
+                        <h4 class="product-price">
+                          ₹<%= product[i].offerprice.toLocaleString('en-IN') %>
+                          <span style="text-decoration: line-through;">
+                            ₹<%= product[i].price.toLocaleString('en-IN') %>
+                          </span>
+                        </h4>
+                     
                           <p><%=product[i].product %></p>
                          
                           <!-- Add to Cart -->
@@ -288,7 +260,7 @@
                           <!-- Product Description -->
     
                           <div class="product-description">
-                            <h4 class="product-price">₹<%= product[i].price %></h4>
+                            <h4 class="product-price" >₹<%= product[i].price.toLocaleString('en-IN') %></h4>
                               <p><%=product[i].product %></p>
                              
                               <!-- Add to Cart -->
@@ -444,8 +416,9 @@
   display: none;
   padding-bottom: 10px;
   padding-top: 10px;
-
+  
 }
+
 
 
 /* Styles for the search input */

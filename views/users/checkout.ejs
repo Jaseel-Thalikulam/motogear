@@ -158,21 +158,17 @@
 
                         
 
-                        <div class="order-details-confirmation" style="margin-bottom:5px ;">
-                        
+                        <div class="order-details-confirmation" style="margin-bottom: 5px;">
                             <div class="cart-page-heading">
-                            <h5>Cupon code</h5>
-                            <p>Enter Your Cupon Code</p>
-                        </div>
-                        
-                      
-                           
-                            <input style="background-color: #F4F2F8; height: 52px;width: 255px; border-style:none ; " id="couponCode" type="search" name="search" placeholder="569ab15" >
+                              <h5>Coupon code</h5>
+                              <p>Enter Your Coupon Code</p>
+                            </div>
                           
-                            <button  onclick="applyCoupon('<%=userData.cartTotalPrice%>',$('#couponCode').val())"type="submit" style="background-color: #FF084E; color: #fff; font-weight: bold;width: 100px;height: 52px ; border-style:none" >Apply</button>
+                            <input style="background-color: #F4F2F8; height: 52px; border-style: none; width: 100%; margin-bottom: 5px;" id="couponCode" type="search" name="search" placeholder="569ab15">
                           
-                        </div>
-
+                            <button onclick="applyCoupon('<%=userData.cartTotalPrice%>',$('#couponCode').val())" type="submit" style="background-color: #FF084E; color: #fff; font-weight: bold; height: 52px; width: 100%; border-style: none;">Apply</button>
+                          </div>
+                          
                         <div class="order-details-confirmation">
 
                             <div class="cart-page-heading">
@@ -235,7 +231,7 @@
 
                             
 
-                            <button style="width: 361px; height: 60px; background-color: #FF084E; color: #fff; text-transform: uppercase ; font-weight: bold; border: none;" type="submit">place order</button>
+                            <button style=" height: 60px;  background-color: #FF084E;width: 100%; color: #fff; text-transform: uppercase ; font-weight: bold; border: none;" type="submit">place order</button>
                             <!-- <button type="button" onclick="submitData()">submit</button> -->
                         </div>
                     </div>
@@ -361,6 +357,25 @@ input[type="search"]:focus {
 }
 button:focus {
   outline: none;
+}
+
+/* Default styles for the button */
+button {
+  width: 361px;
+  height: 60px;
+  background-color: #FF084E;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  button {
+    width: 100%;
+    height: auto;
+  }
 }
 
    
