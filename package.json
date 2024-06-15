@@ -16,6 +16,7 @@
     "nocache": "^3.0.4",
     "nodemon": "^2.0.22",
     "razorpay": "^2.8.6",
+    "start": "^5.1.0",
     "sweetalert": "^2.1.2",
     "twilio": "^4.8.0",
     "uuidv4": "^6.2.13",
@@ -30,7 +31,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon",
-    "build":"npm i"
+    "build": "npm i"
   },
   "repository": {
     "type": "git",

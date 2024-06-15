@@ -1,7 +1,11 @@
 
 const mongoose = require('mongoose');
 require('dotenv').config()
-mongoose.connect(process.env.MONGO)
+mongoose.connect(process.env.MONGO).then(() => {
+  console.log("DB Connected")
+}).catch((err) => {
+  console.log(err,"from mongoose")
+})
 const express = require('express')
 const bodyParser = require('body-parser');
 const session = require('express-session')
@@ -37,9 +41,7 @@ app.use((req, res, next) => {
 
 // view engine setup
 app.set('view engine', 'ejs')
-app.set('views','./views/')
-
-
+app.set('views', path.join(__dirname, 'views')); 
 // server
 app.listen(3000, function () {
     console.log('Listening  to port 3000')
